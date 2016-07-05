@@ -12,6 +12,8 @@ start problem) and it performs well on a small test corpus (gold standard). Our 
 achieved an F-measure of 0.84 for identifying references in full texts and an
 F-measure of 0.83 for finding correct matches of detected references in the da|ra
 dataset registry.
+## Activity Diagram
+![picture alt](https://github.com/OSCOSS/Dataset_Detcter/tree/master/Thesis-report(full)/Activitydiagram.png "Title is optional")
 
 ## List of requirements
          1. Python 3.4
@@ -34,3 +36,5 @@ dataset registry.
            * xml.etree.ElementTree
            * Metadata parser
            * Json
+
+## Package Diagram
