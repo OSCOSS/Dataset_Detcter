@@ -12,6 +12,9 @@ start problem) and it performs well on a small test corpus (gold standard). Our 
 achieved an F-measure of 0.84 for identifying references in full texts and an
 F-measure of 0.83 for finding correct matches of detected references in the da|ra
 dataset registry.
+## Demo 
+https://youtu.be/gAbXYG-IP-w
+
 ## Activity Diagram
 ![picture alt](https://s32.postimg.org/adxvzot2d/Activitydiagram.png "Activity Diagram")
 
@@ -39,7 +42,3 @@ dataset registry.
 
 ## An overview of our approach
 ![picture alt](https://s32.postimg.org/unv7etu79/Overwveiw_System.png "An overview of our approach")
-
-## Demo 
-
-https://youtu.be/gAbXYG-IP-w
