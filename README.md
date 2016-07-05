@@ -13,7 +13,7 @@ achieved an F-measure of 0.84 for identifying references in full texts and an
 F-measure of 0.83 for finding correct matches of detected references in the da|ra
 dataset registry.
 ## Activity Diagram
-![picture alt](https://github.com/OSCOSS/Dataset_Detcter/tree/master/Thesis-report(full)/Activitydiagram.png "Title is optional")
+![picture alt](https://s32.postimg.org/adxvzot2d/Activitydiagram.png "Activity Diagram")
 
 ## List of requirements
          1. Python 3.4
