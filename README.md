@@ -14,7 +14,7 @@ F-measure of 0.83 for finding correct matches of detected references in the da|r
 dataset registry.
 
 ## List of requirements
-Markup : 1. Python 3.4
+         1. Python 3.4
 	     2. Microsoft word 2010 (optional)
          3. Python modules and libraries
            * Operator
