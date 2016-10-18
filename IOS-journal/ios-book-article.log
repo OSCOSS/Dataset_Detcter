@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.9.23)  13 OCT 2016 21:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.9.23)  18 OCT 2016 14:11
 entering extended mode
 **./ios-book-article.tex
 (ios-book-article.tex
@@ -1126,72 +1126,99 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 32.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 32.
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 51.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 55.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1cmss.fd"
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 60.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 60.
- [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<DistPlaces3.PNG, id=13, 385.44pt x 369.63094pt>
-File: DistPlaces3.PNG Graphic file (type png)
- <use DistPlaces3.PNG>
-Package pdftex.def Info: DistPlaces3.PNG used on input line 87.
-(pdftex.def)             Requested size: 252.94499pt x 242.56969pt.
- [2 <./DistPlaces3.PNG>]
-Underfull \hbox (badness 804) in paragraph at lines 115--116
-\T1/ptm/m/n/8 2010 -- Ger-man Gen-eral So-cial Sur-vey. GESIS, Cologne,
- []
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 134.
+Underfull \vbox (badness 1292) has occurred while \output is active []
+
+ [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 75.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/b/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 134.
- [3] [4]
-[5] [6] [7]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 316.
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 75.
 
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
+<DistPlaces3.PNG, id=13, 385.44pt x 369.63094pt>
+File: DistPlaces3.PNG Graphic file (type png)
+ <use DistPlaces3.PNG>
+Package pdftex.def Info: DistPlaces3.PNG used on input line 96.
+(pdftex.def)             Requested size: 252.94499pt x 242.56969pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
+[]\T1/ptm/b/n/8 Figure 1.\T1/ptm/m/n/8 The dis-tri-bu-tion of dataset ref-er-en
+ces in 15 ran-dom
+ []
+
+
+Overfull \hbox (34.15565pt too wide) in paragraph at lines 97--97
+\T1/ptm/m/n/8 mda[]papers 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2]
+Underfull \hbox (badness 804) in paragraph at lines 127--128
+\T1/ptm/m/n/8 2010 -- Ger-man Gen-eral So-cial Sur-vey. GESIS, Cologne,
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[3 <./DistPlaces3.PNG>] [4] [5] [6] [7] [8]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 328.
+
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-[8] [9] [10] [11] [12] <ToyExamplE.PNG, id=59, 791.95876pt x 380.92313pt>
+) [9] [10]
+[11] [12] <ToyExamplE.PNG, id=59, 791.95876pt x 380.92313pt>
 File: ToyExamplE.PNG Graphic file (type png)
 
 <use ToyExamplE.PNG>
-Package pdftex.def Info: ToyExamplE.PNG used on input line 434.
+Package pdftex.def Info: ToyExamplE.PNG used on input line 446.
 (pdftex.def)             Requested size: 325.215pt x 156.4236pt.
- [13 <./ToyExamplE.PNG>]
-<Overwveiw_System.png, id=65, 2183.15625pt x 1321.93875pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[13] <Overwveiw_System.png, id=64, 2183.15625pt x 1321.93875pt>
 File: Overwveiw_System.png Graphic file (type png)
 
 <use Overwveiw_System.png>
-Package pdftex.def Info: Overwveiw_System.png used on input line 462.
+Package pdftex.def Info: Overwveiw_System.png used on input line 474.
 (pdftex.def)             Requested size: 358.03995pt x 216.81pt.
 
-Overfull \hbox (6.03995pt too wide) in paragraph at lines 462--463
+Overfull \hbox (6.03995pt too wide) in paragraph at lines 474--475
  [][] 
  []
 
-[14 <./Overwveiw_System.png>] [15] [16] (ios-book-article.bbl [17] [18])
-[19] (ios-book-article.aux)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14 <./ToyExamplE.PNG>] [15 <./Overwveiw_System.png>] [16] [17]
+(ios-book-article.bbl [18]) [19] (ios-book-article.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 16994 strings out of 493334
- 317864 string characters out of 3136663
- 374355 words of memory out of 3000000
- 20148 multiletter control sequences out of 15000+200000
- 62830 words of font info for 110 fonts, out of 3000000 for 9000
+ 17021 strings out of 493334
+ 318414 string characters out of 3136663
+ 376355 words of memory out of 3000000
+ 20174 multiletter control sequences out of 15000+200000
+ 63966 words of font info for 111 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,21n,92p,918b,885s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,21n,92p,918b,1000s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}{
 C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Program Fi
@@ -1208,7 +1235,7 @@ ts/type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
 /symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8
 a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/P
 rogram Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ios-book-article.pdf (19 pages, 569869 bytes).
+Output written on ios-book-article.pdf (19 pages, 572623 bytes).
 PDF statistics:
  136 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
