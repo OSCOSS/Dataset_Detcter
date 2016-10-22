@@ -65,7 +65,7 @@ Information extraction\sep Link discovery\sep Data linking\sep Research data\sep
 \end{keyword}
 \end{frontmatter}
 \section{Introduction}
-Digital libraries have been growing enormously in recent years. \todo[inline, size=\tiny]{SV@BG:try to have sentences that carry some value, this is not good to start the intro with such sentence, align it with abstract, even use the same sentence and expand each sentence of the abstract as one paragraph in intro}
+Digital libraries have been growing enormously in recent years. \todo{SV@BG:try to have sentences that carry some value, this is not good to start the intro with such sentence, align it with abstract, even use the same sentence and expand each sentence of the abstract as one paragraph in intro}
 Digital libraries aim at providing resources with high metadata quality, easy subject access, and support for retrieving information~\citep{Hienert2015}. 
 % We are specifically interested in scientific full text papers in digital libraries.\todo[inline, size=\tiny]{SV@BG:saying we are interested on sth is not scientific at all, rephrase it and include the reason.\\ CL: This sentence is not necessary to introduce our point, so I've commented it out.}
 Today, in the quantitative social sciences and other fields, many papers make references to research datasets on which they are based, in that they, e.g., present the results of a statistical analysis over some dataset.
@@ -80,43 +80,41 @@ Explicit links from scientific publications to the underlying datasets and vice 
         \item decision makers seeking to determine the impact of a given dataset (by counting its citations) or to identify the most important datasets in a given community.
 \end{itemize}% \todo[inline, size=\tiny]{SV@BG:add two more use cases\\ CL: I added some.} 
 
-Currently, majority of already published papers lack such direct links to datasets.
-\todo[inline, size=\tiny]{SV@BG:add one more sentence about the state of current papers, how they do refer to datasets}
+Currently, the majority of published papers lacks such direct links to datasets.
+\todo{SV@BG:add one more sentence about the state of current papers, how they do refer to datasets\\ CL: I think this is sufficiently covered below.}
 While there exist registries that make datasets citable, e.g., by assigning a digital object identifier (DOI) to them, they are usually not integrated with authoring tools.
 Therefore, in practice, authors typically cite datasets by \emph{mentioning} them, e.g., using  
-combinations of title, abbreviation and year of publication for citing a dataset in the text (see e.g. \citet{Mathiak2015}).  
+combinations of title, abbreviation and year of publication (see, e.g., \citet{Mathiak2015}).  
 
-Manually detecting references to datasets in papers is time consuming and requires an expert in the domain of the paper. 
-Detecting dataset references automatically is challenging since in most cases, approaches need a huge corpus of papers as training set. 
+Manually detecting references to datasets in papers is time consuming and requires expert knowledge of the paper's domain. 
+Detecting dataset references automatically is challenging since \todo{CL@BG: to provide evidence for the following claim, please cite something suitable.}in most cases, approaches need a huge corpus of papers as training set. 
 
 %<newpart_2
-It is a difficult task to create such a set manually due to wide varieties of styles and stored places for dataset citation in full texts. 
+It is a difficult task to create such a training set manually due to the wide variety of styles of dataset citations in full texts even within one research community, and the multitude of \todo{CL@BG: Is the following what you meant by “stored places for dataset citation”?  If so, I tried to phrase it more clearly.}places in papers in which such citations can occur (illustrated by Figure~\ref{fig:places-example}).
 %newpart_2>
-As illustrated in Figure~\ref{fig:places-example}, references to datasets can appear in different places in a paper.   
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=3.5in]{DistPlaces3.PNG} \todo[inline, size=\tiny]{SV@BG:bad quality, recheck the figure}
-	\caption{The distribution of dataset references in 15 random mda\todo[inline, size=\tiny]{SV@BG:never said before what mda is} papers}
+	\includegraphics[width=3.5in]{DistPlaces3.PNG} \todo[inline, size=\tiny]{SV@BG: bad quality, recheck the figure\\ CL: export the figure in a vector format or, if only bitmap is possible, with a higher resolution.}
+	\caption{The distribution of dataset references in 15 random papers from the mda journal (see Section~\ref{sec:mda})}
 	\label{fig:places-example}
 \end{figure}
 
 %<newpart_3
-This variance even makes rule-based approaches difficult, as it is hard to cover all cases. \todo[inline, size=\tiny]{SV@BG:give 1-2 concrete technical reasons why it makes it difficult}
-Possessing a huge corpus of papers also requires a large amount of space on hard disks, and processing the corpus is time consuming.
+This variance even makes rule-based approaches difficult, as it is hard to cover all cases. \todo{SV@BG:give 1-2 concrete technical reasons why it makes it difficult\\ CL: Indeed: 1–2 examples of extreme but still common cases of “this variance”, please.}
+\todo{CL@BG: I tried to phrase the following a bit more precisely, but still a concrete reference would be good.}Approaches that learn from a corpus of papers require large amounts of disk space and processing time.
 %newpart_3>
-We therefore introduce a semi-automatic approach to solve this problem that parses full texts with high performance and finds exact matches without possessing any training set with high precision. 
-In the remainder of this section... \todo[inline, size=\tiny]{SV@BG:say what is going to come in subsections} 
+We therefore introduce a semi-automatic approach to solve this problem that parses full texts with high performance and finds exact matches with a high precision, without requiring a training set. 
+In the remainder of this section\dots \todo{SV@BG:say what is going to come in subsections} 
 
-\subsection{Problem Statement and Contributions}
-Whereas a lot of effort has been done on information extraction in general~\citep{Sarawagi2007}, fewer attempts have focused on the specific task of dataset extraction (see e.g.~\citep{MeiyuLu2012}). \todo[inline, size=\tiny]{SV@BG:effort on information extraction and dataset extraction is not comparable, one is a reasearch field, the other is a usecase, rephrase it.}
+\subsection{Problem Statement}
+Whereas a lot of effort has been spent on information extraction in general~\citep{Sarawagi2007}, few attempts have focused on the specific use case of dataset extraction (see, e.g., \citep{MeiyuLu2012}). \todo{SV@BG:effort on information extraction and dataset extraction is not comparable, one is a research field, the other is a usecase, rephrase it.\\ CL: I made the first step: not yet perfect, but better.}
 When referring to the same dataset, different authors often use different names or keywords.
 Although there are proposed standards for dataset citation in full texts, researchers still ignore or neglect such standards.
-One one the important standards is proposed by~\citeauthor{altman2007proposed} for dataset citation
-~\citeyearpar{altman2007proposed}.
-\todo[inline, size=\tiny]{SV@BG:say a bit about this standard}
-Since the structure of the scientific documents do not follow certain standard as well as not linking datasets, simple keyword or name extraction approaches do not solve the problem \citep{Nadeau2007}. 
-Table \ref{table:citation-variety} shows five full-text papers that have cited different versions of a study (ALLBUS/GGSS (Allgemeine Bev\"olkerungsumfrage der Sozialwissenschaften/German General Social Survey)). In each paper, the reference style differs from the other papers.  
+One of the important standards is proposed by~\citeauthor{altman2007proposed} for dataset citation~\citeyearpar{altman2007proposed}.
+\todo{SV@BG:say a bit about this standard\\ CL: Yes, please – or, if you can't, shorten this sentence to “see, e.g., \cite{altman2007proposed}” and merge it into the previous one.}
+Since the structure of scientific documents does not always follow standard, and since datasets are rarely being linked to in a consistent ways\todo{CL@BG: Previously, this sentence was phrased poorly up to this point; I tried to improve, but please check whether I preserved your intended meaning.}, simple keyword or name extraction approaches do not solve the problem \citep{Nadeau2007}. 
+Table~\ref{table:citation-variety} shows concrete examples of different reference styles from \todo{CL@BG: say more about these papers.  At the very least what journal they are from.  Even better would be a footnote with citations of all papers.  Journals value precision and completeness.}five papers that have cited different versions of a study (ALLBUS/GGSS = Allgemeine Bev\"olkerungsumfrage der Sozialwissenschaften/German General Social Survey).\todo{CL@BG: For Paper C, is the word form “Allgemeinen” really correct?}
 
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{2}
@@ -140,11 +138,15 @@ Table \ref{table:citation-variety} shows five full-text papers that have cited d
 \end{table}
 %newpart_5>
 
-Each detected dataset reference in a paper should be turned into an explicit link. This task can be done, for example, by using the DOI (Digital Object Identifier) of the dataset in a dataset registry. 
+The challenge that our research aims at addressing is to turn each dataset reference detected in a paper into an explicit link, for example, using the DOI (Digital Object Identifier) of the dataset's entry in a dataset registry. 
 %<newpart_6
-It means that each dataset reference in a paper should have a DOI code. These registries usually include some more metadata about the study, such as creators, publication date, description, and temporal coverage as well.
+\todo{CL@BG: I rephrased this completely; please check whether I preserved the intended meaning.}Dataset registries usually provide further metadata about datasets, which can facilitate the detection of such links, such as the dataset's creators, publication date, description, and temporal coverage.
 %newpart_6>
-In our case, these references to datasets should be linked to items in the {\dara} registry, which is for social and economic data. This paper makes the following contributions:
+In our case, references to datasets should be linked to items in the {\dara} registry, which covers social and economic datasets.
+
+\subsection{Contribution}
+
+This paper makes the following contributions:
 \begin{itemize}
 \item a quantitative analysis of typical naming patterns used in the titles of social sciences datasets,
 \item a semi-automatic approach for finding references to datasets in social sciences papers with two alternative interactive disambiguation workflows, and
@@ -331,7 +333,7 @@ This section describes the three types of data sources that we use. We use full-
 Finally, we use metadata of the registered papers in the SSOAR\footnote{\url{http://www.ssoar.info}} repository for exporting the suggestions of our approach for a paper as a JSON file.
 %newpart_22>
  
- \subsection{Papers from mda journal}
+ \subsection{Papers from mda journal}\label{sec:mda}
  
  Methods, data, analyses (mda\footnote{\url{http://www.gesis.org/en/publications/journals/mda/}}) is an open-access journal which publishes research on questions important to quantitative methods, with a special emphasis on survey methodology. It published research on all aspects of science of surveys, be it on data collection, measurement, or data analysis and statistics. All content of mda is freely available and can be distributed without any restrictions, ensuring the free flow of information that is crucial for scientific progress. We use a random sample of full-text articles from mda as our test corpus.
   \subsection{The {\dara} dataset registry}
