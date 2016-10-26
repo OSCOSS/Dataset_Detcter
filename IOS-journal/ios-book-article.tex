@@ -160,16 +160,21 @@ The following four subsections introduce the terminology and the definitions of 
 
 %<newpart_7
 \subsection{Dataset (Terminology)}
-\enquote{Dataset} is an ambiguous term since authors suggested varieties of meanings for it~\cite{peplerpreservation}.
+\emph{Dataset} is an ambiguous term; different authors have suggested a great variety of meanings for it~\cite{peplerpreservation}.
 Therefore, \citeauthor{renear2010definitions} introduced a general notion of the term based on the definitions in the technical and scientific literature.
-They define a dataset through using \enquote{grouping}, \enquote{content}, \enquote{relatedness}, and \enquote{purpose} as the four basic characteristics of the dataset.
+They define a dataset in terms of its four basic characteristics \emph{grouping}, \emph{content}, \emph{relatedness}, and \emph{purpose}.
 
-In their definition, the grouping feature considers a dataset as a group of data.  \enquote{Set}, \enquote{Collection}, \enquote{aggregation}, and \enquote{atomic unit} are some cases of this feature type. For instance, a dataset may be a \enquote{set} so it will not lose or accept any member (e.g. "Set of RDf triples")\cite{renear2010definitions} or it may be a \enquote{Collection} so the deletion and addition of data don't have any effect on the dataset identity. The content feature describes the data in a dataset. For example, \enquote{observation} describes the content is propositional while \enquote{value} is related to measurable content.
+In their definition, a dataset is considered as a \emph{group} of data.  \emph{Set}, \emph{collection}, \emph{aggregation}, and \emph{atomic unit} are some cases of this feature type.
+For instance, a dataset may have \emph{set} semantics, so it will \todo{CL@BG: please phrase more clearly; I find “not lose or accept” hard to understand.}not lose or accept any member (e.g. “Set of RDF triples”)~\cite{renear2010definitions}, or it may have \emph{collection} semantics so the deletion and addition of data do not have any effect on the dataset's identity.
+The \emph{content} feature describes the data in a dataset.
+For example, \emph{observation} describes propositional content, while \emph{value} refers to measurable content.
 
-A dataset is a group of data which are related to each other. The relatedness feature clarifies the relation of data in a dataset. \enquote{Syntactic}, and \enquote{semantic} are some examples of this feature.   
-A group of data about a specific subject can be assumed to have a \enquote{semantic} relation.
-If all entities of a dataset have a specific structure, their relation is syntactic.
-Finally, purpose feature is about the idea of the scientific research which the dataset is created for.
+A dataset is a group of data, which are \emph{related} to each other.
+The \emph{relatedness} feature thus clarifies the inter-relation of data in a dataset.
+\emph{Syntactic} and \emph{semantic} are some examples of this feature.   
+A group of data about a specific subject can be assumed to have a \emph{semantic} relation.
+\todo{CL@BG: This doesn't seem to be intended as mutually exclusive with “semantic”.  Reading this definition I can well imagine a group of entities that are 1. all about the same subject and 2. all follow a specific structure, i.e.\ a dataset that's both syntactic and semantic.  Why not – but is this what you, or the literature, intend to say?}If all entities of a dataset have a specific structure, their relation is \emph{syntactic}.
+Finally, the \emph{purpose} feature refers to the idea of the \todo{CL@BG: Is this classification only about research data, or could it be more general?  In the latter case, how about rephrasing to “use case” and/or “application domain”?}scientific research which the dataset is created for.
 %newpart_7>
 
 \subsection{Weighting terms in documents using tf-idf}
