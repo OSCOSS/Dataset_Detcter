@@ -180,34 +180,43 @@ Finally, the \emph{purpose} feature refers to the idea of the \todo{CL@BG: Is th
 \subsection{Weighting terms in documents using tf-idf}
 \label{sec:tfidf}
 %<newpart_8
-The bag of words model represents a text as a set of terms of the text and does not consider the order of terms. Based on the model, documents and the query can be displayed in different ways, such as binary vectors, count vectors, and weight vectors. Each bit in a binary vector shows the absence or presence of a term in the related document of the vector.
+The \emph{bag of words} model represents a text as a set of terms without considering their order.
+Based on this model, documents and the query can be displayed in different ways, such as binary vectors, count vectors, and weight vectors\todo{CL@BG: Does your algorithm employ each of these vectors?  If not, it would make sense to shorten this section to just those vector representations that you use.}.
+Each bit in a binary vector indicates the absence or presence of a term in the related document of the vector.
 
 In a count matrix, each row represents a term and each column represents the vector of a document or query. Each cell in the matrix shows the number of occurrences of a term in a related document or query. 
 
-Rows and columns are similar for weight and count matrices, but each cell in a weight matrix represents the weight of a term in a document. Tf-idf is one way of computing the weights.
+Rows and columns are similar for weight and count matrices, but each cell in a weight matrix represents the weight of a term in a document.
+Tf-idf is one way of computing the weights.
 %newpart_8>
 
 Term frequency (tf) measures the number of occurrences of a given term (t) in a given document (d) or query text~\citep{SALTON1988}. 
 %<newpart_9
-Weighing the score based on tf is calculated by the following formula. 
+\todo{CL: phrase this sentence in a less redundant way, e.g.\ like “the weight of \dots is \dots”}Weighing the score based on tf is calculated by the following formula. 
 \begin{center} 
 	$w_{t,d}$=
 	$\begin{cases}
-	1+log_{10} tf_{t,d}, & \text{if $\mathit{tf}_{t,d}>0$} \\
+	1+\log_{10} \mathit{tf}_{t,d}, & \text{if $\mathit{tf}_{t,d}>0$} \\
 	0, & \text{if $\mathit{tf}_{t,d}=0$}\\
 	\end{cases}$
 \end{center}
 
-The reason for possessing a logarithm in the formula is that number of occurrences of a term does not make the document linearly more relevant. The total weight for a document is calculated by summing the weights of all terms in the document. These terms should appear in both q and d. It is zero if none of the query terms exist in the document.
+The reason for using a logarithm in the formula is that a high number of occurrences of a term does not make the document linearly more relevant.
+The total weight for a document is calculated by summing the weights of all terms in the document.
+These terms should appear in both \textit{q} and \textit{d}.
+It is zero if none of the query terms exist in the document.
 
 \begin{center}
-	tf\_score=$\sum_{t\in q\cap d} w_{t,d}$
+	$\mathit{tf\_score}=\sum_{t\in q\cap d} w_{t,d}$
 \end{center}
 
-$Df_t$ is the number of documents in the corpus that contain t, so as much as it repeats in the corpus, the term is less informative. This reason leads to a new measure, which is idf \emph{(Inverse document frequency)}. Idf is effective for queries that have more than one term. The following formula is for idf, and $N$ is the number of all documents in a corpus.
+$\mathit{df}_t$ is the number of documents in the corpus that contain t, so the more a term is repeated in the corpus, the term less informative it becomes.
+This reason leads to a new measure, which is idf \emph{(inverse document frequency)}.
+Idf is effective for queries that have more than one term.
+The following formula defines idf, where $N$ is the number of documents in the corpus.
 
 \begin{center} 
-	$idf=\log_{10} (N/df_t)$
+	$\mathit{idf}=\log_{10} (N/\mathit{df}_t)$
 \end{center}
 %newpart_9>
 
@@ -216,11 +225,12 @@ $Df_t$ is the number of documents in the corpus that contain t, so as much as it
 It increases through the repetition of a term in the document where the term is rare in the corpus.
 
 \begin{center}
-	tf-idf (q,d)=$\sum_{t\in q\cap d} \mathit{tf}.idf_{t,d}$
+	$\textit{tf-idf}(q,d)=\sum_{t\in q\cap d} \mathit{tf}.\mathit{idf}_{t,d}$
 \end{center}
 %newpart_10>
 
-When ranking documents that contain a term being searched, tf-idf returns high scores for documents for which the given term is \emph{characteristic}, i.e.\ documents that have many occurrences of the term, while the term has a low occurrence rate in \emph{all} documents of the corpus. In other words, the tf-idf algorithm assigns a weight to each word in a document, giving high weights to keywords and low weights to frequent words such as stop words.
+When ranking documents that contain a term being searched, tf-idf returns high scores for documents for which the given term is \emph{characteristic}, i.e.\ documents that have many occurrences of the term, while the term has a low occurrence rate in \emph{all} documents of the corpus.
+In other words, tf-idf assigns a weight to each word in a document, giving high weights to keywords and low weights to frequent words such as stop words.
 
 \subsection{The cosine similarity metric}
 \label{sec:cosine}
