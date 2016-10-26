@@ -277,19 +277,23 @@ In practice, it may furthermore be necessary to define a cut-off threshold in or
 
 \subsection{Precision and recall of a classifier}
 \label{sec:precision-recall}
-We aim at implementing a binary classifier that tells us whether or not a certain dataset has been referenced by a paper. The algorithm tries to find references of datasets in a paper, and then as the next step, it attempts to detect a perfect match for each detected reference in a text. These matches are to be selected from titles of datasets in the {\dara} repository. 
+We aim at implementing a binary classifier that tells us whether or not a certain dataset has been referenced by a paper.
+The algorithm should find references of datasets in a paper and then detect a perfect match for each detected reference in a text.
+These matches are to be selected from titles of datasets in a given dataset registry.
 
-Evaluation metrics such as \emph{precision and recall} determine the reliability of binary classifiers, and F-measure is a harmonic mean of precision and recall. 
+Evaluation metrics such as \emph{precision and recall} determine the reliability of binary classifiers.
+For computing a unidimensional ranking of these two dimensions, one typically uses the F-measure, which is defined as the harmonic mean of precision and recall. 
 %<newpart_14
-These three metrics are defined as follows ~\cite{Powers2011}. 
+These three metrics are defined as follows~\cite{Powers2011}. 
 %\todo{BG:Can we remove these formulas regarding to page limit? PM: Yes!}
 \begin{itemize}
-	\item Precision=$\frac{\#\text{True\ positives}}{\#\text{True positives}+\#\text{False positives}}$
-	\item Recall=$\frac{\#\text{True positives}}{\#\text{True positives}+\#\text{False negatives}}$
-	\item F-measure=$2\cdot{\frac{\mathit{Precision}\cdot\mathit{Recall}}{\mathit{Precision}+\mathit{Recall}}}$
+	\item $\mathit{Precision}=\frac{\#\text{True\ positives}}{\#\text{True positives}+\#\text{False positives}}$
+	\item $\mathit{Recall}=\frac{\#\text{True positives}}{\#\text{True positives}+\#\text{False negatives}}$
+	\item $\textit{F-measure}=2\cdot{\frac{\mathit{Precision}\cdot\mathit{Recall}}{\mathit{Precision}+\mathit{Recall}}}$
 \end{itemize}
 
-If an algorithm returns less wrong predictions, it will lead to high precision. The algorithm should predict most of the relevant results to achieve high recall.
+If an algorithm returns few wrong predictions, it will lead to a high precision.
+An algorithm should predict most of the relevant results to achieve a high recall.
 %newpart_14>
 
 \section{Related work}
