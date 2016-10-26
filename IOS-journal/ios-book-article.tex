@@ -234,35 +234,47 @@ In other words, tf-idf assigns a weight to each word in a document, giving high 
 \subsection{The cosine similarity metric}
 \label{sec:cosine}
 %<newpart_11
-A Boolean search makes a user capable of finding a pattern, and if it is matched with document, the result will be one; otherwise the result will be zero. This means that documents either do or do not satisfy a query expression. But a ranked retrieval model returns a ranked list of documents in a corpus by considering a query. 
+A Boolean search enables users to find patterns: if a document matches the pattern, the result is “true”; otherwise the result is “false”.
+In other words, documents either do or do not satisfy a query expression.
+A \emph{ranked} retrieval model is more sophisticated, in that it returns a ranked list of documents in a corpus by considering a query. 
 
-Similarity measures such as Matching, Dice, Overlap Coefficient, and Jaccard are some example of the approaches for ranking a list of documents within a query (cf.~\citet{ChristopherD1999}).
-Matching Coefficient finds the numbers of terms that occur in both the query and document vectors. It calculates the cardinality of intersection of each document and query.
+Similarity measures such as Matching, Dice, Overlap Coefficient, and Jaccard are some examples of approaches for ranking a list of documents within a query (cf.~\citet{ChristopherD1999}).
+Matching Coefficient finds the numbers of terms that occur in both the query and document vectors.
+It calculates the cardinality of the intersection of each document and the query.
 \begin{align*}
 \mathit{Matching Coefficient}=|d\cap q|
 \end{align*}
-Dice Coefficient, Overlap Coefficient, and Jaccard try to normalize the Matching Coefficient, and their formulas are mentioned below.
+Dice Coefficient, Overlap Coefficient, and Jaccard try to normalize the Matching Coefficient in different ways:
 \begin{itemize}
-	\item Dice Coefficient=$\frac{2|d\cap q|}{|d|+|q|}$
-	\item Overlap Coefficient=$\frac{|d\cap q|}{min(|d|,|q|)}$
-	\item Jaccard Coefficient=$\frac{|d\cap q|}{|d\cup q|}$
+	\item $\mathit{Dice Coefficient}=\frac{2|d\cap q|}{|d|+|q|}$
+	\item $\mathit{Overlap Coefficient}=\frac{|d\cap q|}{\min(|d|,|q|)}$
+	\item $\mathit{Jaccard Coefficient}=\frac{|d\cap q|}{|d\cup q|}$
 \end{itemize}
-For example, Jaccard neither applies optimal normalization on the length of documents nor considers term frequency in a document and the corpus of documents.
+Each of them has specific shortcomings;
+for example, Jaccard neither applies optimal normalization on the length of documents nor considers term frequency in a document and the corpus of documents.
 %newpart_11>
-A document can be considered as a vector (point) in a vector space, each dimension of which corresponds to one term in the document corpus. 
+\todo{CL@BG: this sentence and the following one are partly redundant with new content of Section~\ref{sec:tfidf}; rephrase it in a shorter way by reusing terminology from that section.}A document can be considered as a vector (point) in a vector space, each dimension of which corresponds to one term in the document corpus. 
 %<newpart_12
 A document can be converted into a weight vector, which looks like $d=(w_1,\dots,w_n)$, and tf-idf is one way of computing the weight $w_i$ of terms.
 %newpart_12>
 
-Search results for a multi-word query in a corpus of documents can be ranked by the similarity of each document with the query. Given a query vector $q$ and a document vector $d$, their \emph{cosine similarity} is defined as the cosine of the angle $\theta$ between the two vectors \citep{SALTON1988,ChristopherD1999}, i.e.\
+Search results for a multi-word query in a corpus of documents can be ranked by the similarity of each document with the query.
+Given a query vector $q$ and a document vector $d$, their \emph{cosine similarity} is defined as the cosine of the angle $\theta$ between the two vectors \citep{SALTON1988,ChristopherD1999}, i.e.\
 \begin{align*}
-\operatorname{\cos}(\overrightarrow{q},\overrightarrow{d})=\cos \theta=\frac{\overrightarrow{q}\cdot \overrightarrow{d}}{\|\overrightarrow{q}\|\,\|\overrightarrow{d}\|}=\frac{\overrightarrow{q}}{\|\overrightarrow{q}\|}\cdot \frac{\overrightarrow{d}}{\|\overrightarrow{d}\|}=\frac{\sum_{i=1}^{|V|} q_id_i}{\sqrt{\sum_{i=1}^{|V|} q_i^2}\sqrt{\sum_{i=1}^{|V|} d_i^2}}
+  \cos(\overrightarrow{q},\overrightarrow{d})=\cos \theta=\frac{\overrightarrow{q}\cdot \overrightarrow{d}}{\|\overrightarrow{q}\|\,\|\overrightarrow{d}\|}=
+  %% CL: I commented the following step, as it is not helpful for understanding the formula.
+  % \frac{\overrightarrow{q}}{\|\overrightarrow{q}\|}\cdot \frac{\overrightarrow{d}}{\|\overrightarrow{d}\|}=
+  \frac{\sum_{i=1}^{|V|} q_id_i}{\sqrt{\sum_{i=1}^{|V|} q_i^2}\sqrt{\sum_{i=1}^{|V|} d_i^2}}
 \end{align*}
 
 %<newpart_13
-It normalizes vectors by converting them to their unit vector, which makes documents of different lengths comparable. Since Euclidean distance is not effective for vectors of different lengths, it scores documents by considering angle instead of distance. Cosine decreases between 0 and 180 degrees monotonically, and therefore larger angles mean less similarity.
+It normalizes vectors by converting them to their unit vector, thus making documents of different lengths comparable.
+Since Euclidean distance is not effective for vectors of different lengths, it ranks documents by angle instead of distance.
+Between 0 and 180 degrees, the cosine function decreases monotonically, and therefore larger angles mean less similarity.
 %newpart_13> 
-Combining tf-idf and cosine similarity yields a ranked list of documents. In practice, it may furthermore be necessary to define a cut-off threshold in order to distinguish documents that are considered to match the query from those that do not~ \citep{Joachims1997}.
+Combining tf-idf and cosine similarity yields a ranked list of documents.
+In practice, it may furthermore be necessary to define a cut-off threshold in order to distinguish documents that are considered to match the query from those that do not~\citep{Joachims1997}.
+
 \subsection{Precision and recall of a classifier}
 \label{sec:precision-recall}
 We aim at implementing a binary classifier that tells us whether or not a certain dataset has been referenced by a paper. The algorithm tries to find references of datasets in a paper, and then as the next step, it attempts to detect a perfect match for each detected reference in a text. These matches are to be selected from titles of datasets in the {\dara} repository. 
