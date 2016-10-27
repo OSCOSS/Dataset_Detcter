@@ -298,14 +298,10 @@ An algorithm should predict most of the relevant results to achieve a high recal
 
 \section{Related work}
 \label{sec:relWork}
-While only a few scientific works have been found about the specific task of extracting dataset references from scientific publications, a lot of research has been done on its general foundations including metadata extraction and string similarity algorithms. 
+While only a few works address the specific task of extracting dataset references from scientific publications, a lot of research has been done on its general foundations including metadata extraction and string similarity algorithms. 
 Related work can be divided into three main groups covered by the following subsections.
 \subsection{Methods based on the “bag of words” model}
-%<newpart_15
-As mentioned before, a text can be considered as a set of words and represented as a vector.
-%newpart_15>
-In other words, we can assume a vector space, each of whose dimensions corresponds to one word.
-Weights for terms in such vectors need to be adjusted by weighting algorithms such as tf-idf.
+One group of methods is based on the “bag of words” model using algorithms such as tf-idf to adjust weights for terms in a representation of texts as vectors (cf.\ the introduction in Section~\ref{sec:tfidf}).
 \citeauthor{Lee2008} proposed an unsupervised keyword extraction method by using a tf-idf model with some heuristics~\citeyearpar{Lee2008}.
 Our approach uses similarity measures for finding a perfect match for each dataset reference in a paper by comparing titles of datasets in a repository to sentences in papers.
 Similarity measures such as Matching, Dice 2, Jaccard and Cosine can be applied to a vector representation of a text easily (cf.~\citet{ChristopherD1999}).
