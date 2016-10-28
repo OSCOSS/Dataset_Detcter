@@ -42,24 +42,20 @@ and
 \address[B]{Enterprise Information Systems (EIS), University of Bonn}
 \address[C]{Fraunhofer Institute for Intelligent Analysis and Information Systems IAIS}
 \begin{abstract}
-\todo[inline]{SV@BG: usually negative start is not the best way to start, I suggest that you turn the sentence in a positive one and add one introductory sentence also, you are too quick to say what is there and what we lack. I did some changes already.\\ CL: I changed some more; in any case the negative start is not \emph{that} problematic for me.\\ BG: Checked it.}
 Today, full texts of scientific papers are often stored in different places than their underlying research datasets.
 %<newpart_0
-As a first step towards a closer integration, there now exist several online registries that make datasets citable – but current authoring lack integration of such repositories. 
+Dataset registries aim at a closer integration by making datasets citable.
 %newpart_0>
-As a consequence, explicit links to datasets are generally missing in papers and authors typically refer to datasets using not standardized titles and often year of publication.
-\todo[inline]{CL: The following is a new and IMHO important point.\\ BG@CL: This is a great point but we should not exceed more than 200 words.- now the abstract contains 220 words.}It is thus hard to reproduce the authors' results, to access the datasets underlying papers for further analysis, and to determine the impact of a dataset.
-Manually detecting references to datasets in scientific papers is a time-consuming task and requires expert knowledge in the underlying research domain. 
-We propose and evaluate a semi-automatic approach for finding explicit references to datasets in social sciences papers.
+However, \todo[inline]{CL@BG: This statement actually creates the obligation for us to say something about the possible integration of our implementation into authoring tools in “future work”.  At least 2–3 sentences.  Think of open, pluggable systems, think of Fidus Writer.}as they are not integrated with authoring tools, explicit links to datasets are generally missing in papers and authors typically refer to datasets using not standardized titles and often year of publication.
+\todo[inline]{CL: The following is a new and IMHO important point.\\ BG@CL: This is a great point but we should not exceed more than 200 words.- now the abstract contains 220 words.\\ CL: I shortened it to 210 for now; maybe they will either accept 210, or someone else can shorten a bit further ;-)}It is thus hard to reproduce research results, to access datasets for further analysis, and to determine the impact of a dataset.
+Manually detecting references to datasets in scientific papers is time-consuming and requires expert knowledge in the underlying research domain. 
+We propose and evaluate a semi-automatic three-step approach for finding explicit references to datasets in social sciences papers.
 
 %<newpart_1
-Our approach comprises three main steps: extracting pre-defined special features from datasets' titles in the {\dara} registry, detecting references to datasets using the extracted features, and matching the references found with corresponding datasets' titles.
+We first extract pre-defined special features from datasets' titles in the {\dara} registry, then detect references to datasets using the extracted features, and finally match the references found with corresponding datasets' titles.
 %newpart_1> 
-The approach does not require a corpus of papers (no cold start problem) \todo[inline]{SV@BG:I do not understand this\\ CL: the “cold start problem” thing is sufficiently clear to me.\\ BG: Checked it.}and it performs well on a small test corpus. 
-%(
-\todo[inline]{CL@BG: This phrasing suggests that “test corpus” and “gold standard” are the same.  But the way I understand “corpus” in the context of our problem is that it's a set of documents (i.e.\ input to our algorithm), whereas a “gold standard” should be something like a set of documents plus their links to datasets (i.e.\ input plus expected output). \\ BG: I removed "gold standard"- Checked it.}
-%gold standard). 
-Our approach achieved an F-measure of 0.84 for detecting references in full texts and an F-measure of 0.83 for finding correct matches of detected references in the {\dara} dataset registry. \todo[inline]{SV@BG:I would not give exact figures here, tell a general results, what we have achieved\\ CL: I disagree.  I checked previous IS\&U abstracts, and it's not entirely uncommon to be that precise in the abstract. \\ BG: Checked it.}
+The approach does not require a corpus of papers (no cold start problem) and performs well on a small test corpus. 
+We achieved an F-measure of 0.84 for detecting references in full texts and an F-measure of 0.83 for finding correct matches of detected references in the {\dara} dataset registry.
 \end{abstract}
 
 \begin{keyword}
