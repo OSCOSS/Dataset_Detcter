@@ -33,31 +33,33 @@
 \author[A]{\fnms{Philipp} \snm{Mayr}
 \thanks{E-mail: philipp.mayr@gesis.org}},
 \author[B]{\fnms{Sahar} \snm{Vahdati}
-+\thanks{E-mail: vahdati@cs.uni-bonn.de}}
+\thanks{E-mail: vahdati@cs.uni-bonn.de}}
 and
 \author[B,C]{\fnms{Christoph} \snm{Lange} 
 \thanks{E-mail: langec@cs.uni-bonn.de}}
 
 \address[A]{GESIS – Leibniz Institute for the Social Sciences}
-+\address[B]{Enterprise Information Systems (EIS), University of Bonn}
-+\address[C]{Fraunhofer Institute for Intelligent Analysis and Information Systems IAIS}
+\address[B]{Enterprise Information Systems (EIS), University of Bonn}
+\address[C]{Fraunhofer Institute for Intelligent Analysis and Information Systems IAIS}
 \begin{abstract}
-\todo[inline]{SV@BG: usually negative start is not the best way to start, I suggest that you turn the sentence in a positive one and add one introductory sentence also, you are too quick to say what is there and what we lack. I did some changes already.\\ CL: I changed some more; in any case the negative start is not \emph{that} problematic for me.}
+\todo[inline]{SV@BG: usually negative start is not the best way to start, I suggest that you turn the sentence in a positive one and add one introductory sentence also, you are too quick to say what is there and what we lack. I did some changes already.\\ CL: I changed some more; in any case the negative start is not \emph{that} problematic for me.\\ BG: Checked it.}
 Today, full texts of scientific papers are often stored in different places than their underlying research datasets.
 %<newpart_0
 As a first step towards a closer integration, there now exist several online registries that make datasets citable – but current authoring lack integration of such repositories. 
 %newpart_0>
 As a consequence, explicit links to datasets are generally missing in papers and authors typically refer to datasets using not standardized titles and often year of publication.
-\todo[inline]{CL: The following is a new and IMHO important point.}It is thus hard to reproduce the authors' results, to access the datasets underlying papers for further analysis, and to determine the impact of a dataset.
+\todo[inline]{CL: The following is a new and IMHO important point.\\ BG@CL: This is a great point but we should not exceed more than 200 words.- now the abstract contains 220 words.}It is thus hard to reproduce the authors' results, to access the datasets underlying papers for further analysis, and to determine the impact of a dataset.
 Manually detecting references to datasets in scientific papers is a time-consuming task and requires expert knowledge in the underlying research domain. 
 We propose and evaluate a semi-automatic approach for finding explicit references to datasets in social sciences papers.
 
 %<newpart_1
 Our approach comprises three main steps: extracting pre-defined special features from datasets' titles in the {\dara} registry, detecting references to datasets using the extracted features, and matching the references found with corresponding datasets' titles.
 %newpart_1> 
-The approach does not require a corpus of papers (no cold start problem) \todo[inline]{SV@BG:I do not understand this\\ CL: the “cold start problem” thing is sufficiently clear to me}and it performs well on a small test corpus (\todo[inline]{CL@BG: This phrasing suggests that “test corpus” and “gold standard” are the same.  But the way I understand “corpus” in the context of our problem is that it's a set of documents (i.e.\ input to our algorithm), whereas a “gold standard” should be something like a set of documents plus their links to datasets (i.e.\ input plus expected output).}gold standard). 
-Our approach achieved an F-measure of 0.84 for detecting references in full texts and an F-measure of 0.83 for finding correct matches of detected references in the {\dara} dataset registry. \todo[inline]{SV@BG:I would not give exact figures here, tell a general results, what we have achieved\\ CL: I disagree.  I checked previous IS\&U abstracts, and it's not entirely uncommon to be that precise in the abstract.}
-\todo[inline, size=\tiny]{Abstract should not be more that 200 words - Currently. It is 183 words. }
+The approach does not require a corpus of papers (no cold start problem) \todo[inline]{SV@BG:I do not understand this\\ CL: the “cold start problem” thing is sufficiently clear to me.\\ BG: Checked it.}and it performs well on a small test corpus. 
+%(
+\todo[inline]{CL@BG: This phrasing suggests that “test corpus” and “gold standard” are the same.  But the way I understand “corpus” in the context of our problem is that it's a set of documents (i.e.\ input to our algorithm), whereas a “gold standard” should be something like a set of documents plus their links to datasets (i.e.\ input plus expected output). \\ BG: I removed "gold standard"- Checked it.}
+%gold standard). 
+Our approach achieved an F-measure of 0.84 for detecting references in full texts and an F-measure of 0.83 for finding correct matches of detected references in the {\dara} dataset registry. \todo[inline]{SV@BG:I would not give exact figures here, tell a general results, what we have achieved\\ CL: I disagree.  I checked previous IS\&U abstracts, and it's not entirely uncommon to be that precise in the abstract. \\ BG: Checked it.}
 \end{abstract}
 
 \begin{keyword}
@@ -65,10 +67,13 @@ Information extraction\sep Link discovery\sep Data linking\sep Research data\sep
 \end{keyword}
 \end{frontmatter}
 \section{Introduction}
-Digital libraries have been constantly growing in recent years, especially the ratio of the full texts has increased. \todo{SV@BG:try to have sentences that carry some value, this is not good to start the intro with such sentence, align it with abstract, even use the same sentence and expand each sentence of the abstract as one paragraph in intro}
-Digital libraries aim at providing resources with high-quality metadata, easy subject access, and further support and guidance for retrieving information~\citep{Hienert2015}. 
+%Digital libraries have been constantly growing in recent years, especially the ratio of the full texts has increased. 
+%\todo{SV@BG:try to have sentences that carry some value, this is not good to start the intro with such sentence, align it with abstract, even use the same sentence and expand each sentence of the abstract as one paragraph in intro. \\ BG: I made this part commented since it is not well-linked to other parts.}
+%Digital libraries aim at providing resources with high-quality metadata, easy subject access, and further support and guidance for retrieving information~\citep{Hienert2015}. 
 % We are specifically interested in scientific full text papers in digital libraries.\todo[inline, size=\tiny]{SV@BG:saying we are interested on sth is not scientific at all, rephrase it and include the reason.\\ CL: This sentence is not necessary to introduce our point, so I've commented it out.}
-Today, in the quantitative social sciences and other fields, many papers make references to research datasets on which they are based, in that they, e.g., present the results of a statistical analysis over some dataset.
+Today, 
+%in the quantitative social sciences and other fields, 
+many papers make references to research datasets on which they are based, in that they, e.g., present the results of a statistical analysis over some dataset.
 However, these references are usually not explicitly exposed in digital libraries.
 In most cases the papers do not provide explicit links that would give readers direct access to the referenced datasets. 
 
@@ -81,31 +86,35 @@ Explicit links from scientific publications to the underlying datasets and vice 
 \end{itemize}% \todo[inline, size=\tiny]{SV@BG:add two more use cases\\ CL: I added some.} 
 
 Currently, the majority of published papers lacks such direct links to datasets.
-\todo{SV@BG:add one more sentence about the state of current papers, how they do refer to datasets\\ CL: I think this is sufficiently covered below.}
+\todo{SV@BG:add one more sentence about the state of current papers, how they do refer to datasets\\ CL: I think this is sufficiently covered below. \\ BG: Checked it}
 While there exist registries that make datasets citable, e.g., by assigning a digital object identifier (DOI) to them, they are usually not integrated with authoring tools.
 Therefore, in practice, authors typically cite datasets by \emph{mentioning} them, e.g., using  
 combinations of title, abbreviation and year of publication (see, e.g., \citet{Mathiak2015}).  
 
 Manually detecting references to datasets in papers is time consuming and requires expert knowledge of the paper's domain. 
-Detecting dataset references automatically is challenging since \todo{CL@BG: to provide evidence for the following claim, please cite something suitable.}in most cases, approaches need a huge corpus of papers as training set. 
-
+Detecting dataset references automatically is challenging 
+%since 
+%\todo{CL@BG: to provide evidence for the following claim, please cite something suitable. BG: I tried to delete and reorder sentences to solve this problem}in most %cases, approaches need a huge corpus of papers as training set. 
 %<newpart_2
-It is a difficult task to create such a training set manually due to the wide variety of styles of dataset citations in full texts even within one research community, and the multitude of \todo{CL@BG: Is the following what you meant by “stored places for dataset citation”?  If so, I tried to phrase it more clearly.}places in papers in which such citations can occur (illustrated by Figure~\ref{fig:places-example}). %todo BG: how many references in total are analyzed in fig:places-example?
+%It is a difficult task to create such a training set manually 
+due to the wide variety of styles of dataset citations in full texts even within one research community, and the variety
+%multitude 
+of \todo{CL@BG: Is the following what you meant by “stored places for dataset citation”?  If so, I tried to phrase it more clearly. \\BG: different place that a reference can appear in a paper.}places of datasets' occurrences in papers  
+%in which such citations can occur
+(illustrated by Figure~\ref{fig:places-example}). %todo @BG: how many references in total are analyzed in fig:places-example? BG: I added the number to the caption of the fig. 
 %newpart_2>
-
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=3.5in]{DistPlaces3.PNG} \todo[inline, size=\tiny]{SV@BG: bad quality, recheck the figure\\ CL: export the figure in a vector format or, if only bitmap is possible, with a higher resolution.}
-	\caption{The distribution of dataset references in 15 random papers from the mda journal (see Section~\ref{sec:mda})}
+	\includegraphics[width=3.5in]{DistPlaces4.PNG} \todo[inline, size=\tiny]{SV@BG: bad quality, recheck the figure\\ CL: export the figure in a vector format or, if only bitmap is possible, with a higher resolution. \\ BG: improved it.}
+	\caption{The distribution of about 640 dataset references in 15 random papers from the mda journal (see Section~\ref{sec:mda})}
 	\label{fig:places-example}
 \end{figure}
-
 %<newpart_3
-This variance even makes rule-based approaches difficult, as it is hard to cover all cases. \todo{SV@BG:give 1-2 concrete technical reasons why it makes it difficult\\ CL: Indeed: 1–2 examples of extreme but still common cases of “this variance”, please.}
+So it is a difficult task to create a training set manually for solving this issue and this variance even makes rule-based approaches difficult, as it is hard to cover all cases. \todo{SV@BG:give 1-2 concrete technical reasons why it makes it difficult\\ CL: Indeed: 1–2 examples of extreme but still common cases of “this variance”, please.BG: here, I meant that covering the variance of datasets' styles and occurrence places in papers is even hard for rule-based approaches - The variance are explained more by fig1 and table1.}
 \todo{CL@BG: I tried to phrase the following a bit more precisely, but still a concrete reference would be good.}Approaches that learn from a corpus of papers require large amounts of disk space and processing time.
 %newpart_3>
 We therefore introduce a semi-automatic approach that parses full texts and finds exact matches with a high precision without requiring a training set. 
-In the remainder of this section\dots \todo{SV@BG:say what is going to come in subsections} 
+In the remainder of this section, the problem which is addressed by the paper are described more.Section~\ref{sec:preliminaries} introduces the preliminaries of techniques and metrics that are applied in the thesis. Section~\ref{sec:relWork} describes the prior existing literature related to this problem. All data used by the suggested approach is explained in section~\ref{sec:data}, while section~\ref{sec:approach} introduces the proposed solution. The evaluation is then outlined in section~\ref{sec:eval}, and section~\ref{sec:future} concludes with an outlook to future work. \todo{SV@BG:say what is going to come in subsections. BG:Checked it.} 
 
 \subsection{Problem Statement}
 Whereas a lot of effort has been spent on information extraction in general~\citep{Sarawagi2007}, few attempts have focused on the specific use case of dataset extraction (see, e.g., \citep{MeiyuLu2012}). \todo{SV@BG:effort on information extraction and dataset extraction is not comparable, one is a research field, the other is a usecase, rephrase it.\\ CL: I made the first step: not yet perfect, but better.}
