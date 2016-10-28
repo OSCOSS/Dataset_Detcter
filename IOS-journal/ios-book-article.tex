@@ -397,37 +397,57 @@ Finally, we use metadata of the papers registered in the SSOAR repository\footno
  
  \subsection{Papers from mda journal}\label{sec:mda}
  
- Methods, data, analyses (mda\footnote{\url{http://www.gesis.org/en/publications/journals/mda/}}) is an open-access journal which publishes research on questions important to quantitative methods, with a special emphasis on survey methodology. It published research on all aspects of science of surveys, be it on data collection, measurement, or data analysis and statistics. All content of mda is freely available and can be distributed without any restrictions, ensuring the free flow of information that is crucial for scientific progress. In this paper we use a random sample of full-text articles from mda as our test corpus.
+ Methods, data, analyses (mda\footnote{\url{http://www.gesis.org/en/publications/journals/mda/}}) is an open access journal that addresses questions important to quantitative methods, with a special emphasis on survey methodology.
+ It has published research on all aspects of science of surveys, be it on data collection, measurement, or data analysis and statistics\todo{CL@BG/PM: I commented the following sentence as it read too much like an advertisement of mda and didn't add relevant information about our research.}.
+ %All content of mda is freely available and can be distributed without any restrictions, ensuring the free flow of information that is crucial for the scientific progress.
+ For our research we used a random sample of full-text articles from mda as our test corpus.
   \subsection{The {\dara} dataset registry}
   
   \subsubsection{{\dara} overview}
-Our proposed approach aims at social sciences datasets since it uses registered datasets in {\dara} registry\footnote{\url{http://www.da-ra.de}}. The registry offers a DOI registration service for datasets in the social sciences and economics. 
+  Our proposed approach aims at social sciences datasets since it uses registered datasets in {\dara} registry\footnote{\url{http://www.da-ra.de}}.
+  The registry offers a DOI registration service for datasets in the social sciences and economics. 
 %<newpart_23
 %In addition, the selected papers used as evaluation data were from mda, which focuses mostly on survey methodology in social science research areas. 
-Different institutions have collected research data in the social sciences and made them available. Although the accessibility of such datasets for further analyses and reusing is important, information about where to find and how to access them is often missing in papers.
+  Different institutions have collected research data in the social sciences and made them available.
+  Although the accessibility of such datasets for further analyses and other reuse is important, information on where to find and how to access them is often missing in papers.
 %newpart_23>
 
-{\dara} makes social science research data referable and thus improves its availability. 
+\todo{CL@BG/PM: Once more this is IMHO a bit too much advertising {\dara}.  Can't we simply write “{\dara} assigns a DOI to each dataset”?}{\dara} makes social science research data referable and thus improves its availability. 
 %<newpart_24
-This is achieved by assigning a DOI to each dataset. {\dara} therefore does a job similar to that of publishers assigning DOIs to articles when they are published electronically.
+This is achieved by assigning a DOI to each dataset.
+{\dara} therefore does a job similar to that of publishers assigning DOIs to articles when they are published electronically.
 %newpart_24>
-At the present time, {\dara} holds 432,312 records such as datasets, texts, collections, videos, and interactive resources, 32,858 of which are datasets. 
-For each dataset, {\dara} provides metadata including title, author, language, and publisher. This metadata is exposed to harvesters employing a freely accessible API using OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting) \footnote{\url{http://da-ra.de/oaip/}}. 
+\todo{CL@BG: Add a footnote with the date on which these figures were valid.}At the present time, {\dara} holds 432,312 records such as datasets, texts, collections, videos, and interactive resources, 32,858 of which are datasets. 
+For each dataset, {\dara} provides metadata including title, author, language, and publisher.
+This metadata is exposed to harvesters employing a freely accessible API using OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting\footnote{\url{http://da-ra.de/oaip/}}). 
   
   \subsubsection{Analysis of dataset titles in {\dara}}
-We analyzed the titles of all datasets in {\dara} and the titles were harvested by using the API of {\dara}. The analysis shows that about one third of the titles follow a special pattern, which makes them easier to be detected in the text of a paper. We have identified three such special patterns. First, there are titles that contain \emph{abbreviations}, which are often used to refer to the datasets. 
-Consider, for example, the full title \enquote{Programme for the International Assessment of Adult Competencies (PIAAC), Cyprus }, which contains the abbreviation \enquote{PIAAC }. Secondly, there are \emph{filenames}, as in the example \enquote{Southern Education and Racial Discrimination, 1880--1910: Virginia: VIRGPT2.DAT}, where \enquote{VIRGPT2.DAT} is the name of the dataset file. Finally, there are \emph{phrases} that explicitly denote the existence of datasets in a text, such as \enquote{Exit Poll} or \enquote{Probation Survey}. \enquote{Czech Exit Poll 1996} is an example of such a dataset title. 
+  We analyzed the titles of all datasets in {\dara} after harvesting them by using the {\dara} API.
+  The analysis shows that about one third of the titles follow a special pattern, which makes them easier to be detected in the text of a paper.
+  We have identified three such special patterns.
+  First, there are titles that contain \emph{abbreviations}, which are often used to refer to the datasets. 
+  Consider, for example, the full title \enquote{Programme for the International Assessment of Adult Competencies (PIAAC), Cyprus}, which contains the abbreviation \enquote{PIAAC}.
+  Secondly, there are \emph{filenames}, as in the example \enquote{Southern Education and Racial Discrimination, 1880--1910: Virginia: VIRGPT2.DAT}, where \enquote{VIRGPT2.DAT} is the name of the dataset file.
+  Finally, there are \emph{phrases} that explicitly denote the existence of \todo{CL@BG: of \emph{datasets}, or actually of dataset \emph{references}?}datasets in a text, such as \enquote{Exit Poll} or \enquote{Probation Survey}.
+  \enquote{Czech Exit Poll 1996} is an example of such a dataset title. 
 
-We assume these three categories as special characteristics in the titles. Abbreviations and special phrases can be found in about 17 and 19 percent of the {\dara} dataset titles respectively. The intersection of these two groups is only 1.49 percent. Filenames occur in less than one percent of the titles. 
+  We assume these three categories as special characteristics in the titles.
+  Abbreviations and special phrases can be found in about 17 and 19 percent of the {\dara} dataset titles respectively.
+  The intersection of these two groups only accounts for 1.49 percent.
+  Filenames occur in less than one percent of the titles. 
 %<newpart_25
-The proposed approach in this paper uses only the first and the last categories, since the second one, which is the filename category, only covers a small amount of titles.
+The proposed approach in this paper uses only the first and the last category, since the filename category only covers a small amount of titles.
 
 \subsection{The Social Science Open Access Repository (SSOAR)}
-The SSOAR repository provides full-text access to documents. It covers scholarly contributions related to different social science fields such as social psychology, communication sciences, and the historical social research. Today, approx. 38,000 full-texts are available.
-This repository provides some metadata such as abstract and keywords for each paper in both German and English language. It is assumed as a secondary publisher which publishes pre-prints, post-prints, and original publishers' versions of scholarly papers but it also let authors to publish their work for the first time.
+The SSOAR repository provides full-text access to documents.
+It covers scholarly contributions related to different social science fields such as social psychology, communication sciences, and historical social research.
+Today, approx.\ 38,000 full-texts are available.
+This repository provides some metadata such as abstract and keywords for each paper in both German and English.
+It is assumed as a secondary publisher which publishes pre-prints, post-prints, and original publishers' versions of scholarly papers but it also lets authors publish their work for the first time.
 
-Furthermore, the metadata of the papers inside the repository are able to be harvested easily. 
-It assigns a URN (Uniform Resource Name) as a persistent identifier (PID) to each full-text to establish a stable link to the paper and if the full-text is the pre-print or post-print version of a published work, the repository uses the DOI of the paper.
+Furthermore, the metadata of the papers inside the repository can be harvested easily.
+SSOAR assigns a URN (Uniform Resource Name) as a persistent identifier (PID) to each full-text to establish a stable link to the paper.
+If the full-text is the pre-print or post-print version of a published work, the repository uses the DOI of the paper.
 %newpart_25>  
 
 \section{A semi-automatic approach for finding dataset references}
