@@ -138,7 +138,7 @@ Table~\ref{table:citation-variety} shows concrete examples of different referenc
 \end{table}
 %newpart_5>
 
-The challenge that our research aims at is to turn each dataset reference detected in a paper into an explicit link, for example, using the DOI (Digital Object Identifier) of the dataset's entry in a dataset registry. 
+The challenge that our research aims at is to turn each dataset reference detected in a paper into an explicit link, for example, using the DOI of the dataset's entry in a dataset registry. 
 %<newpart_6
 \todo{CL@BG: I rephrased this completely; please check whether I preserved the intended meaning.}Dataset registries usually provide further metadata about datasets, which can facilitate the detection of such links, such as the dataset's creators, publication date, description, and temporal coverage.
 %newpart_6>
@@ -389,19 +389,19 @@ Finally, we use metadata of the registered papers in the SSOAR\footnote{\url{htt
  
  \subsection{Papers from mda journal}\label{sec:mda}
  
- Methods, data, analyses (mda\footnote{\url{http://www.gesis.org/en/publications/journals/mda/}}) is an open-access journal which publishes research on questions important to quantitative methods, with a special emphasis on survey methodology. It published research on all aspects of science of surveys, be it on data collection, measurement, or data analysis and statistics. All content of mda is freely available and can be distributed without any restrictions, ensuring the free flow of information that is crucial for scientific progress. We use a random sample of full-text articles from mda as our test corpus.
+ Methods, data, analyses (mda\footnote{\url{http://www.gesis.org/en/publications/journals/mda/}}) is an open-access journal which publishes research on questions important to quantitative methods, with a special emphasis on survey methodology. It published research on all aspects of science of surveys, be it on data collection, measurement, or data analysis and statistics. All content of mda is freely available and can be distributed without any restrictions, ensuring the free flow of information that is crucial for scientific progress. In this paper we use a random sample of full-text articles from mda as our test corpus.
   \subsection{The {\dara} dataset registry}
   
   \subsubsection{{\dara} overview}
-Our proposed approach aims at social science datasets since it uses registered datasets in {\dara} registry\footnote{\url{http://www.da-ra.de}}, and the registry offers the DOI registration service for social science and economic data. 
+Our proposed approach aims at social sciences datasets since it uses registered datasets in {\dara} registry\footnote{\url{http://www.da-ra.de}}. The registry offers a DOI registration service for datasets in the social sciences and economics. 
 %<newpart_23
-In addition, the selected papers used as evaluation data were from mda, which focuses mostly on survey methodology in social science research areas. 
+%In addition, the selected papers used as evaluation data were from mda, which focuses mostly on survey methodology in social science research areas. 
 Different institutions have collected research data in the social sciences and made them available. Although the accessibility of such datasets for further analyses and reusing is important, information about where to find and how to access them is often missing in papers.
 %newpart_23>
 
-{\dara} makes social science research data referable and thus improves its availability when needed. 
+{\dara} makes social science research data referable and thus improves its availability. 
 %<newpart_24
-This is achieved by assigning a digital object identifier (DOI) -- a unique string that identifies an item (here: a dataset), and supplies a link to its place on the web -- to each dataset. {\dara} therefore does a job similar to that of publishers assigning DOIs to articles when they are published electronically.
+This is achieved by assigning a DOI to each dataset. {\dara} therefore does a job similar to that of publishers assigning DOIs to articles when they are published electronically.
 %newpart_24>
 At the present time, {\dara} holds 432,312 records such as datasets, texts, collections, videos, and interactive resources, 32,858 of which are datasets. 
 For each dataset, {\dara} provides metadata including title, author, language, and publisher. This metadata is exposed to harvesters employing a freely accessible API using OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting) \footnote{\url{http://da-ra.de/oaip/}}. 
@@ -415,11 +415,11 @@ We assume these three categories as special characteristics in the titles. Abbre
 The proposed approach in this paper uses only the first and the last categories, since the second one, which is the filename category, only covers a small amount of titles.
 
 \subsection{The Social Science Open Access Repository (SSOAR)}
-The repository provides full-text social science available documents without any charge and it is another product of GESIS Institute. It covers scholarly contributions related to different social science fields such as social psychology, communication sciences, and the historical social research. These full-texts are available in German or English language.
+The SSOAR repository provides full-text access to documents. It covers scholarly contributions related to different social science fields such as social psychology, communication sciences, and the historical social research. Today, approx. 38,000 full-texts are available.
 This repository provides some metadata such as abstract and keywords for each paper in both German and English language. It is assumed as a secondary publisher which publishes pre-prints, post-prints, and original publishers' versions of scholarly papers but it also let authors to publish their work for the first time.
 
 Furthermore, the metadata of the papers inside the repository are able to be harvested easily. 
-It assigns a URN (Uniform Resource Name) as a persistent identifier (PID) to each full-text to establish a stable link to the paper and if the full-text is the pre-print or post-print version of a published work, the repository uses the Digital Object Identifier (DOI) of the paper.
+It assigns a URN (Uniform Resource Name) as a persistent identifier (PID) to each full-text to establish a stable link to the paper and if the full-text is the pre-print or post-print version of a published work, the repository uses the DOI of the paper.
 %newpart_25>  
 
 \section{A semi-automatic approach for finding dataset references}
