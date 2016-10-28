@@ -29,9 +29,9 @@
 \title{A Semi-Automatic Approach for Improving Dataset References in Social Sciences Full Texts}
 
 \author[A,B]{\fnms{Behnam} \snm{Ghavimi}
-\thanks{E-mail: Behnam.Ghavimi@gesis.org}},
+\thanks{E-mail: behnam.ghavimi@gesis.org}},
 \author[A]{\fnms{Philipp} \snm{Mayr}
-\thanks{E-mail: Philipp.Mayr@gesis.org}},
+\thanks{E-mail: philipp.mayr@gesis.org}},
 \author[B]{\fnms{Sahar} \snm{Vahdati}
 +\thanks{E-mail: vahdati@cs.uni-bonn.de}}
 and
@@ -47,7 +47,7 @@ Today, full texts of scientific papers are often stored in different places than
 %<newpart_0
 As a first step towards a closer integration, there now exist several online registries that make datasets citable – but current authoring lack integration of such repositories. 
 %newpart_0>
-As a consequence, explicit links to datasets are generally missing in papers; authors refer to datasets using title and year of publication.
+As a consequence, explicit links to datasets are generally missing in papers and authors typically refer to datasets using not standardized titles and often year of publication.
 \todo[inline]{CL: The following is a new and IMHO important point.}It is thus hard to reproduce the authors' results, to access the datasets underlying papers for further analysis, and to determine the impact of a dataset.
 Manually detecting references to datasets in scientific papers is a time-consuming task and requires expert knowledge in the underlying research domain. 
 We propose and evaluate a semi-automatic approach for finding explicit references to datasets in social sciences papers.
@@ -65,8 +65,8 @@ Information extraction\sep Link discovery\sep Data linking\sep Research data\sep
 \end{keyword}
 \end{frontmatter}
 \section{Introduction}
-Digital libraries have been growing enormously in recent years. \todo{SV@BG:try to have sentences that carry some value, this is not good to start the intro with such sentence, align it with abstract, even use the same sentence and expand each sentence of the abstract as one paragraph in intro}
-Digital libraries aim at providing resources with high metadata quality, easy subject access, and support for retrieving information~\citep{Hienert2015}. 
+Digital libraries have been constantly growing in recent years, especially the ratio of the full texts has increased. \todo{SV@BG:try to have sentences that carry some value, this is not good to start the intro with such sentence, align it with abstract, even use the same sentence and expand each sentence of the abstract as one paragraph in intro}
+Digital libraries aim at providing resources with high-quality metadata, easy subject access, and further support and guidance for retrieving information~\citep{Hienert2015}. 
 % We are specifically interested in scientific full text papers in digital libraries.\todo[inline, size=\tiny]{SV@BG:saying we are interested on sth is not scientific at all, rephrase it and include the reason.\\ CL: This sentence is not necessary to introduce our point, so I've commented it out.}
 Today, in the quantitative social sciences and other fields, many papers make references to research datasets on which they are based, in that they, e.g., present the results of a statistical analysis over some dataset.
 However, these references are usually not explicitly exposed in digital libraries.
@@ -77,7 +77,7 @@ Explicit links from scientific publications to the underlying datasets and vice 
 	\item reviewers exploring to reproduce the evaluation that a paper's authors performed on a dataset, 
 	%a link would give him straightforward access to the data, enabling them to check the evaluation,
 	\item other researchers desiring to perform further analysis on a dataset that was used in a paper,
-        \item decision makers seeking to determine the impact of a given dataset (by counting its citations) or to identify the most important datasets in a given community.
+        \item decision makers seeking to determine the impact of a given dataset or to identify the most used datasets in a given community.
 \end{itemize}% \todo[inline, size=\tiny]{SV@BG:add two more use cases\\ CL: I added some.} 
 
 Currently, the majority of published papers lacks such direct links to datasets.
