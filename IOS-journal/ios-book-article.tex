@@ -90,7 +90,7 @@ Manually detecting references to datasets in papers is time consuming and requir
 Detecting dataset references automatically is challenging since \todo{CL@BG: to provide evidence for the following claim, please cite something suitable.}in most cases, approaches need a huge corpus of papers as training set. 
 
 %<newpart_2
-It is a difficult task to create such a training set manually due to the wide variety of styles of dataset citations in full texts even within one research community, and the multitude of \todo{CL@BG: Is the following what you meant by “stored places for dataset citation”?  If so, I tried to phrase it more clearly.}places in papers in which such citations can occur (illustrated by Figure~\ref{fig:places-example}).
+It is a difficult task to create such a training set manually due to the wide variety of styles of dataset citations in full texts even within one research community, and the multitude of \todo{CL@BG: Is the following what you meant by “stored places for dataset citation”?  If so, I tried to phrase it more clearly.}places in papers in which such citations can occur (illustrated by Figure~\ref{fig:places-example}). %todo BG: how many references in total are analyzed in fig:places-example?
 %newpart_2>
 
 \begin{figure}[h]
@@ -104,7 +104,7 @@ It is a difficult task to create such a training set manually due to the wide va
 This variance even makes rule-based approaches difficult, as it is hard to cover all cases. \todo{SV@BG:give 1-2 concrete technical reasons why it makes it difficult\\ CL: Indeed: 1–2 examples of extreme but still common cases of “this variance”, please.}
 \todo{CL@BG: I tried to phrase the following a bit more precisely, but still a concrete reference would be good.}Approaches that learn from a corpus of papers require large amounts of disk space and processing time.
 %newpart_3>
-We therefore introduce a semi-automatic approach to solve this problem that parses full texts with high performance and finds exact matches with a high precision, without requiring a training set. 
+We therefore introduce a semi-automatic approach that parses full texts and finds exact matches with a high precision without requiring a training set. 
 In the remainder of this section\dots \todo{SV@BG:say what is going to come in subsections} 
 
 \subsection{Problem Statement}
@@ -138,11 +138,11 @@ Table~\ref{table:citation-variety} shows concrete examples of different referenc
 \end{table}
 %newpart_5>
 
-The challenge that our research aims at addressing is to turn each dataset reference detected in a paper into an explicit link, for example, using the DOI (Digital Object Identifier) of the dataset's entry in a dataset registry. 
+The challenge that our research aims at is to turn each dataset reference detected in a paper into an explicit link, for example, using the DOI (Digital Object Identifier) of the dataset's entry in a dataset registry. 
 %<newpart_6
 \todo{CL@BG: I rephrased this completely; please check whether I preserved the intended meaning.}Dataset registries usually provide further metadata about datasets, which can facilitate the detection of such links, such as the dataset's creators, publication date, description, and temporal coverage.
 %newpart_6>
-In our case, references to datasets should be linked to items in the {\dara} registry, which covers social and economic datasets.
+In our case, references to datasets should be linked to items in the {\dara} registry, which covers datasets from the social sciences and economics.
 
 \subsection{Contribution}
 
@@ -150,16 +150,16 @@ This paper makes the following contributions:
 \begin{itemize}
 \item a quantitative analysis of typical naming patterns used in the titles of social sciences datasets,
 \item a semi-automatic approach for finding references to datasets in social sciences papers with two alternative interactive disambiguation workflows, and
-\item an evaluation of the implementation of our approach on a corpus of journal articles.  
+\item an evaluation of the implementation of our approach on a testbed of journal articles.  
 \end{itemize}
 
 \section{Preliminaries: similarity, ranking and evaluation metrics}
 \label{sec:preliminaries}
 Our work and the related work of other researchers employ certain terminology and standard metrics for ranking the results of a search query (here: a text in a paper that refers to a dataset) over a corpus of documents (here: titles of datasets), and for evaluating the accuracy of information retrieval algorithms.
-The following four subsections introduce the terminology and the definitions of concepts used in this paper.
+The following four subsections introduce the terminology and definitions of concepts used in this paper.
 
 %<newpart_7
-\subsection{Dataset (Terminology)}
+\subsection{Dataset (Terminology)} 
 \emph{Dataset} is an ambiguous term; different authors have suggested a great variety of meanings for it~\cite{peplerpreservation}.
 Therefore, \citeauthor{renear2010definitions} introduced a general notion of the term based on the definitions in the technical and scientific literature.
 They define a dataset in terms of its four basic characteristics \emph{grouping}, \emph{content}, \emph{relatedness}, and \emph{purpose}.
