@@ -538,12 +538,12 @@ Finally, an RDF graph which contains information about links identified between 
 \section{Evaluation}
 \label{sec:eval}
  \label{sec:eval}
-The calculation of evaluation metrics such as precision, recall, and F-measure require ground truth. We therefore selected a test corpus of 15 random papers from the 2013 and 2014 issues of the mda journal -- 6 in English and 9 in German. 
+The calculation of evaluation metrics such as precision, recall, and F-measure require a ground truth. We therefore selected a test corpus of 15 random papers from the 2013 and 2014 issues of the mda journal -- 6 in English and 9 in German. %todo: link to the mda dataset
 %<newpart_36
-This test corpus includes 25 datasets without considering different versions of each dataset and you can find some more information about it in table~\ref{table:info-testcorpuse}.
+This test corpus includes 25 datasets without considering different versions of each dataset (see more information about the test corpus in table~\ref{table:info-testcorpuse}).
 %newpart_36>
 
-A trained assessor from the InFoliS II project at GESIS reviewed all papers one by one and identified all references to datasets. Afterwards, the assessor attempted to discover at least one correct match in {\dara} for each detected reference, resulting in a lists of datasets per paper. These lists were used as a gold standard to compare with the results of our algorithm in order to examine differences and similarities.
+A trained assessor from the InFoliS II project at GESIS reviewed all papers one by one and identified all references to datasets (see second row in table~\ref{table:info-testcorpuse}). Afterwards, the assessor attempted to discover at least one correct match in {\dara} for each detected reference, resulting in a lists of correct datasets per paper. These lists were used as a gold standard to compare with the results of our algorithm in order to examine differences and similarities.
 
 %<newpart_37
 \begin{table}[h!]
@@ -553,12 +553,12 @@ A trained assessor from the InFoliS II project at GESIS reviewed all papers one 
 		\FL
 		 & Max. & Min. & Avg.
 		\ML
-		Datasets in a Paper & 7 & 1 & 4
+		\# of datasets in a paper & 7 & 1 & 4
 		\NN
-		References to a Dataset & 147 & 1 & 12
+		\# of references to datasets & 147 & 1 & 12
 		\LL
 	\end{tabular}
-	\caption{More information about our test corpus}
+	\caption{Test corpus}
 	\label{table:info-testcorpuse}
 \end{table},
 %newpart_37>
@@ -611,7 +611,7 @@ Our observation shows that the correct match among {\dara} dataset titles for ea
  
 The per-feature matching workflow (as mentioned in \ref{sec:expos-results-reus}) categorizes references by characteristic features. For example, in a paper that contains exactly three detected characteristic features -- \enquote{ALLBUS}, \enquote{PIAAC}, and \enquote{exit poll} -- each dataset reference relates to one of these three features. If we obtain for each such reference the list of top 5 matches as in the per-reference workflow and group these lists per category, we can count the number of occurrences of each dataset title per category. 
  
-Now, looking at the dataset titles per category sorted by ascending number of occurrences, we observed that the correct matches for the datasets' references using a specific characteristic feature were always among the top 6 items.
+Looking at the dataset titles per category sorted by ascending number of occurrences, we observed that the correct matches for the datasets' references using a specific characteristic feature were always among the top 6 items. %todo: BG extend this part a bit
  
 \section{Conclusion and future work}
 \label{sec:future}
@@ -637,7 +637,7 @@ In a mid-term perspective, solutions for identifying dataset references in paper
 standards for properly citing datasets while authoring papers, and corresponding tool support for authors.
 
 \paragraph{Acknowledgements}
-This work has been funded by the DFG project “Opening Scholarly Communication in Social Sciences” 
+This work has been partly funded by the DFG project “Opening Scholarly Communication in Social Sciences” 
 (grant agreements SU 647/19-1 and AU 340/9-1), and by the European Commission under grant agreement 643410. 
 We thank Katarina Boland from the InFoLiS II project (MA 5334/1-2) for helpful discussions and for generating the gold standard for our evaluation. 
 This paper is an extension of our previous work~\cite{ghavimi2016identifying}. The implementation code is available in the OSCOSS repository (link: \url{github.com/OSCOSS/Dataset_Detcter/tree/master/src}). 
