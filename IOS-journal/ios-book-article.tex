@@ -278,7 +278,7 @@ In practice, it may furthermore be necessary to define a cut-off threshold in or
 \subsection{Precision and recall of a classifier}
 \label{sec:precision-recall}
 We aim at implementing a binary classifier that tells us whether or not a certain dataset has been referenced by a paper.
-The algorithm should find references of datasets in a paper and then detect a perfect match for each detected reference in a text.
+The algorithm should find references of datasets in a paper and then detect a exact match for each detected reference in a text.
 These matches are to be selected from titles of datasets in a given dataset registry.
 
 Evaluation metrics such as \emph{precision and recall} determine the reliability of binary classifiers.
@@ -310,12 +310,13 @@ The accuracy of algorithms based on such similarity measures can be improved by 
 \subsection{Corpus and Web based methods}
 Corpus and Web based methods often use information about the co-occurrence of two texts in documents, and are used for measuring texts' semantic similarity.
 %<newpart_16
-\citeauthor{Turney2001} introduced a simple unsupervised learning algorithm for detecting synonyms~\citeyearpar{Turney2001}, which searches queries through an online search engine and analyzes the results.
+\citeauthor{Turney2001} introduced a simple unsupervised learning algorithm for detecting synonyms~\citeyearpar{Turney2001}, which searches queries through an online search engine and analyses the results.
 The quality of the algorithm depends on the number of search results returned.  
 %newpart_16>
 
 \citeauthor{sighal2013} proposed an approach to extract dataset names from articles~\citeyearpar{sighal2013}.
-They employed the NGD algorithm, which estimates both the probability of two terms existing separately in a document, as well as of their co-occurrence. 
+They employed the NGD %todo BG: normalized google distance?
+algorithm, which estimates both the probability of two terms existing separately in a document, as well as of their co-occurrence. 
 %<newpart_17
 \begin{align*}
 	\mathit{NGD}(x,y)=\frac{\max(\log f(x),f(y))-\log f(x,y)}{\log M -\min(\log f(x),\log f(y))}
