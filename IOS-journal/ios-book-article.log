@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.7.6)  28 OCT 2016 14:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.7.6)  28 OCT 2016 16:23
 entering extended mode
 **./ios-book-article.tex
 (ios-book-article.tex
@@ -1188,7 +1188,7 @@ LaTeX Warning: Marginpar on page  moved.
 LaTeX Warning: Marginpar on page  moved.
 
 [9]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 386.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 387.
 
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -1196,31 +1196,23 @@ File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 [13] <ToyExamplE.PNG, id=63, 791.95876pt x 380.92313pt>
 File: ToyExamplE.PNG Graphic file (type png)
  <use ToyExamplE.PNG>
-Package pdftex.def Info: ToyExamplE.PNG used on input line 504.
+Package pdftex.def Info: ToyExamplE.PNG used on input line 505.
 (pdftex.def)             Requested size: 325.215pt x 156.4236pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[14] <Overwveiw_System.png, id=67, 2183.15625pt x 1321.93875pt>
+[14 <./ToyExamplE.PNG>]
+<Overwveiw_System.png, id=68, 2183.15625pt x 1321.93875pt>
 File: Overwveiw_System.png Graphic file (type png)
 
 <use Overwveiw_System.png>
-Package pdftex.def Info: Overwveiw_System.png used on input line 532.
+Package pdftex.def Info: Overwveiw_System.png used on input line 520.
 (pdftex.def)             Requested size: 358.03995pt x 216.81pt.
 
-Overfull \hbox (6.03995pt too wide) in paragraph at lines 532--533
+Overfull \hbox (6.03995pt too wide) in paragraph at lines 520--521
  [][] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[15 <./ToyExamplE.PNG>] [16 <./Overwveiw_System.png>] [17]
-(ios-book-article.bbl [18] [19]) [20] (ios-book-article.aux)
+[15 <./Overwveiw_System.png>] [16] [17] (ios-book-article.bbl [18] [19])
+[20] (ios-book-article.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1228,7 +1220,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  17258 strings out of 493335
  322018 string characters out of 3139270
- 459241 words of memory out of 3000000
+ 459246 words of memory out of 3000000
  20410 multiletter control sequences out of 15000+200000
  67390 words of font info for 113 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1248,7 +1240,7 @@ TeX 2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/urw/symbol/usyr.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ios-book-article.pdf (20 pages, 537939 bytes).
+Output written on ios-book-article.pdf (20 pages, 537592 bytes).
 PDF statistics:
  215 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

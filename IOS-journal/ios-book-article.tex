@@ -426,7 +426,7 @@ It assigns a URN (Uniform Resource Name) as a persistent identifier (PID) to eac
 \label{sec:approach}
 We have created a semi-automatic approach for finding references to datasets registered in {\dara} in a given full text. 
 %<newpart_26
-It is possible to divide our approach into four main steps. The first step is related to generating special features dictionaries from datasets' titles. The second step deals with identifying and matching datasets' references in a paper, and the third step focuses on improving the results of the second step. Finally, a user exports the results in the fourth and final step.
+Our approach is divided into four main steps. The first step is related to generating special features dictionaries from datasets' titles. The second step deals with identifying and matching datasets' references in a paper, and the third step focuses on improving the results of the second step. In the final step a user can export the results.
 
 It took a semi-automatic approach since 
 %newpart_26>
@@ -434,17 +434,17 @@ the first and last steps of our algorithm require human interaction to improve t
 %<newpart_27
 In the first step, the user should review two generated lists of abbreviations and special phrases. In the final step, the user should make the final decision regarding references suggested by our approach.
 
-The main differences between our approach and the other related works are that ours do not need a huge corpus of papers or a large training set. Our approach is quite fast and is able to prepare results for a paper in few minutes or even seconds depending on the number of datasets' references in the paper that we want to analyze.
+The main differences between our approach and the other related works are that ours do not need a huge corpus of papers or a large training set. Our approach is straightforward and able to prepare results for a paper in few minutes or even seconds depending on the number of datasets' references in the paper that we want to analyze.
 %newpart_27>
 
 \subsection{Step 1: Preparing the dictionary}
 \label{sec:preparing-dictionary}
 The preparation of a \emph{dictionary} of abbreviations and special phrases is the first step. \emph{Abbreviations} are initially obtained by applying some algorithms and rules to the dataset titles harvested from {\dara}.
-The titles are preprocessed automatically before the abbreviations are extracted. Titles fully in capital letters are removed, the remaining titles are split based on \enquote{:}, and then only the first parts are kept (in the case of including any colon mark).
-The extraction of abbreviations from titles follows specific steps:
+The dataset titles are preprocessed automatically before the abbreviations are extracted. Titles fully in capital letters are removed, the remaining titles are split based on \enquote{:}, and then only the first parts are kept (in the case of including any colon mark).
+The extraction of abbreviations from dataset titles follows specific steps:
 
 \begin{enumerate}
-	\item The titles are tokenized (by using nltk- a Python package for natural language processing).
+	\item The titles are tokenized (by using nltk -- a Python package for natural language processing).
 	\item The tokens that are not completely in lowercase (not including the first letter) -- not only a combination of digits and punctuation marks, not Roman numerals, and do not start with a digit are added to a new list (e.g. \enquote{SFB580-B2}, \enquote{A*CENSUS}, \enquote{L.A.FANS}, \enquote{aDvANCE}
 	and \enquote{GBF/DIME}).
 	\item The titles are split based on `-' and `(', and then single tokens before such delimiters are added to the list (e.g \enquote{euandi} in \enquote{euandi (Experteninterviews) - Reduzierte Version}).
@@ -483,7 +483,7 @@ In another example, two titles that both contain the \enquote{PIAAC} abbreviatio
 %newpart_31>
 \enquote{EVS -- European Values Study 1999 -- Italy} and \enquote{European Values Study 2008: Azerbaijan (EVS 2008) }, which differ in both their year of study and geographic coverage.
 
-We solve the problem of identifying the most likely datasets referenced by the text in the paper by ranking their titles with a combination of tf-idf and cosine similarity. In this ranking algorithm, we apply the definitions of Section~\ref{sec:preliminaries}, where the query is a candidate dataset reference found in the paper and the documents are the titles of all datasets in {\dara}. 
+We solve the problem of identifying the most likely datasets referenced in the paper by ranking their titles with a combination of tf-idf and cosine similarity. In this ranking algorithm, we apply the definitions of Section~\ref{sec:preliminaries}, where the query is a candidate dataset reference found in the paper and the documents are the titles of all datasets in {\dara}. 
 %<newpart_32
 It means that our approach tries to identify the most similar dataset title in the {\dara} repository with a sentence that contains any of the special features where the sentence belongs to the analyzed paper.
 %newpart_32>
@@ -491,19 +491,19 @@ It means that our approach tries to identify the most similar dataset title in t
 \subsection{Step 3: Heuristics to Improve Ranking in Step 2}
 \label{sec:heur-impr-rank}
 
-For each reference detected in the full text of a paper, the approach as presented so far computes tf-idf over the full text of the paper and over the list of the titles of datasets in {\dara}, which contain a specific characteristic feature (abbreviation or phrase) detected in the reference.
+For each reference detected in the full text of a paper we compute tf-idf over the full text and the list of dataset titles in {\dara}, which contain a specific characteristic feature (abbreviation or phrase) detected in the reference.
 %<newpart_33
 As it leads to many false positives based on our observation, comparing datasets' titles with a sentence in a paper, and, afterwards, ranking titles based on their score was not useful. Therefore we solved the problems by involving special features.
 
 Our approach considers only the list of titles that contain the special feature detected in the reference, since they are related titles and the rest of the titles in the repository are irrelevant. We limit our options in order to improve the accuracy of our approach. We decided to use the list of titles and whole sentences of the paper, and not only the reference sentence, since this consideration enables us to have a bigger corpus of documents and to reach a better weight for each word. The utilization of titles that contain the special features reduces the weight score of the feature and raises the weight scores of other terms in the reference sentence. It therefore has a positive impact on accuracy.
 %newpart_33>
 
-While a corpus of papers is typically huge, the size of all {\dara} dataset titles and the size of the full text of an average paper are less than 4 MB each. Given this limited corpus size, our algorithm may detect some false keywords in a query, thus adversely affecting the result. For instance, Figure ~\ref{fig:similarity-example} illustrates a model example of this problem.
+While a corpus of papers is typically huge, the size of all {\dara} dataset titles and the size of the full text of an average paper are less than 4 MB each. Given this limited corpus size, our algorithm may detect some false keywords in a query, thus adversely affecting the result. For instance, Figure ~\ref{fig:similarity-example} illustrates a toy example of this problem.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=4.5 in]{ToyExamplE.PNG} 
-	\caption{A model example of cosine similarity, where tf-idf is computed over phrases in two papers.(The numbers are not from a real example)}
+	\caption{A toy example of cosine similarity, where tf-idf is computed over phrases in two papers.}
 	\label{fig:similarity-example}
 \end{figure}
 
@@ -515,25 +515,24 @@ To address this problem in a better way, our implementation employs some heurist
 Figure~\ref{fig:Overview_of_approach} shows an overview of our approach. Two steps labeled with \enquote{M} means they need human interactions. \enquote{M1} is about the preparation of lists of special features and \enquote{M2} is about making final decisions between candidates suggested by our approach.
 %newpart_34>
 
-
-
-\subsection{Step 4: Exposing the Results to the User, and Interactive Disambiguation}
-\label{sec:expos-results-reus}	
-the application of our approach supports two workflows through which an expert user can choose the best matches for the datasets cited by a paper from a set of candidates identified automatically. The sizes of these sets have been chosen according to the observations we made during the evaluation of the automated step, as explained in Section~\ref{sec:eval}.
-
-One workflow works per reference: for each reference, five titles of candidate datasets are suggested to the user. While this workflow best supports the user in getting every reference right, it can be time consuming; each paper in our corpus contains 45 dataset references on average, but these \emph{references} only belong to an average number of 3 distinct \emph{datasets}.
-
-The second alternative workflow takes advantage of this observation. It works per characteristic feature and suggests 6 titles of candidate datasets to the user for each feature (which may be common to multiple individual references in the paper). 
-
-%<newpart_35
-Finally, an RDF Graph will be exported as an output, which contains information about links identified between papers and datasets. To enable even further analysis of the links identified between papers and datasets, we export an RDF graph containing all candidate datasets identified in the latter workflow for each paper. For each candidate dataset, we represent the essential metadata of the dataset in RDF: DOI and title.
-
 \begin{figure}[h]
 	\centering
 	\includegraphics[height=3in]{Overwveiw_System.png}
 	\caption{An overview of the approach.}
 	\label{fig:Overview_of_approach}
 \end{figure}
+
+\subsection{Step 4: Exposing the Results to the User, and Interactive Disambiguation}
+\label{sec:expos-results-reus}	
+The application of our approach supports two workflows through which an expert user can choose the best matches for the datasets cited by a paper from a set of candidates identified automatically. The sizes of these sets have been chosen according to the observations we made during the evaluation of the automated step, as explained in Section~\ref{sec:eval}.
+
+One workflow works per reference: for each reference, five titles of candidate datasets are suggested to the user. While this workflow best supports the user in getting every reference right, it can be time consuming. Each paper in our corpus contains 45 dataset references on average, but these \emph{references} only belong to an average number of 3 distinct \emph{datasets}.
+
+The second alternative workflow takes advantage of this observation. It works per characteristic feature and suggests 6 titles of candidate datasets to the user for each feature (which may be common to multiple individual references in the paper). 
+
+%<newpart_35
+Finally, an RDF graph which contains information about links identified between papers and datasets will be exported as an output. To enable even further analysis of the links identified between papers and datasets, we export an RDF graph containing all candidate datasets identified in the latter workflow for each paper. For each candidate dataset, we represent the essential metadata of the dataset in RDF: DOI and title.
+
 %newpart_35>
 
 \section{Evaluation}
