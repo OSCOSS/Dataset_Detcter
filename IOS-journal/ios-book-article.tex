@@ -82,7 +82,6 @@ Explicit links from scientific publications to the underlying datasets and vice 
 \end{itemize}% \todo[inline, size=\tiny]{SV@BG:add two more use cases\\ CL: I added some.} 
 
 Currently, the majority of published papers lacks such direct links to datasets.
-\todo{SV@BG:add one more sentence about the state of current papers, how they do refer to datasets\\ CL: I think this is sufficiently covered below. \\ BG: Checked it}
 While there exist registries that make datasets citable, e.g., by assigning a digital object identifier (DOI) to them, they are usually not integrated with authoring tools.
 Therefore, in practice, authors typically cite datasets by \emph{mentioning} them, e.g., using  
 combinations of title, abbreviation and year of publication (see, e.g., \citet{Mathiak2015}).  
@@ -90,27 +89,31 @@ combinations of title, abbreviation and year of publication (see, e.g., \citet{M
 Manually detecting references to datasets in papers is time consuming and requires expert knowledge of the paper's domain. 
 Detecting dataset references automatically is challenging 
 %since 
-%\todo{CL@BG: to provide evidence for the following claim, please cite something suitable. BG: I tried to delete and reorder sentences to solve this problem}in most %cases, approaches need a huge corpus of papers as training set. 
+%in most %cases, approaches need a huge corpus of papers as training set. 
 %<newpart_2
 %It is a difficult task to create such a training set manually 
 due to the wide variety of styles of dataset citations in full texts even within one research community, and the variety
 %multitude 
-of \todo{CL@BG: Is the following what you meant by “stored places for dataset citation”?  If so, I tried to phrase it more clearly. \\BG: different place that a reference can appear in a paper.}places of datasets' occurrences in papers  
+of places in which datasets can be referenced in papers  
 %in which such citations can occur
 (illustrated by Figure~\ref{fig:places-example}). %todo @BG: how many references in total are analyzed in fig:places-example? BG: I added the number to the caption of the fig. 
 %newpart_2>
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=3.5in]{DistPlaces4.PNG} \todo[inline, size=\tiny]{SV@BG: bad quality, recheck the figure\\ CL: export the figure in a vector format or, if only bitmap is possible, with a higher resolution. \\ BG: improved it.}
+	\includegraphics[width=3.5in]{DistPlaces4.PNG}
 	\caption{The distribution of about 640 dataset references in 15 random papers from the mda journal (see Section~\ref{sec:mda})}
 	\label{fig:places-example}
 \end{figure}
 %<newpart_3
-So it is a difficult task to create a training set manually for solving this issue and this variance even makes rule-based approaches difficult, as it is hard to cover all cases. \todo{SV@BG:give 1-2 concrete technical reasons why it makes it difficult\\ CL: Indeed: 1–2 examples of extreme but still common cases of “this variance”, please.BG: here, I meant that covering the variance of datasets' styles and occurrence places in papers is even hard for rule-based approaches - The variance are explained more by fig1 and table1.}
+So it is a difficult task to create a training set manually for solving this issue and this variance even makes rule-based approaches difficult, as it is hard to cover all cases.
 \todo{CL@BG: I tried to phrase the following a bit more precisely, but still a concrete reference would be good.}Approaches that learn from a corpus of papers require large amounts of disk space and processing time.
 %newpart_3>
 We therefore introduce a semi-automatic approach that parses full texts and finds exact matches with a high precision without requiring a training set. 
-In the remainder of this section, the problem which is addressed by the paper are described more.Section~\ref{sec:preliminaries} introduces the preliminaries of techniques and metrics that are applied in the thesis. Section~\ref{sec:relWork} describes the prior existing literature related to this problem. All data used by the suggested approach is explained in section~\ref{sec:data}, while section~\ref{sec:approach} introduces the proposed solution. The evaluation is then outlined in section~\ref{sec:eval}, and section~\ref{sec:future} concludes with an outlook to future work. \todo{SV@BG:say what is going to come in subsections. BG:Checked it.} 
+The remainder of this section states more precisely the problem addressed by our research.
+Section~\ref{sec:preliminaries} introduces the preliminaries of techniques and metrics that we apply.
+Section~\ref{sec:relWork} reviews existing literature related to this problem.
+All data used by our approach is explained in section~\ref{sec:data}, while section~\ref{sec:approach} introduces the proposed solution.
+The evaluation is then presented in section~\ref{sec:eval}, and section~\ref{sec:future} concludes with an outlook to future work. 
  
 \subsection{Problem Statement}
 Whereas a lot of effort has been spent on information extraction in general~\citep{Sarawagi2007}, few attempts have focused on the specific use case of dataset extraction (see, e.g., \citep{MeiyuLu2012}). \todo{SV@BG:effort on information extraction and dataset extraction is not comparable, one is a research field, the other is a usecase, rephrase it.\\ CL: I made the first step: not yet perfect, but better.}
