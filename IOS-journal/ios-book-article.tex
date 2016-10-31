@@ -323,7 +323,7 @@ Related work can be divided into three main groups covered by the following subs
 \subsection{Methods based on the “bag of words” model}
 One group of methods is based on the “bag of words” model using algorithms such as tf-idf to adjust weights for terms in a representation of texts as vectors (cf.\ the introduction in Section~\ref{sec:tfidf}).
 \citeauthor{Lee2008} proposed an unsupervised keyword extraction method by using a tf-idf model with some heuristics~\citeyearpar{Lee2008}.
-Our approach uses similarity measures for finding a perfect match for each dataset reference in a paper by comparing titles of datasets in a repository to sentences in papers.
+Our approach uses similarity measures for finding a perfect match for each dataset reference in a paper by comparing titles of datasets in a registry to sentences in papers.
 Similarity measures such as Matching, %\todo{CL@BG: In Section~\ref{sec:cosine} you introduced “Dice”, not “Dice 2”.  Please clarify. BG: Fixed}
 Dice, Jaccard and Cosine can be applied to a vector representation of a text easily (cf.~\citet{ChristopherD1999}).
 The accuracy of algorithms based on such similarity measures can be improved by making them semantics-aware, e.g., representing a set of synonyms as a single vector space dimension.
@@ -360,18 +360,22 @@ Afterwards, the new phrases are used for computing similarity.
 
 The problem that we aim to solve involves the two subtasks of 1.\ identifying dataset references in a paper, and then 2.\ finding at least one correct match for each of these identified references.
 Literature citation mining is the process of determining the number of citations that a specific paper receives.
-It constructs a literature citation network, which can be used for detecting the \todo{CL@BG: really “quality”, or rather “impact”?  (Well, if the cited literature speaks of “quality”, then keep this term here.)}quality of a paper~\todo{CL@BG: The combination of some author/year citations and some numeric citations, like here, looks strange to me.  Please switch everything to \emph{one} citation style: the one preferred by the journal.}\cite{Afzal2010}.
+It constructs a literature citation network, which can be used for detecting the 
+%\todo{CL@BG: really “quality”, or rather “impact”?  (Well, if the cited literature speaks of “quality”, then keep this term here.) BG: fixed}
+impact factor of a paper~\todo{CL@BG: The combination of some author/year citations and some numeric citations, like here, looks strange to me.  Please switch everything to \emph{one} citation style: the one preferred by the journal.}\cite{Afzal2010}.
 Citation mining can usually be handled by three subtasks.
 First, literature references should be extracted from the bibliography section of a document, and afterwards, metadata extraction should be applied on the references extracted in the first phase.
 Finally, each reference should be linked to the cited paper by using the metadata extracted in the second step~\cite{Afzal2010}.
 
 Dataset and literature citation mining from documents cannot generally be compared in the detecting phase, since dataset mining needs to be applied to the entire paper, but literature mining must only consider the bibliography of the paper, \todo{CL@all: I added this new point; please check.}unless the paper employs a “full” citation style.
-Unlike the detection phase, they can mostly use the same strategy for the matching phase, \todo{CL@BG: phrase remainder of sentence in a more meaningful way.}but of course are not completely the same. 
+Unlike the detection phase, they can mostly use the same strategy for the matching phase. 
 
 Afzal et al.\ proposed a rule-based citation mining technique~\cite{Afzal2010}.
 Their approach detects literature references from each document and then extracts citation metadata from each of them, such as title, authors, and venue. Based on the venue, it then extracts all related titles from the DBLP computer science bibliography, which contains more than three million papers.
-Finally, it tries to link the title of each extracted literature reference and \todo{CL@BG: not fully clear to me what “those” refers to: titles of literature listed in DBLP?}those found in DBLP.
-Our approach tries to match dataset references in a paper to the titles of datasets registered in the {\dara} \todo{CL@BG: consistently use either “registry” or “repository”.}repository.
+Finally, it tries to link the title of each extracted literature reference and 
+%\todo{CL@BG: not fully clear to me what “those” refers to: titles of literature listed in DBLP? BG:solved}
+titles found in DBLP.
+Our approach tries to match dataset references in a paper to the titles of datasets registered in the {\dara} \todo{CL@BG: consistently use either “registry” or “repository”. \\BG: I have applied the change for dara. I used "registry"}registry.
 %newpart_18>
 
 \subsection{Machine learning methods}
@@ -411,7 +415,7 @@ Finally, we use metadata of the papers registered in the SSOAR repository\footno
  \subsection{Papers from mda journal}\label{sec:mda}
  
  Methods, data, analyses (mda\footnote{\url{http://www.gesis.org/en/publications/journals/mda/}}) is an open access journal that addresses questions important to quantitative methods, with a special emphasis on survey methodology.
- It has published research on all aspects of science of surveys, be it on data collection, measurement, or data analysis and statistics\todo{CL@BG/PM: I commented the following sentence as it read too much like an advertisement of mda and didn't add relevant information about our research.}.
+ It has published research on all aspects of science of surveys, be it on data collection, measurement, or data analysis and statistics.%\todo{CL@BG/PM: I commented the following sentence as it read too much like an advertisement of mda and didn't add relevant information about our research. BG: it is ok}
  %All content of mda is freely available and can be distributed without any restrictions, ensuring the free flow of information that is crucial for the scientific progress.
  For our research we used a random sample of full-text articles from mda as our test corpus.
   \subsection{The {\dara} dataset registry}
@@ -423,12 +427,17 @@ Finally, we use metadata of the papers registered in the SSOAR repository\footno
 %In addition, the selected papers used as evaluation data were from mda, which focuses mostly on survey methodology in social science research areas. 
   Different institutions have collected research data in the social sciences and made them available.
   Although the accessibility of such datasets for further analyses and other reuse is important, information on where to find and how to access them is often missing in papers.
+  
 %newpart_23>
-
-\todo{CL@BG/PM: Once more this is IMHO a bit too much advertising {\dara}.  Can't we simply write “{\dara} assigns a DOI to each dataset”?}{\dara} makes social science research data referable and thus improves its availability. 
+\todo{CL@BG/PM: Once more this is IMHO a bit too much advertising {\dara}.  Can't we simply write “{\dara} assigns a DOI to each dataset”? \\BG: improved}
+{\dara} makes 
+%social science research 
+data referable 
+%and thus improves its availability. 
 %<newpart_24
-This is achieved by assigning a DOI to each dataset.
-{\dara} therefore does a job similar to that of publishers assigning DOIs to articles when they are published electronically.
+%This is achieved 
+by assigning a DOI to each dataset.
+%{\dara} therefore does a job similar to that of publishers assigning DOIs to articles when they are published electronically.
 %newpart_24>
 \todo{CL@BG: Add a footnote with the date on which these figures were valid.}At the present time, {\dara} holds 432,312 records such as datasets, texts, collections, videos, and interactive resources, 32,858 of which are datasets. 
 For each dataset, {\dara} provides metadata including title, author, language, and publisher.
@@ -441,7 +450,9 @@ This metadata is exposed to harvesters employing a freely accessible API using O
   First, there are titles that contain \emph{abbreviations}, which are often used to refer to the datasets. 
   Consider, for example, the full title \enquote{Programme for the International Assessment of Adult Competencies (PIAAC), Cyprus}, which contains the abbreviation \enquote{PIAAC}.
   Secondly, there are \emph{filenames}, as in the example \enquote{Southern Education and Racial Discrimination, 1880--1910: Virginia: VIRGPT2.DAT}, where \enquote{VIRGPT2.DAT} is the name of the dataset file.
-  Finally, there are \emph{phrases} that explicitly denote the existence of \todo{CL@BG: of \emph{datasets}, or actually of dataset \emph{references}?}datasets in a text, such as \enquote{Exit Poll} or \enquote{Probation Survey}.
+  Finally, there are \emph{phrases} that explicitly denote the existence of 
+  %\todo{CL@BG: of \emph{datasets}  , or actually of dataset \emph{references}? BG: fixed}
+  dataset references in a text, such as \enquote{Exit Poll} or \enquote{Probation Survey}.
   \enquote{Czech Exit Poll 1996} is an example of such a dataset title. 
 
   We assume these three categories as special characteristics in the titles.
@@ -536,7 +547,7 @@ For each reference detected in the full text of a paper we compute tf-idf over t
 %<newpart_33
 As it leads to many false positives based on our observation, comparing datasets' titles with a sentence in a paper, and, afterwards, ranking titles based on their score was not useful. Therefore we solved the problems by involving special features.
 
-Our approach considers only the list of titles that contain the special feature detected in the reference, since they are related titles and the rest of the titles in the repository are irrelevant. We limit our options in order to improve the accuracy of our approach. We decided to use the list of titles and whole sentences of the paper, and not only the reference sentence, since this consideration enables us to have a bigger corpus of documents and to reach a better weight for each word. The utilization of titles that contain the special features reduces the weight score of the feature and raises the weight scores of other terms in the reference sentence. It therefore has a positive impact on accuracy.
+Our approach considers only the list of titles that contain the special feature detected in the reference, since they are related titles and the rest of the titles in the registry are irrelevant. We limit our options in order to improve the accuracy of our approach. We decided to use the list of titles and whole sentences of the paper, and not only the reference sentence, since this consideration enables us to have a bigger corpus of documents and to reach a better weight for each word. The utilization of titles that contain the special features reduces the weight score of the feature and raises the weight scores of other terms in the reference sentence. It therefore has a positive impact on accuracy.
 %newpart_33>
 
 While a corpus of papers is typically huge, the size of all {\dara} dataset titles and the size of the full text of an average paper are less than 4 MB each. Given this limited corpus size, our algorithm may detect some false keywords in a query, thus adversely affecting the result. For instance, Figure ~\ref{fig:similarity-example} illustrates a toy example of this problem.
