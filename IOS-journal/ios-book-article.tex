@@ -208,8 +208,6 @@ In a weight matrix, each row represents a term and each column represents the ve
 
 Term frequency (tf) measures the number of occurrences of a given term (t) in a given document (d) or query text~\citep{SALTON1988}. 
 %<newpart_9
-%\todo{CL: phrase this sentence in a less redundant way, e.g.\ like “the weight of \dots is \dots”. BG: corrected}
-%Weighing the score based on 
 Tf is calculated by the following formula. 
 \begin{center} 
 	$w_{t,d}$=
@@ -271,7 +269,6 @@ Dice Coefficient, Overlap Coefficient, and Jaccard try to normalize the Matching
 Each of them has specific shortcomings;
 for example, Jaccard neither applies optimal normalization on the length of documents nor considers term frequency in a document and the corpus of documents.
 %newpart_11>
-%\todo{CL@BG: this sentence and the following one are partly redundant with new content of Section~\ref{sec:tfidf}; rephrase it in a shorter way by reusing terminology from that section. BG: removed }A document can be considered as a vector (point) in a vector space, each dimension of which corresponds to one term in the document corpus. 
 %<newpart_12
 A document can be converted into a weight vector (see Section~\ref{sec:tfidf}), which looks like $d=(w_1,\dots,w_n)$, and tf-idf is one way of computing the weight $w_i$ of terms.
 %newpart_12>
@@ -322,7 +319,6 @@ Related work can be divided into three main groups covered by the following subs
 One group of methods is based on the “bag of words” model using algorithms such as tf-idf to adjust weights for terms in a representation of texts as vectors (cf.\ the introduction in Section~\ref{sec:tfidf}).
 \citeauthor{Lee2008} proposed an unsupervised keyword extraction method by using a tf-idf model with some heuristics~\citeyearpar{Lee2008}.
 Our approach uses similarity measures for finding a perfect match for each dataset reference in a paper by comparing titles of datasets in a registry to sentences in papers.
-Similarity measures such as Matching, %\todo{CL@BG: In Section~\ref{sec:cosine} you introduced “Dice”, not “Dice 2”.  Please clarify. BG: Fixed}
 Dice, Jaccard and Cosine can be applied to a vector representation of a text easily (cf.~\citet{ChristopherD1999}).
 The accuracy of algorithms based on such similarity measures can be improved by making them semantics-aware, e.g., representing a set of synonyms as a single vector space dimension.
 
@@ -334,8 +330,7 @@ The quality of the algorithm depends on the number of search results returned.
 %newpart_16>
 
 \citeauthor{sighal2013} proposed an approach to extract dataset names from articles~\citeyearpar{sighal2013}.
-They employed the normalized google distance %todo BG: normalized google distance? - solved
-algorithm, which estimates both the probability of two terms existing separately in a document, as well as of their co-occurrence. 
+They employed the normalized google distance algorithm, which estimates both the probability of two terms existing separately in a document, as well as of their co-occurrence. 
 %<newpart_17
 \begin{align*}
 	\mathit{NGD}(x,y)=\frac{\max(\log f(x),f(y))-\log f(x,y)}{\log M -\min(\log f(x),\log f(y))}
@@ -358,9 +353,7 @@ Afterwards, the new phrases are used for computing similarity.
 
 The problem that we aim to solve involves the two subtasks of 1.\ identifying dataset references in a paper, and then 2.\ finding at least one correct match for each of these identified references.
 Literature citation mining is the process of determining the number of citations that a specific paper receives.
-It constructs a literature citation network, which can be used for detecting the 
-%\todo{CL@BG: really “quality”, or rather “impact”?  (Well, if the cited literature speaks of “quality”, then keep this term here.) BG: fixed}
-impact factor of a paper~\todo{CL@BG: The combination of some author/year citations and some numeric citations, like here, looks strange to me.  Please switch everything to \emph{one} citation style: the one preferred by the journal.}\cite{Afzal2010}.
+It constructs a literature citation network, which can be used for detecting the impact of a paper~\todo{CL@BG: The combination of some author/year citations and some numeric citations, like here, looks strange to me.  Please switch everything to \emph{one} citation style: the one preferred by the journal.}\cite{Afzal2010}.
 Citation mining can usually be handled by three subtasks.
 First, literature references should be extracted from the bibliography section of a document, and afterwards, metadata extraction should be applied on the references extracted in the first phase.
 Finally, each reference should be linked to the cited paper by using the metadata extracted in the second step~\cite{Afzal2010}.
@@ -370,10 +363,8 @@ Unlike the detection phase, they can mostly use the same strategy for the matchi
 
 Afzal et al.\ proposed a rule-based citation mining technique~\cite{Afzal2010}.
 Their approach detects literature references from each document and then extracts citation metadata from each of them, such as title, authors, and venue. Based on the venue, it then extracts all related titles from the DBLP computer science bibliography, which contains more than three million papers.
-Finally, it tries to link the title of each extracted literature reference and 
-%\todo{CL@BG: not fully clear to me what “those” refers to: titles of literature listed in DBLP? BG:solved}
-titles found in DBLP.
-Our approach tries to match dataset references in a paper to the titles of datasets registered in the {\dara} \todo{CL@BG: consistently use either “registry” or “repository”. \\BG: I have applied the change for dara. I used "registry"}registry.
+Finally, it tries to link the title of each extracted literature reference and titles found in DBLP.
+Our approach tries to match dataset references in a paper to the titles of datasets registered in the {\dara} registry.
 %newpart_18>
 
 \subsection{Machine learning methods}
@@ -413,7 +404,7 @@ Finally, we use metadata of the papers registered in the SSOAR repository\footno
  \subsection{Papers from mda journal}\label{sec:mda}
  
  Methods, data, analyses (mda\footnote{\url{http://www.gesis.org/en/publications/journals/mda/}}) is an open access journal that addresses questions important to quantitative methods, with a special emphasis on survey methodology.
- It has published research on all aspects of science of surveys, be it on data collection, measurement, or data analysis and statistics.%\todo{CL@BG/PM: I commented the following sentence as it read too much like an advertisement of mda and didn't add relevant information about our research. BG: it is ok}
+ It has published research on all aspects of science of surveys, be it on data collection, measurement, or data analysis and statistics.
  %All content of mda is freely available and can be distributed without any restrictions, ensuring the free flow of information that is crucial for the scientific progress.
  For our research we used a random sample of full-text articles from mda as our test corpus.
   \subsection{The {\dara} dataset registry}
@@ -427,7 +418,6 @@ Finally, we use metadata of the papers registered in the SSOAR repository\footno
   Although the accessibility of such datasets for further analyses and other reuse is important, information on where to find and how to access them is often missing in papers.
   
 %newpart_23>
-\todo{CL@BG/PM: Once more this is IMHO a bit too much advertising {\dara}.  Can't we simply write “{\dara} assigns a DOI to each dataset”? \\BG: improved}
 {\dara} makes 
 %social science research 
 data referable 
@@ -449,7 +439,6 @@ This metadata is exposed to harvesters employing a freely accessible API using O
   Consider, for example, the full title \enquote{Programme for the International Assessment of Adult Competencies (PIAAC), Cyprus}, which contains the abbreviation \enquote{PIAAC}.
   Secondly, there are \emph{filenames}, as in the example \enquote{Southern Education and Racial Discrimination, 1880--1910: Virginia: VIRGPT2.DAT}, where \enquote{VIRGPT2.DAT} is the name of the dataset file.
   Finally, there are \emph{phrases} that explicitly denote the existence of 
-  %\todo{CL@BG: of \emph{datasets}  , or actually of dataset \emph{references}? BG: fixed}
   dataset references in a text, such as \enquote{Exit Poll} or \enquote{Probation Survey}.
   \enquote{Czech Exit Poll 1996} is an example of such a dataset title. 
 
