@@ -80,26 +80,26 @@ For example, an article might present the results of a statistical analysis perf
 However, dataset references are usually not explicitly exposed in digital libraries.
 In most cases the articles do not provide explicit links that give readers direct access to the referenced datasets. 
 
-Explicit links from scientific publications to the underlying datasets and vice versa can be useful in multiple use cases, including:
+Explicit links from scientific publications to the underlying datasets and vice versa are useful in many scenarios, including:
 \begin{itemize}
 	\item reviewers aiming to reproduce the evaluation that authors performed on a dataset, 
 	%a link would give him straightforward access to the data, enabling them to check the evaluation,
 	\item other researchers desiring to perform further analysis on a dataset that was used in a paper,
 	\item decision makers seeking to determine the impact of a given dataset or to identify the most used datasets in a given community.
-\end{itemize}% \todo[inline, size=\tiny]{SV@BG:add two more use cases\\ CL: I added some.} 
+\end{itemize}
 
-Currently, the majority of published papers lack such direct links to datasets.
-While there exist registries that make datasets citable, e.g., by assigning a digital object identifier (DOI) to them, they are usually not integrated with authoring tools.
+Currently, the majority of published articles lack such direct links to datasets.
+While there exist registries that make datasets citable, e.g., by assigning them a digital object identifier (DOI), they are usually not integrated with authoring tools.
 Therefore, in practice, authors typically cite datasets by \emph{mentioning} them, e.g., using  
 combinations of title, abbreviation and year of publication (see, e.g., \citet{Mathiak2015}).  
 
-Manually detecting references to datasets in papers is time consuming and requires expert knowledge of the paper's domain. 
+Manually detecting references to datasets in articles is time consuming and requires expert knowledge of the article's domain. 
 Detecting dataset references automatically is challenging 
 %since 
 %in most %cases, approaches need a huge corpus of papers as training set. 
 %<newpart_2
 %It is a difficult task to create such a training set manually 
-due to the wide variety of styles of dataset citations in full texts even within one research community, and the variety
+due to the wide variety of styles of dataset citations in full-texts even within one research community, and the variety
 %multitude 
 of places in which datasets can be referenced in papers  
 %in which such citations can occur
@@ -115,20 +115,21 @@ of places in which datasets can be referenced in papers
 So it is a difficult task to create a training set manually for solving this issue and this variance even makes rule-based approaches difficult, as it is hard to cover all cases.
 %\todo{CL@BG: I tried to phrase the following a bit more precisely, but still a concrete reference would be good. BG: I removed it for now but if I find a concrete reference for the claim, I'll return it.}%Approaches that learn from a corpus of papers require large amounts of disk space and processing time.
 %newpart_3>
-We therefore introduce a semi-automatic approach that parses full texts and finds exact matches with a high precision without requiring a training set. 
-The remainder of this section states more precisely the problem addressed by our research.
+We therefore introduce a semi-automatic approach that parses full-texts and finds exact matches with high precision and without requiring a training set. 
+The remainder of this section states the problem addressed by our research more precisely.
 Section~\ref{sec:preliminaries} introduces the preliminaries of techniques and metrics that we apply.
-Section~\ref{sec:relWork} reviews existing literature related to this problem.
+Section~\ref{sec:relWork} reviews existing literature related to the dataset reference problem.
 All data used by our approach is explained in section~\ref{sec:data}, while section~\ref{sec:approach} introduces the proposed solution.
-The evaluation is then presented in section~\ref{sec:eval}, and section~\ref{sec:future} concludes with an outlook to future work. 
+The evaluation is then presented in section~\ref{sec:eval}.
+Section~\ref{sec:future} concludes with an outlook to future work. 
  
 \subsection{Problem Statement}
-Whereas a lot of effort has been spent on information extraction in general~\citep{Sarawagi2007}, few attempts have focused on the specific use case of dataset extraction (see, e.g., \citep{MeiyuLu2012}). \todo{SV@BG:effort on information extraction and dataset extraction is not comparable, one is a research field, the other is a usecase, rephrase it.\\ CL: I made the first step: not yet perfect, but better.}
+Whereas a lot of effort has been spent on information extraction in general~\citep{Sarawagi2007}, few attempts have focused on the specific use case of dataset reference extraction (see, e.g., \citep{MeiyuLu2012}). \todo{SV@BG:effort on information extraction and dataset extraction is not comparable, one is a research field, the other is a usecase, rephrase it.\\ CL: I made the first step: not yet perfect, but better.}
 When referring to the same dataset, different authors often use different names or keywords.
-Although there are proposed standards for dataset citation in full texts, researchers still ignore or neglect such standards (see, e.g., \cite{altman2007proposed}).
+Although there are proposed standards for dataset citation in full-texts, researchers still ignore or neglect such standards (see, e.g., \cite{altman2007proposed}).
 %One of the important standards is proposed by~\citeauthor{altman2007proposed} for dataset citation~\citeyearpar{altman2007proposed}.
 %\todo{SV@BG:say a bit about this standard\\ CL: Yes, please – or, if you can't, shorten this sentence to “see, e.g., \cite{altman2007proposed}” and merge it into the previous one. BG: checked it}
-Since the structure of scientific documents does not always follow standard, and since datasets are rarely being linked to in a consistent ways,
+Since the structure of scientific documents does not always follow a standard, and since datasets are rarely being linked to in a consistent ways,
 %\todo{CL@BG: Previously, this sentence was phrased poorly up to this point; I tried to improve, but please check whether I preserved your intended meaning. BG: Checked it}
 simple keyword or name extraction approaches do not solve the problem \citep{Nadeau2007}. 
 Table~\ref{table:citation-variety} shows concrete examples of different reference styles from \todo{CL@BG: say more about these papers.  At the very least what journal they are from.  Even better would be a footnote with citations of all papers.  Journals value precision and completeness. \\ BG: I mentioned the journal in the text and I added DOIs to the table}five papers from the mda journal (see Section~\ref{sec:mda}) that have cited different versions of a study (ALLBUS/GGSS = Allgemeine Bev\"olkerungsumfrage der Sozialwissenschaften/German General Social Survey).%\todo{CL@BG: For Paper C, is the word form “Allgemeinen” really correct? BG: Checked it, it is correct.}
@@ -136,9 +137,9 @@ Table~\ref{table:citation-variety} shows concrete examples of different referenc
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{2}
 	\centering
-	\begin{tabular}{p{1,5cm}p{3cm}p{5cm}}
+	\begin{tabular}{p{1cm}p{3cm}p{7cm}}
 		\hline
-		& Paper DOI &Citation style \\
+		& \bf Paper DOI & \bf Citation style \\
 		\hline
 		Paper A  & 10.12758/mda.2013.014 &ALLBUS (2010)\\
 		
