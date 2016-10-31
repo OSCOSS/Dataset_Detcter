@@ -27,6 +27,7 @@
 
 \begin{frontmatter}
 \title{A Semi-Automatic Approach for Linking Dataset References in Social Sciences Full Texts} %todo check the title
+\title{A Semi-Automatic Approach for Detecting Dataset References in Social Science Texts} %todo check the title
 
 \author[A,B]{\fnms{Behnam} \snm{Ghavimi}
 \thanks{E-mail: behnam.ghavimi@gesis.org}},
@@ -42,21 +43,21 @@ and
 \address[B]{Enterprise Information Systems (EIS), University of Bonn}
 \address[C]{Fraunhofer Institute for Intelligent Analysis and Information Systems IAIS}
 \begin{abstract}
-Today, full texts of scientific papers are often stored in different places than their underlying research datasets.
+Today, full texts of scientific articles are often stored in different locations than the used datasets.
 %<newpart_0
 Dataset registries aim at a closer integration by making datasets citable 
 %newpart_0>
 %However, \todo[inline]{CL@BG: This statement actually creates the obligation for us to say something about the possible integration of our implementation into authoring tools in “future work”.  At least 2–3 sentences.  Think of open, pluggable systems, think of Fidus Writer. \\ BG: I decided to delete this part since it is not a key point in our paper and even The deletion helps us to shrink abstract a bit more. }as they are not integrated with authoring tools, explicit links to datasets are generally missing in papers and 
-but authors typically refer to datasets using not standardized titles and often year of publication.
+but authors typically refer to datasets using inconsistent abbreviations and heterogeneous metadata (e.g. title, publication year).
 \todo[inline]{CL: The following is a new and IMHO important point.\\ BG@CL: This is a great point but we should not exceed more than 200 words.- now the abstract contains 220 words.\\ CL: I shortened it to 210 for now; maybe they will either accept 210, or someone else can shorten a bit further ;-)\\ BG: Now It contains 184 words since I removed the part related to previous note.}It is thus hard to reproduce research results, to access datasets for further analysis, and to determine the impact of a dataset.
 Manually detecting references to datasets in scientific papers is time-consuming and requires expert knowledge in the underlying research domain. 
 We propose and evaluate a semi-automatic three-step approach for finding explicit references to datasets in social sciences papers.
 
 %<newpart_1
-We first extract pre-defined special features from datasets' titles in the {\dara} registry, then detect references to datasets using the extracted features, and finally match the references found with corresponding datasets' titles.
+We first extract pre-defined special features from dataset titles in the {\dara} registry, then detect references to datasets using the extracted features, and finally match the references found with corresponding dataset titles.
 %newpart_1> 
-The approach does not require a corpus of papers (no cold start problem) and performs well on a small test corpus. 
-We achieved an F-measure of 0.84 for detecting references in full texts and an F-measure of 0.83 for finding correct matches of detected references in the {\dara} dataset registry.
+The approach does not require a corpus of articles (avoiding the cold start problem) and performs well on a test corpus. 
+We achieved an F-measure of 0.84 for detecting references in full-texts and an F-measure of 0.83 for finding correct matches of detected references in the {\dara} dataset registry.
 \end{abstract}
 
 \begin{keyword}
@@ -70,19 +71,20 @@ Information extraction\sep Link discovery\sep Data linking\sep Research data\sep
 % We are specifically interested in scientific full text papers in digital libraries.\todo[inline, size=\tiny]{SV@BG:saying we are interested on sth is not scientific at all, rephrase it and include the reason.\\ CL: This sentence is not necessary to introduce our point, so I've commented it out.}
 Today, 
 %in the quantitative social sciences and other fields, 
-many papers make references to research datasets on which they are based, in that they, e.g., present the results of a statistical analysis over some dataset.
-However, these references are usually not explicitly exposed in digital libraries.
-In most cases the papers do not provide explicit links that would give readers direct access to the referenced datasets. 
+many articles reference research datasets which they are based on.
+For example, an article might present the results of a statistical analysis performed on a dataset comprising employment data in the EU.
+However, dataset references are usually not explicitly exposed in digital libraries.
+In most cases the articles do not provide explicit links that give readers direct access to the referenced datasets. 
 
-Explicit links from scientific publications to the underlying datasets and vice versa can be useful in multiple use cases, including the following:
+Explicit links from scientific publications to the underlying datasets and vice versa can be useful in multiple use cases, including:
 \begin{itemize}
-	\item reviewers exploring to reproduce the evaluation that a paper's authors performed on a dataset, 
+	\item reviewers aiming to reproduce the evaluation that authors performed on a dataset, 
 	%a link would give him straightforward access to the data, enabling them to check the evaluation,
 	\item other researchers desiring to perform further analysis on a dataset that was used in a paper,
-        \item decision makers seeking to determine the impact of a given dataset or to identify the most used datasets in a given community.
+	\item decision makers seeking to determine the impact of a given dataset or to identify the most used datasets in a given community.
 \end{itemize}% \todo[inline, size=\tiny]{SV@BG:add two more use cases\\ CL: I added some.} 
 
-Currently, the majority of published papers lacks such direct links to datasets.
+Currently, the majority of published papers lack such direct links to datasets.
 While there exist registries that make datasets citable, e.g., by assigning a digital object identifier (DOI) to them, they are usually not integrated with authoring tools.
 Therefore, in practice, authors typically cite datasets by \emph{mentioning} them, e.g., using  
 combinations of title, abbreviation and year of publication (see, e.g., \citet{Mathiak2015}).  
