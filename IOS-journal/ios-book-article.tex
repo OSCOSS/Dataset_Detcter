@@ -113,7 +113,7 @@ of places in which datasets can be referenced in papers
 \end{figure}
 %<newpart_3
 So it is a difficult task to create a training set manually for solving this issue and this variance even makes rule-based approaches difficult, as it is hard to cover all cases.
-\todo{CL@BG: I tried to phrase the following a bit more precisely, but still a concrete reference would be good.}Approaches that learn from a corpus of papers require large amounts of disk space and processing time.
+%\todo{CL@BG: I tried to phrase the following a bit more precisely, but still a concrete reference would be good. BG: I removed it for now but if I find a concrete reference for the claim, I'll return it.}%Approaches that learn from a corpus of papers require large amounts of disk space and processing time.
 %newpart_3>
 We therefore introduce a semi-automatic approach that parses full texts and finds exact matches with a high precision without requiring a training set. 
 The remainder of this section states more precisely the problem addressed by our research.
@@ -125,28 +125,30 @@ The evaluation is then presented in section~\ref{sec:eval}, and section~\ref{sec
 \subsection{Problem Statement}
 Whereas a lot of effort has been spent on information extraction in general~\citep{Sarawagi2007}, few attempts have focused on the specific use case of dataset extraction (see, e.g., \citep{MeiyuLu2012}). \todo{SV@BG:effort on information extraction and dataset extraction is not comparable, one is a research field, the other is a usecase, rephrase it.\\ CL: I made the first step: not yet perfect, but better.}
 When referring to the same dataset, different authors often use different names or keywords.
-Although there are proposed standards for dataset citation in full texts, researchers still ignore or neglect such standards.
-One of the important standards is proposed by~\citeauthor{altman2007proposed} for dataset citation~\citeyearpar{altman2007proposed}.
-\todo{SV@BG:say a bit about this standard\\ CL: Yes, please – or, if you can't, shorten this sentence to “see, e.g., \cite{altman2007proposed}” and merge it into the previous one.}
-Since the structure of scientific documents does not always follow standard, and since datasets are rarely being linked to in a consistent ways\todo{CL@BG: Previously, this sentence was phrased poorly up to this point; I tried to improve, but please check whether I preserved your intended meaning.}, simple keyword or name extraction approaches do not solve the problem \citep{Nadeau2007}. 
-Table~\ref{table:citation-variety} shows concrete examples of different reference styles from \todo{CL@BG: say more about these papers.  At the very least what journal they are from.  Even better would be a footnote with citations of all papers.  Journals value precision and completeness.}five papers that have cited different versions of a study (ALLBUS/GGSS = Allgemeine Bev\"olkerungsumfrage der Sozialwissenschaften/German General Social Survey).\todo{CL@BG: For Paper C, is the word form “Allgemeinen” really correct?}
+Although there are proposed standards for dataset citation in full texts, researchers still ignore or neglect such standards (see, e.g., \cite{altman2007proposed}).
+%One of the important standards is proposed by~\citeauthor{altman2007proposed} for dataset citation~\citeyearpar{altman2007proposed}.
+%\todo{SV@BG:say a bit about this standard\\ CL: Yes, please – or, if you can't, shorten this sentence to “see, e.g., \cite{altman2007proposed}” and merge it into the previous one. BG: checked it}
+Since the structure of scientific documents does not always follow standard, and since datasets are rarely being linked to in a consistent ways,
+%\todo{CL@BG: Previously, this sentence was phrased poorly up to this point; I tried to improve, but please check whether I preserved your intended meaning. BG: Checked it}
+simple keyword or name extraction approaches do not solve the problem \citep{Nadeau2007}. 
+Table~\ref{table:citation-variety} shows concrete examples of different reference styles from \todo{CL@BG: say more about these papers.  At the very least what journal they are from.  Even better would be a footnote with citations of all papers.  Journals value precision and completeness. \\ BG: I mentioned the journal in the text and I added DOIs to the table}five papers from the mda journal (see Section~\ref{sec:mda}) that have cited different versions of a study (ALLBUS/GGSS = Allgemeine Bev\"olkerungsumfrage der Sozialwissenschaften/German General Social Survey).%\todo{CL@BG: For Paper C, is the word form “Allgemeinen” really correct? BG: Checked it, it is correct.}
 
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{2}
 	\centering
-	\begin{tabular}{p{2.5cm}p{7cm}}
+	\begin{tabular}{p{1,5cm}p{3cm}p{5cm}}
 		\hline
-		& Citation style \\
+		& Paper DOI &Citation style \\
 		\hline
-		Paper A  & ALLBUS (2010)\\
+		Paper A  & 10.12758/mda.2013.014 &ALLBUS (2010)\\
 		
-		Paper B  & GESIS -- Leibniz-Institute for the Social Sciences: ALLBUS 2010 -- German General Social Survey. GESIS, Cologne, Germany, ZA4610 Data File version 1.0.0. (2011--05--30), doi:10.4232/1.10445. \\ 
+		Paper B  & 10.12758/mda.2013.004 &GESIS -- Leibniz-Institute for the Social Sciences: ALLBUS 2010 -- German General Social Survey. GESIS, Cologne, Germany, ZA4610 Data File version 1.0.0. (2011--05--30), doi:10.4232/1.10445. \\ 
 		
-		Paper C & ALLBUS (Allgemeinen Bev\"olkerungsumfrage der Sozialwissenschaften)\\
+		Paper C & 10.12758/mda.2013.012 &ALLBUS (Allgemeinen Bev\"olkerungsumfrage der Sozialwissenschaften)\\
 		
-		Paper D & (e.g., in the German General Social Survey, ALLBUS; see Wasmer, Scholz, Blohm, Walter and Jutz, 2012)\\
+		Paper D & 10.12758/mda.2014.007 &(e.g., in the German General Social Survey, ALLBUS; see Wasmer, Scholz, Blohm, Walter and Jutz, 2012)\\
 		
-		Paper E & Die Einstellungen zu Geschlechterrollen wurden mit Hilfe von Items aus den ALLBUS -- Wellen 1994 und 2008 operationalisiert.\\\hline
+		Paper E & 10.12758/mda.2013.019 & Die Einstellungen zu Geschlechterrollen wurden mit Hilfe von Items aus den ALLBUS -- Wellen 1994 und 2008 operationalisiert.\\\hline
 	\end{tabular}
 	\caption{Citation styles for a study in five different papers.}
 	\label{table:citation-variety}
@@ -155,7 +157,8 @@ Table~\ref{table:citation-variety} shows concrete examples of different referenc
 
 The challenge that our research aims at is to turn each dataset reference detected in a paper into an explicit link, for example, using the DOI of the dataset's entry in a dataset registry. 
 %<newpart_6
-\todo{CL@BG: I rephrased this completely; please check whether I preserved the intended meaning.}Dataset registries usually provide further metadata about datasets, which can facilitate the detection of such links, such as the dataset's creators, publication date, description, and temporal coverage.
+%\todo{CL@BG: I rephrased this completely; please check whether I preserved the intended meaning. BG: checked it.}
+Dataset registries usually provide further metadata about datasets, which can facilitate the detection of such links, such as the dataset's creators, publication date, description, and temporal coverage.
 %newpart_6>
 In our case, references to datasets should be linked to items in the {\dara} registry, which covers datasets from the social sciences and economics.
 
