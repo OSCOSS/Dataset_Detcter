@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.9.23)  31 OCT 2016 16:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.9.23)  31 OCT 2016 17:13
 entering extended mode
 **./ios-book-article.tex
 (ios-book-article.tex
@@ -1085,41 +1085,41 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 ) ABD: EveryShipout initializing macros
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 29
+LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 30
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ztmcm.fd"
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 29
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 30
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omlztmcm.fd"
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 29
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 30
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsztmcm.fd"
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 29
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 30
 .
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omxztmcm.fd"
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 29.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 30.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 29.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 29.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 29.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 33.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
@@ -1149,10 +1149,7 @@ File: DistPlaces4.PNG Graphic file (type png)
  <use DistPlaces4.PNG>
 Package pdftex.def Info: DistPlaces4.PNG used on input line 110.
 (pdftex.def)             Requested size: 252.94499pt x 239.17691pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+ [2 <./DistPlaces4.PNG>]
 
 LaTeX Warning: Marginpar on page  moved.
 
@@ -1162,12 +1159,15 @@ LaTeX Warning: Marginpar on page  moved.
 
 LaTeX Warning: Marginpar on page  moved.
 
-[2]
+
+LaTeX Warning: Marginpar on page  moved.
+
+
 Underfull \hbox (badness 804) in paragraph at lines 143--144
 \T1/ptm/m/n/8 2010 -- Ger-man Gen-eral So-cial Sur-vey. GESIS, Cologne,
  []
 
-[3 <./DistPlaces4.PNG>]
+[3]
 
 LaTeX Warning: Marginpar on page  moved.
 
@@ -1196,8 +1196,8 @@ File: ToyExamplE.PNG Graphic file (type png)
 <use ToyExamplE.PNG>
 Package pdftex.def Info: ToyExamplE.PNG used on input line 540.
 (pdftex.def)             Requested size: 325.215pt x 156.4236pt.
- [13 <./ToyExamplE.PNG>]
-<Overwveiw_System.png, id=66, 2183.15625pt x 1321.93875pt>
+
+<Overwveiw_System.png, id=61, 2183.15625pt x 1321.93875pt>
 File: Overwveiw_System.png Graphic file (type png)
 
 <use Overwveiw_System.png>
@@ -1208,8 +1208,11 @@ Overfull \hbox (6.03995pt too wide) in paragraph at lines 555--556
  [][] 
  []
 
-[14 <./Overwveiw_System.png>] [15] [16] (ios-book-article.bbl [17] [18])
-[19] (ios-book-article.aux)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[13 <./ToyExamplE.PNG>] [14 <./Overwveiw_System.png>] [15] [16]
+(ios-book-article.bbl [17] [18]) [19] (ios-book-article.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1217,7 +1220,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  17221 strings out of 493334
  322920 string characters out of 3136663
- 445765 words of memory out of 3000000
+ 447723 words of memory out of 3000000
  20373 multiletter control sequences out of 15000+200000
  68162 words of font info for 114 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1239,7 +1242,7 @@ type1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/sy
 mbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.p
 fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Prog
 ram Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ios-book-article.pdf (19 pages, 641368 bytes).
+Output written on ios-book-article.pdf (19 pages, 641235 bytes).
 PDF statistics:
  140 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
