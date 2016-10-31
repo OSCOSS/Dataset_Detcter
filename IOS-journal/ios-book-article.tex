@@ -463,47 +463,64 @@ If the full-text is the pre-print or post-print version of a published work, the
 
 \section{A semi-automatic approach for finding dataset references}
 \label{sec:approach}
-We have created a semi-automatic approach for finding references to datasets registered in {\dara} in a given full text. 
+We have realized a semi-automatic approach for finding references to datasets registered in {\dara} in a given full text. 
 %<newpart_26
-Our approach is divided into four main steps. The first step is related to generating special features dictionaries from datasets' titles. The second step deals with identifying and matching datasets' references in a paper, and the third step focuses on improving the results of the second step. In the final step a user can export the results.
+Our approach is divided into four main steps.
+The first step is related to generating special features dictionaries from datasets' titles.
+The second step deals with identifying and matching references to datasets in an article, and the third step focuses on improving the results of the second step.
+In the final step a user can export the results.
 
 It took a semi-automatic approach since 
 %newpart_26>
 the first and last steps of our algorithm require human interaction to improve the accuracy of the result. 
 %<newpart_27
-In the first step, the user should review two generated lists of abbreviations and special phrases. In the final step, the user should make the final decision regarding references suggested by our approach.
+In the first step, the user should review two generated lists of abbreviations and special phrases.
+In the final step, the user should make the final decision regarding the references suggested by our approach.
 
-The main differences between our approach and the other related works are that ours do not need a huge corpus of papers or a large training set. Our approach is straightforward and able to prepare results for a paper in few minutes or even seconds depending on the number of datasets' references in the paper that we want to analyze.
+The main differences between our approach and related ones are that ours neither requires a huge corpus of papers nor a large training set.
+Our approach is straightforward and able to prepare results for a given article in a few minutes or even seconds depending on the number of datasets' references in the paper that we want to analyze.
 %newpart_27>
 
 \subsection{Step 1: Preparing the dictionary}
 \label{sec:preparing-dictionary}
-The preparation of a \emph{dictionary} of abbreviations and special phrases is the first step. \emph{Abbreviations} are initially obtained by applying some algorithms and rules to the dataset titles harvested from {\dara}.
-The dataset titles are preprocessed automatically before the abbreviations are extracted. Titles fully in capital letters are removed, the remaining titles are split based on \enquote{:}, and then only the first parts are kept (in the case of including any colon mark).
+The preparation of a \emph{dictionary} of abbreviations and special phrases is the first step.
+\emph{Abbreviations} are initially obtained by applying certain algorithms and rules to the dataset titles harvested from {\dara}.
+The dataset titles are preprocessed automatically before the abbreviations are extracted.
+Titles fully in capital letters are removed, the remaining titles are split based on \enquote{:}, and of titles that contained a colon only the first parts are kept.
 The extraction of abbreviations from dataset titles follows specific steps:
 
 \begin{enumerate}
 	\item The titles are tokenized (by using nltk -- a Python package for natural language processing).
 	\item The tokens that are not completely in lowercase (not including the first letter) -- not only a combination of digits and punctuation marks, not Roman numerals, and do not start with a digit are added to a new list (e.g. \enquote{SFB580-B2}, \enquote{A*CENSUS}, \enquote{L.A.FANS}, \enquote{aDvANCE}
 	and \enquote{GBF/DIME}).
-	\item The titles are split based on `-' and `(', and then single tokens before such delimiters are added to the list (e.g \enquote{euandi} in \enquote{euandi (Experteninterviews) - Reduzierte Version}).
+	\item The titles are split based on `-' and `(', and then single tokens before such delimiters are added to the list (e.g. \enquote{euandi} in \enquote{euandi (Experteninterviews) - Reduzierte Version}).
 	\item The items on the list of abbreviations should only contain the punctuation marks `.', `-', `/', `*' and `\&'. (e.g. \enquote{NHM\&E}).
-	\item The items that contain `/' or `-' and are also partially in lowercase are removed from the list (first letter of each part is not included) (e.g \enquote{Allbus/GGSS} is removed). 
+	\item The items that contain `/' or `-' and are also partially in lowercase are removed from the list (first letter of each part is not included; e.g.\ \enquote{Allbus/GGSS} is removed). 
 	\item Words in German and English, as well as country names, are removed from the list. Words, fully or partially in capital letters will not be pruned by dictionary (first letter is not included).
 \end{enumerate}
-The titles fully in capital letters are converted into lowercase and tokenized. Afterwards, the dictionary prunes them, and then their tokens without definition are added to the list.
-These algorithms and rules correctly detect, for example, \enquote{DAWN} in \enquote{Drug Abuse Warning Network (DAWN), 2008}. However, it sometimes detects abbreviations that are not references to datasets, such as \enquote{NYPD} in \enquote{New York Police Department (NYPD) Stop, Question, and Frisk Database, 2006}. As their identification is hard to automate, we assigned this task to a human expert. 
+The titles fully in capital letters are converted to lowercase and tokenized.
+Afterwards, \todo{CL@BG: this phrase doesn't work.  Phrase, e.g., “they are pruned from the dictionary”, depending on what's correct.}the dictionary prunes them, and then their tokens without definition are added to the list.
+These algorithms and rules correctly detect, for example, \enquote{DAWN} in \enquote{Drug Abuse Warning Network (DAWN), 2008}.
+However, it sometimes detects abbreviations that are not references to datasets, such as \enquote{NYPD} in \enquote{New York Police Department (NYPD) Stop, Question, and Frisk Database, 2006}.
+As their identification is hard to automate, we assigned this task to a human expert. 
 %<newpart_28
-The expert reviews the list and then makes a false positive list -- such false positives will be removed from the dictionary automatically. The ratio of false positives is one out every three items on the list of abbreviations extracted automatically. This means that approximately 66 percent of the abbreviations are derived correctly, and the rest of the titles need very little effort in order to be pruned from the list.
+The expert reviews the list and then makes a false positive list -- such false positives will be removed from the dictionary automatically. \todo{CL@BG: I suppose the ratio is not always the same.  Say something like “In an experiment with 50 mda articles, the ratio of false positives was …”}The ratio of false positives is one out of three items of the list of abbreviations extracted automatically.
+This means that approximately two thirds of the abbreviations are derived correctly, and pruning the rest of the titles from the list requires little effort.
 %newpart_28>
 
-The preparation of the dictionary of special phrases also needs human interaction. A list of terms that refer to datasets such as \enquote{Study} or \enquote{Survey} has been generated manually; this list contains about 30 items. Afterwards, phrases containing these terms were derived by some algorithms and rules from the titles of actual datasets in {\dara}. Three types of phrases are considered here, the first of which are tokens that include an item in the dictionary such as \enquote{Singularisierungsstudie} where the phrase contains \enquote{studie}.
+The preparation of the dictionary of special phrases also needs human interaction.
+A list of terms that refer to datasets such as \enquote{Study} or \enquote{Survey} has been generated manually; this list contains about 30 items.
+Afterwards, phrases containing these terms were derived by some algorithms and rules from the titles of actual datasets in {\dara}.
+Three types of phrases are considered here, the first of which are tokens that include a dictionary item such as \enquote{Singularisierungsstudie}, which contains \enquote{studie}.
 The second is a category of phrases that includes \enquote{Survey of} or \enquote{Study of} as a sub phrase as well as one more token that is not a stop word, such as \enquote{Survey of Hunting}.
-The last one is phrases that contain two tokens, where one of them is an item in the dictionary such as \enquote{Poll}, and the second token should not be a stop word such as \enquote{Freedom Poll}. 
+The last one is phrases that contain two tokens, where one of them is a dictionary item such as \enquote{Poll}, and the second token should not be a stop word such as \enquote{Freedom Poll}. 
 
 %<newpart_29
-A human expert has finally verified the phrase list, and false positives are added to the related list. In the phrase list, there are few false positives, and most can be detected while processing papers. This means our approach will improve over time.
-Both dictionaries -- abbreviations and phrases -- can be generated on the first harvest of dataset titles from {\dara}, and they can be required to update with every subsequent harvest. The delta update feature is not implemented in the paper, but the idea makes our approach even faster.
+A human expert has finally verified the phrase list, and false positives are added to the \todo{CL@BG: not sure what “the related list” is; try to phrase more clearly}related list.
+In the phrase list, there are few false positives, and most can be detected \todo{CL@BG: not sure why and how they can be detected “while processing papers”; try to clarify}while processing papers.
+This means our approach will improve over time.
+\todo{CL@BG: The following looks like future work, so please more it to that section.}Both dictionaries -- abbreviations and phrases -- can be generated on the first harvest of dataset titles from {\dara}, and they can be required to update with every subsequent harvest.
+The delta update feature is not implemented in the paper, but the idea makes our approach even faster.
 %newpart_29>
  
 \subsection{Step 2: Detecting dataset references and ranking matching datasets}
