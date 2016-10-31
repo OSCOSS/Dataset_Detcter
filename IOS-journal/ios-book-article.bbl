@@ -1,0 +1,202 @@
+\begin{thebibliography}{28}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Mathiak and Boland(2015)]{Mathiak2015}
+Brigitte Mathiak and Katarina Boland.
+\newblock Challenges in matching dataset citation strings to datasets in social
+  science.
+\newblock \emph{D-Lib Magazine}, 21\penalty0 (1/2), 2015.
+\newblock \doi{10.1045/january2015-mathiak}.
+
+\bibitem[Sarawagi(2007)]{Sarawagi2007}
+Sunita Sarawagi.
+\newblock Information extraction.
+\newblock \emph{Foundations and Trends in Information Retrieval in Databases},
+  1\penalty0 (3):\penalty0 261--377, 2007.
+\newblock \doi{10.1561/1900000003}.
+
+\bibitem[Lu et~al.(2012)Lu, Bangalore, Cormode, Hadjieleftheriou, and
+  Srivastava]{MeiyuLu2012}
+Meiyu Lu, Srinivas Bangalore, Graham Cormode, Marios Hadjieleftheriou, and
+  Divesh Srivastava.
+\newblock A dataset search engine for the research document corpus.
+\newblock In \emph{Data Engineering (ICDE), 2012 IEEE 28th International
+  Conference on}, pages 1237--1240. IEEE, 2012.
+\newblock \doi{10.1109/ICDE.2012.80}.
+
+\bibitem[Altman and King(2007)]{altman2007proposed}
+Micah Altman and Gary King.
+\newblock A proposed standard for the scholarly citation of quantitative data.
+\newblock \emph{D-Lib Magazine}, 13\penalty0 (3/4), 2007.
+\newblock \doi{10.1045/march2007-altman}.
+
+\bibitem[Nadeau and Sekine(2007)]{Nadeau2007}
+David Nadeau and Satoshi Sekine.
+\newblock A survey of named entity recognition and classification.
+\newblock \emph{Lingvisticae Investigationes}, 30\penalty0 (1):\penalty0 3--26,
+  2007.
+\newblock \doi{10.1075/li.30.1.03nad}.
+
+\bibitem[Pepler and O'Neil(2008)]{peplerpreservation}
+SJ~Pepler and K~O'Neil.
+\newblock Preservation intent and collection identifiers: Claddier project
+  report ii, 2008.
+\newblock URL \url{http://purl.org/net/epubs/work/43640}.
+
+\bibitem[Renear et~al.(2010)Renear, Sacchi, and Wickett]{renear2010definitions}
+Allen~H Renear, Simone Sacchi, and Karen~M Wickett.
+\newblock Definitions of dataset in the scientific and technical literature.
+\newblock \emph{Proceedings of the American Society for Information Science and
+  Technology}, 47\penalty0 (1):\penalty0 1--4, 2010.
+
+\bibitem[Salton and Buckley(1988)]{SALTON1988}
+Gerard Salton and Christopher Buckley.
+\newblock Term weighting approaches in automatic text retrieval.
+\newblock \emph{Information Processing and Management}, 24\penalty0
+  (5):\penalty0 513--523, 1988.
+
+\bibitem[Manning and Sch{\"u}tze(1999)]{ChristopherD1999}
+Christopher~D. Manning and Hinrich Sch{\"u}tze.
+\newblock \emph{Foundations of Statistical Natural Language Processing}.
+\newblock MIT Press, Cambridge, MA, USA, 1999.
+\newblock ISBN 0-262-13360-1.
+
+\bibitem[Joachims(1997)]{Joachims1997}
+Thorsten Joachims.
+\newblock A probabilistic analysis of the rocchio algorithm with tfidf for text
+  categorization.
+\newblock In \emph{ICML 97 Proceedings of the Fourteenth International
+  Conference on Machine Learning}, pages 143--151. Morgan Kaufmann, 1997.
+
+\bibitem[Powers(2011)]{Powers2011}
+David M~W Powers.
+\newblock \emph{Evaluation: From Precision, Recall and F-Measure to ROC,
+  Informedness, Markedness and Correlation}, volume~2.
+\newblock Journal of Machine Learning Technologies, 2011.
+
+\bibitem[Lee and Kim(2008)]{Lee2008}
+Sungjick Lee and Han-joon Kim.
+\newblock News keyword extraction for topic tracking.
+\newblock In \emph{Networked Computing and Advanced Information Management,
+  2008 (NCM 08)}, volume~2, pages 554--559. IEEE, 2008.
+
+\bibitem[Turney(2001)]{Turney2001}
+Peter~D. Turney.
+\newblock Mining the web for synonyms: {PMI-IR} versus {LSA} on {TOEFL}.
+\newblock In \emph{Proceedings of the 12th European Conference on Machine
+  Learning}, EMCL 01, pages 491--502. Springer-Verlag, 2001.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=645328.650004}.
+
+\bibitem[Singhal and Srivastava(2013)]{sighal2013}
+Ayush Singhal and Jaideep Srivastava.
+\newblock Data extract: Mining context from the web for dataset extraction.
+\newblock \emph{International Journal of Machine Learning and Computing},
+  3\penalty0 (2), 2013.
+\newblock \doi{10.7763/IJMLC.2013.V3.306}.
+
+\bibitem[Schaefer et~al.(2014)Schaefer, Hienert, and Gottron]{Schaefer2014}
+Christoph Schaefer, Daniel Hienert, and Thomas Gottron.
+\newblock Normalized relevance distance {-–} a stable metric for computing
+  semantic relatedness over reference corpora.
+\newblock In \emph{European Conference on Artificial Intelligence (ECAI)},
+  volume 263, pages 789--794, 2014.
+\newblock \doi{10.3233/978-1-61499-419-0-789}.
+
+\bibitem[Sahami and Heilman(2006)]{Sahami2006}
+Mehran Sahami and Timothy~D. Heilman.
+\newblock \emph{A Web-based Kernel Function for Measuring the Similarity of
+  Short Text Snippets}.
+\newblock WWW 06. ACM, 2006.
+\newblock \doi{10.1145/1135777.1135834}.
+
+\bibitem[Afzal et~al.(2010)Afzal, Maurer, Balke, and
+  Kulathuramaiyer]{Afzal2010}
+Muhammad~Tanvir Afzal, Hermann Maurer, Wolf-Tilo Balke, and Narayanan
+  Kulathuramaiyer.
+\newblock \emph{Rule Based Autonomous Citation Mining with Tierl}.
+\newblock Journal of Digital Information Management 8(3) 196-204, 2010.
+
+\bibitem[Zhang et~al.(2006)Zhang, Xu, Tang, and Li]{Zhang2006}
+Kuo Zhang, Hui Xu, Jie Tang, and Juanzi Li.
+\newblock Keyword extraction using support vector machine.
+\newblock In \emph{Proceedings of the 7th International Conference on Advances
+  in Web-Age Information Management}, WAIM 06, pages 85--96. Springer-Verlag,
+  2006.
+\newblock \doi{10.1007/11775300_8}.
+
+\bibitem[Han et~al.(2003)Han, Giles, Manavoglu, Zha, Zhang, and Fox]{Han2003}
+Hui Han, C.~L. Giles, E.~Manavoglu, Hongyuan Zha, Zhenyue Zhang, and E.~A. Fox.
+\newblock \emph{Automatic Document Metadata Extraction Using Support Vector
+  Machines}.
+\newblock ACM/IEEE 2003 Joint Conference on Digital Libraries, 2003.
+\newblock \doi{10.1109/JCDL.2003.1204842}.
+
+\bibitem[Kaur and Gupta(2010)]{Kaur2010}
+Jasmeen Kaur and Vishal Gupta.
+\newblock Effective approaches for extraction of keywords.
+\newblock \emph{IJCSI International Journal of Computer Science}, 7\penalty0
+  (6):\penalty0 144--148, 2010.
+
+\bibitem[Zhang et~al.(2008)Zhang, Wang, Liu, Wu, Liao, and Wang]{ZHANG2008}
+Chengzhi Zhang, Huilin Wang, Yao Liu, Dan Wu, Yi~Liao, and Bo~Wang.
+\newblock Automatic keyword extraction from documents using conditional random
+  fields.
+\newblock \emph{Computational and Information Systems}, 4\penalty0 (3), 2008.
+
+\bibitem[Cui and Chen(2010)]{Cui2010}
+Bin-Ge Cui and Xin Chen.
+\newblock An improved hidden markov model for literature metadata extraction.
+\newblock In \emph{6th International Conference on Intelligent Computing, ICIC
+  2010, Changsha, China}, 2010.
+\newblock \doi{10.1007/978-3-642-14922-1_26}.
+
+\bibitem[Kubala et~al.(1998)Kubala, Schwartz, Stone, and
+  Weischedel]{Kubala1998}
+Francis Kubala, Richard Schwartz, Rebecca Stone, and Ralph Weischedel.
+\newblock Named entity extraction from speech.
+\newblock In \emph{Proceedings of DARPA Broadcast News Transcription and
+  Understanding Workshop}, pages 287--292, 1998.
+
+\bibitem[Marinai(2009)]{Marinai2009}
+Simone Marinai.
+\newblock Metadata extraction from {PDF} papers for digital library ingest.
+\newblock In \emph{Document Analysis and Recognition, 2009. ICDAR 09. 10th
+  International Conference on}, pages 251--255. IEEE, 2009.
+\newblock \doi{10.1109/ICDAR.2009.232}.
+
+\bibitem[Kern et~al.(2012)Kern, Jack, Hristakeva, and Granitzer]{Kern2012}
+R.~Kern, K.~Jack, M.~Hristakeva, and M.~Granitzer.
+\newblock \emph{Teambeam-Meta-Data Extraction from Scientific Literature}.
+\newblock D-Lib Magazine 18(7/8), 1, 2012.
+\newblock \doi{10.1045/july2012-kern}.
+
+\bibitem[Boland et~al.(2012)Boland, Ritze, Eckert, and Mathiak]{Boland2012}
+Katarina Boland, Dominique Ritze, Kai Eckert, and Brigitte Mathiak.
+\newblock Identifying references to datasets in publications.
+\newblock In \emph{Proceedings of the Second International Conference on Theory
+  and Practice of Digital Libraries (TDPL 2012)}, pages 150--161. Springer,
+  2012.
+
+\bibitem[Vahdati et~al.(2015)Vahdati, Karim, Huang, and
+  Lange]{VahdatiEtAl:MappingResearchMetadata15}
+Sahar Vahdati, Farah Karim, Jyun-Yao Huang, and Christoph Lange.
+\newblock Mapping large scale research metadata to linked data: A performance
+  comparison of {HBase}, {CSV} and {XML}.
+\newblock In \emph{Metadata and Semantics Research}, Communications in Computer
+  and Information Science. Springer, 2015.
+\newblock \doi{10.1007/978-3-319-24129-6_23}.
+
+\bibitem[Ghavimi et~al.(2016)Ghavimi, Mayr, Vahdati, and
+  Lange]{ghavimi2016identifying}
+Behnam Ghavimi, Philipp Mayr, Sahar Vahdati, and Christoph Lange.
+\newblock Identifying and improving dataset references in social sciences
+  full{-–}texts.
+\newblock \emph{International Conference on Electronic Publishing ({ELPUB})},
+  G\"ottingen, Germany, 7-–9 June 2016.
+\newblock URL \url{http://arxiv.org/abs/1603.01774}.
+
+\end{thebibliography}
