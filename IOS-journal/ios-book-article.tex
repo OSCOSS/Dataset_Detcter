@@ -499,12 +499,13 @@ The extraction of abbreviations from dataset titles follows specific steps:
 	\item Words in German and English, as well as country names, are removed from the list. Words, fully or partially in capital letters will not be pruned by dictionary (first letter is not included).
 \end{enumerate}
 The titles fully in capital letters are converted to lowercase and tokenized.
-Afterwards, \todo{CL@BG: this phrase doesn't work.  Phrase, e.g., “they are pruned from the dictionary”, depending on what's correct.}the dictionary prunes them, and then their tokens without definition are added to the list.
+Afterwards, %\todo{CL@BG: this phrase doesn't work.  Phrase, e.g., “they are pruned from the dictionary”, depending on what's correct. \\ BG: fixed}
+their tokens without definition are added to the list.
 These algorithms and rules correctly detect, for example, \enquote{DAWN} in \enquote{Drug Abuse Warning Network (DAWN), 2008}.
 However, it sometimes detects abbreviations that are not references to datasets, such as \enquote{NYPD} in \enquote{New York Police Department (NYPD) Stop, Question, and Frisk Database, 2006}.
 As their identification is hard to automate, we assigned this task to a human expert. 
 %<newpart_28
-The expert reviews the list and then makes a false positive list -- such false positives will be removed from the dictionary automatically. \todo{CL@BG: I suppose the ratio is not always the same.  Say something like “In an experiment with 50 mda articles, the ratio of false positives was …”}The ratio of false positives is one out of three items of the list of abbreviations extracted automatically.
+The expert reviews the list and then makes a false positive list -- afterward, the list will be removed from the dictionary automatically. \todo{CL@BG: I suppose the ratio is not always the same.  Say something like “In an experiment with 50 mda articles, the ratio of false positives was …” . \\ BG: Here, our algorithm tried to extract abb. from  whole dataset titles in dara. After creation the list, we checked it and noticed that the ratio of fp items in the list is 1/3 of whole items.}The ratio of false positives is one out of three items of the list of abbreviations extracted automatically.
 This means that approximately two thirds of the abbreviations are derived correctly, and pruning the rest of the titles from the list requires little effort.
 %newpart_28>
 
@@ -516,11 +517,9 @@ The second is a category of phrases that includes \enquote{Survey of} or \enquot
 The last one is phrases that contain two tokens, where one of them is a dictionary item such as \enquote{Poll}, and the second token should not be a stop word such as \enquote{Freedom Poll}. 
 
 %<newpart_29
-A human expert has finally verified the phrase list, and false positives are added to the \todo{CL@BG: not sure what “the related list” is; try to phrase more clearly}related list.
-In the phrase list, there are few false positives, and most can be detected \todo{CL@BG: not sure why and how they can be detected “while processing papers”; try to clarify}while processing papers.
+A human expert has finally verified the phrase list, and false positives are added to the \todo{CL@BG: not sure what “the related list” is; try to phrase more clearly \\ BG: changed it!}list which contains false positive items.
+In the phrase list, there are few false positives, and most can be detected by human expert\todo{CL@BG: not sure why and how they can be detected “while processing papers”; try to clarify \\BG:human expert should decide about the output of the algorithm each time, So each time s/he faces any false output related to a Fp phrase can easily add the phrase to the Fp list so in this way he improves the algorithm}while our algorithm processes papers.
 This means our approach will improve over time.
-\todo{CL@BG: The following looks like future work, so please more it to that section.}Both dictionaries -- abbreviations and phrases -- can be generated on the first harvest of dataset titles from {\dara}, and they can be required to update with every subsequent harvest.
-The delta update feature is not implemented in the paper, but the idea makes our approach even faster.
 %newpart_29>
  
 \subsection{Step 2: Detecting dataset references and ranking matching datasets}
@@ -530,7 +529,8 @@ The text is split into sentences, and each of these features is searched for in 
 %<newpart_30
 Any detection of the special features in a text means a dataset reference in the text exists.
 %newpart_30>
-A sentence is split into smaller pieces if a feature repeats inside the sentence more than once, since such a sentence may contain references to \todo{CL@BG: Could such a repetition also mean that a sentence refers to different \emph{datasets}?  If so, say it!}different versions of a dataset.
+A sentence is split into smaller pieces if a feature repeats inside the sentence more than once, since such a sentence may contain references to %\todo{CL@BG: Could such a repetition also mean that a sentence refers to different \emph{datasets}?\textsf{}  If so, say it! \\BG:here is not the case but thank you for mentioning it.}
+different versions of a dataset.
 Any phrase identified in this step might correspond to more than one dataset title.
 
 For example, \enquote{ALLBUS} is an abbreviation for a famous social science dataset, of which more than 150 versions are registered in {\dara}.
@@ -554,7 +554,8 @@ It means that our approach tries to identify the most similar dataset title in t
 
 For each reference detected in the full text of a paper we compute tf-idf over the full text and the list of dataset titles in {\dara}, which contain a specific characteristic feature (abbreviation or phrase) detected in the reference.
 %<newpart_33
-\todo{CL@BG: If you actually mean “As we observed that it leads to many false positives”, then phrase it like this (it's clearer this way).}As it leads to many false positives based on our observation, comparing datasets' titles with a sentence in a paper, and, afterwards, ranking titles based on their score was not useful.
+%\todo{CL@BG: If you actually mean “As we observed that it leads to many false positives”, then phrase it like this (it's clearer this way).}
+As we observed that it leads to many false positives, comparing all datasets' titles with a sentence in a paper, and, afterwards, ranking titles based on their score was not useful.
 We solved these problems by involving special features.
 
 Our approach considers only the list of titles that contain the special feature detected in the reference, since they are related titles and the rest of the titles in the registry are irrelevant.
@@ -664,17 +665,22 @@ Since a dataset may occur on its own or be integrated together with other studie
 %newpart_39>
 an item can have more than one true match (e.g. Allbus 2010 in ALLBUScompact 1980--2012).
 In this step, an item will be labeled as a false negative if none of the suggestions for the item in the gold standard appears in the output of our algorithm.
-The numbers of false positives and false negatives are equal in this step, since a missing corresponding match means the \todo{CL@BG: rather: “existence”?}possession of false positives.
+The numbers of false positives and false negatives are equal in this step, since a missing corresponding match means the %\todo{CL@BG: rather: “existence”? \\BG: fixed}
+existence of false positives.
 True positives, false positives, and false negatives are counted and then used to compute precision and recall.
 
 %<newpart_40 
-The third row in Table~\ref{table:eval-results} refers to the accuracy of two phases of the algorithm as one unit in order to find how well it works generally, and does not consider one specific \todo{CL@BG: Instead of “section”, do you mean “phase”?}section (i.e. identification or matching).
+The third row in Table~\ref{table:eval-results} refers to the accuracy of two phases of the algorithm as one unit in order to find how well it works generally, and does not consider one specific 
+%\todo{CL@BG: Instead of “section”, do you mean “phase”? BG: fixed}
+phase (i.e. identification or matching).
 In order to satisfy this purpose, we repeated the second phase of the evaluation, but this time included all data from the first step and not only the true positives.
 If an item is identified as false positive in the first section of evaluation, it is labeled as such in the evaluation as well.   
  
 \subsection{Evaluation Results}
 \label{sec:evre}
-The algorithm gains high precision in both the detection and matching phases, which means it has a much \todo{CL@BG: smaller than what?  When using comparatives you always need to say what you are comparing to.}smaller number of wrong predictions.
+The algorithm gains high precision in both the detection and matching phases, which means it has a
+%\todo{CL@BG: smaller than what?  When using comparatives you always need to say what you are comparing to. BG: fixed}
+small number of wrong predictions.
 It also covers the majority of relevant data, which leads to high recall.
 %newpart_40>
 The results of our evaluations are shown in Table~\ref{table:eval-results}.
@@ -729,7 +735,10 @@ taking into account further datasets, which are not registered in {\dara}.
 One promising further source of datasets is OpenAIRE, the Open Access Infrastructure for Research in Europe, which so far covers more than 16,000 datasets from all domains inluding social science but is rapidly growing thanks to the increasing attention paid to open access publishing in the EU.
 The OpenAIRE metadata can be consumed via OAI-PMH, or, in an even more straightforward way, as linked data (cf.\ our previous work, \citet{VahdatiEtAl:MappingResearchMetadata15}).
 
-\todo{CL@BG: This sentence is not well connected to the rest of the conclusion.  What problem does this solution address?  I guess something like reuse of the data, subsequent processing, etc.}For each dataset reference identified in a paper, we will model the precise position of that reference, and the algorithm's confidence in each possible matching dataset.
+%\todo{CL@BG: The following looks like future work, so please more it to that section. \\ BG: it is moved to the section and also edited a bit. But I prefer to not have it in the paper since it is not very important point.}Another task for future is about reducing harvesting time from repositories. Both abbreviations and phrases dictionaries can be generated on the first harvest of dataset titles from {\dara}, and they can be required to update with every subsequent harvest. The delta update feature is not implemented in the paper, but the idea makes our approach even faster.
+
+%\todo{CL@BG: This sentence is not well connected to the rest of the conclusion.  What problem does this solution address?  I guess something like reuse of the data, subsequent processing, etc. BG: I noticed it is an old point and currently, it is implemented in our approach. }For each dataset reference identified in a paper, we will model the precise position of that reference, and the algorithm's confidence in each possible matching dataset.
+
 In a mid-term perspective, solutions for identifying dataset references in papers that have been published already could be made redundant by a wider adoption of standards for properly citing datasets while authoring papers, and corresponding tool support for authors.
 
 \paragraph{Acknowledgements}
