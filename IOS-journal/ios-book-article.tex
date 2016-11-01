@@ -525,21 +525,26 @@ The delta update feature is not implemented in the paper, but the idea makes our
  
 \subsection{Step 2: Detecting dataset references and ranking matching datasets}
 \label{sec:detecting-ranking}
-Next, the characteristic features (abbreviations or phrases) of dataset titles are detected in the full text of a given paper. A paper is split into sentences, and each of these features is searched for in each sentence. 
+Next, the characteristic features (abbreviations or phrases) of dataset titles are detected in the full text of a given article.
+The text is split into sentences, and each of these features is searched for in each sentence. 
 %<newpart_30
 Any detection of the special features in a text means a dataset reference in the text exists.
 %newpart_30>
-A sentence is split into smaller pieces if a feature repeats inside the sentence more than once, since such a sentence may contain references to different versions of a dataset. Any phrase identified in this step might correspond to more than one dataset title.
+A sentence is split into smaller pieces if a feature repeats inside the sentence more than once, since such a sentence may contain references to \todo{CL@BG: Could such a repetition also mean that a sentence refers to different \emph{datasets}?  If so, say it!}different versions of a dataset.
+Any phrase identified in this step might correspond to more than one dataset title.
 
-For example, \enquote{ALLBUS}\footnote{Allgemeine Bev\"olkerungsumfrage der Sozialwissenschaften = German General Social Survey} is an abbreviation for a famous social science dataset, of which more than 150 versions are registered in {\dara}. These versions have different titles and, for instance, the titles differ from year of study such as \enquote{German General
+For example, \enquote{ALLBUS} is an abbreviation for a famous social science dataset, of which more than 150 versions are registered in {\dara}.
+These versions have different titles and, for instance, the titles differ from year of study such as \enquote{German General
 Social Survey -- ALLBUS 1998}, 
 %<newpart_31
 \enquote{German General Social Survey -- ALLBUS 2010}, and \enquote{German General Social Survey (ALLBUS) -- Cumulation 1980--2012}.
-In another example, two titles that both contain the \enquote{PIAAC} abbreviation are \enquote{Programme for the International Assessment of Adult Competencies (PIAAC), Cyprus} and \enquote{Programme for the International Assessment of Adult Competencies (PIAAC), Germany}, i.e., two datasets that differ in their geographic coverage. The last example is the two versions of \enquote{EVS} dataset, 
+In another example, two titles that both contain the \enquote{PIAAC} abbreviation are \enquote{Programme for the International Assessment of Adult Competencies (PIAAC), Cyprus} and \enquote{Programme for the International Assessment of Adult Competencies (PIAAC), Germany}, i.e., two datasets that differ in their geographic coverage.
+The last example is given by two versions of the \enquote{EVS} dataset, 
 %newpart_31>
 \enquote{EVS -- European Values Study 1999 -- Italy} and \enquote{European Values Study 2008: Azerbaijan (EVS 2008) }, which differ in both their year of study and geographic coverage.
 
-We solve the problem of identifying the most likely datasets referenced in the paper by ranking their titles with a combination of tf-idf and cosine similarity. In this ranking algorithm, we apply the definitions of Section~\ref{sec:preliminaries}, where the query is a candidate dataset reference found in the paper and the documents are the titles of all datasets in {\dara}. 
+We solve the problem of identifying the most likely datasets referenced in the paper by ranking their titles with a combination of tf-idf and cosine similarity.
+In this ranking algorithm, we apply the definitions of Section~\ref{sec:preliminaries}, where the query is a candidate dataset reference found in the paper and the documents are the titles of all datasets in {\dara}. 
 %<newpart_32
 It means that our approach tries to identify the most similar dataset title in the {\dara} repository with a sentence that contains any of the special features where the sentence belongs to the analyzed paper.
 %newpart_32>
@@ -549,12 +554,19 @@ It means that our approach tries to identify the most similar dataset title in t
 
 For each reference detected in the full text of a paper we compute tf-idf over the full text and the list of dataset titles in {\dara}, which contain a specific characteristic feature (abbreviation or phrase) detected in the reference.
 %<newpart_33
-As it leads to many false positives based on our observation, comparing datasets' titles with a sentence in a paper, and, afterwards, ranking titles based on their score was not useful. Therefore we solved the problems by involving special features.
+\todo{CL@BG: If you actually mean “As we observed that it leads to many false positives”, then phrase it like this (it's clearer this way).}As it leads to many false positives based on our observation, comparing datasets' titles with a sentence in a paper, and, afterwards, ranking titles based on their score was not useful.
+We solved these problems by involving special features.
 
-Our approach considers only the list of titles that contain the special feature detected in the reference, since they are related titles and the rest of the titles in the registry are irrelevant. We limit our options in order to improve the accuracy of our approach. We decided to use the list of titles and whole sentences of the paper, and not only the reference sentence, since this consideration enables us to have a bigger corpus of documents and to reach a better weight for each word. The utilization of titles that contain the special features reduces the weight score of the feature and raises the weight scores of other terms in the reference sentence. It therefore has a positive impact on accuracy.
+Our approach considers only the list of titles that contain the special feature detected in the reference, since they are related titles and the rest of the titles in the registry are irrelevant.
+We limit our options in order to improve the accuracy of our approach.
+We decided to use the list of titles and whole sentences of the paper, and not only the reference sentence, since this consideration enables us to have a bigger corpus of documents and to obtain a better weight for each word.
+The utilization of titles that contain special features reduces the weight score of the feature and raises the weight scores of other terms in the reference sentence.
+It therefore has a positive impact on accuracy.
 %newpart_33>
 
-While a corpus of papers is typically huge, the size of all {\dara} dataset titles and the size of the full text of an average paper are less than 4 MB each. Given this limited corpus size, our algorithm may detect some false keywords in a query, thus adversely affecting the result. For instance, Figure ~\ref{fig:similarity-example} illustrates a toy example of this problem.
+While a corpus of papers is typically huge, the size of all {\dara} dataset titles and the size of the full text of an average paper are less than 4 MB each.
+Given this limited corpus size, our algorithm may detect some false keywords in a query, thus adversely affecting the result.
+Figure~\ref{fig:similarity-example} illustrates a toy example of this problem.
 
 \begin{figure}[h]
 	\centering
@@ -565,10 +577,14 @@ While a corpus of papers is typically huge, the size of all {\dara} dataset titl
 
 In paper~1, \enquote{2014} repeats many times, whereas the word \enquote{study} occurs only once, which means the tf-idf assigns a high weight to \enquote{study} and a low weight to \enquote{2014}. When the query string is \enquote{study allbus 2014}, cosine similarity gives a higher rank to \enquote{Study Allbus 2000} than \enquote{Allbus 2014}.
 
-To address this problem in a better way, our implementation employs some heuristics. This includes an algorithm that improves dataset rankings based on matching years in the candidate strings in both the paper and the datasets' titles. In the example, these heuristics improve the ranking of the \enquote{Allbus 2014} dataset when analyzing paper 1. 
+To address this problem in a better way, our implementation employs some heuristics.
+These include an algorithm that improves dataset rankings based on matching years in the candidate strings in both the paper and the datasets' titles.
+In the example, these heuristics improve the ranking of the \enquote{Allbus 2014} dataset when analyzing paper 1. 
 
 %<newpart_34
-Figure~\ref{fig:Overview_of_approach} shows an overview of our approach. Two steps labeled with \enquote{M} means they need human interactions. \enquote{M1} is about the preparation of lists of special features and \enquote{M2} is about making final decisions between candidates suggested by our approach.
+Figure~\ref{fig:Overview_of_approach} shows an overview of our approach.
+The two steps labeled with \enquote{M} require human interaction.
+\enquote{M1} is about the preparation of lists of special features and \enquote{M2} is about making final decisions between candidates suggested by our approach.
 %newpart_34>
 
 \begin{figure}[h]
@@ -582,12 +598,17 @@ Figure~\ref{fig:Overview_of_approach} shows an overview of our approach. Two ste
 \label{sec:expos-results-reus}	
 The application of our approach supports two workflows through which an expert user can choose the best matches for the datasets cited by a paper from a set of candidates identified automatically. The sizes of these sets have been chosen according to the observations we made during the evaluation of the automated step, as explained in Section~\ref{sec:eval}.
 
-One workflow works per reference: for each reference, five titles of candidate datasets are suggested to the user. While this workflow best supports the user in getting every reference right, it can be time consuming. Each paper in our corpus contains 45 dataset references on average, but these \emph{references} only belong to an average number of 3 distinct \emph{datasets}.
+One workflow works per reference: for each reference, five titles of candidate datasets are suggested to the user.
+While this workflow best supports the user in getting every reference right, it can be time consuming.
+Each paper in our corpus contains 45 dataset references on average, but these \emph{references} only belong to an average number of 3 distinct \emph{datasets}.
 
-The second alternative workflow takes advantage of this observation. It works per characteristic feature and suggests 6 titles of candidate datasets to the user for each feature (which may be common to multiple individual references in the paper). 
+The second alternative workflow takes advantage of this observation.
+It works per characteristic feature and suggests 6 titles of candidate datasets to the user for each feature (which may be common to multiple individual references in the paper). 
 
 %<newpart_35
-Finally, an RDF graph which contains information about links identified between papers and datasets will be exported as an output. To enable even further analysis of the links identified between papers and datasets, we export an RDF graph containing all candidate datasets identified in the latter workflow for each paper. For each candidate dataset, we represent the essential metadata of the dataset in RDF: DOI and title.
+Finally, an RDF graph containing information about links identified between papers and datasets is exported as an output.
+To enable even further analysis of the links identified between papers and datasets, we export an RDF graph containing all candidate datasets identified in the latter workflow for each paper.
+For each candidate dataset, we represent the essential metadata of the dataset in RDF: DOI and title.
 
 %newpart_35>
 
