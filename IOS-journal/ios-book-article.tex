@@ -615,12 +615,13 @@ For each candidate dataset, we represent the essential metadata of the dataset i
 \section{Evaluation}
 \label{sec:eval}
  \label{sec:eval}
-The calculation of evaluation metrics such as precision, recall, and F-measure require a ground truth. We therefore selected a test corpus of 15 random papers from the 2013 and 2014 issues of the mda journal (see Section~\ref{sec:mda}) -- 6 in English and 9 in German. %todo: link to the mda dataset -solved
+ The computation of evaluation metrics such as precision, recall, and F-measure require a ground truth.
+ We therefore selected a test corpus of 15 random papers from the 2013 and 2014 issues of the mda journal (see Section~\ref{sec:mda}) -- 6 in English and 9 in German.
 %<newpart_36
-This test corpus includes 25 datasets without considering different versions of each dataset (see more information about the test corpus in table~\ref{table:info-testcorpuse}).
+This test corpus includes 25 datasets without considering different versions of each dataset (see more information about the test corpus in Table~\ref{table:info-testcorpuse}).
 %newpart_36>
 
-A trained assessor from the InFoliS II project at GESIS reviewed all papers one by one and identified all references to datasets (see second row in table~\ref{table:info-testcorpuse}). Afterwards, the assessor attempted to discover at least one correct match in {\dara} for each detected reference, resulting in a lists of correct datasets per paper. These lists were used as a gold standard to compare with the results of our algorithm in order to examine differences and similarities.
+A trained assessor from the InFoliS\footnote{Integration von Forschungsdaten und Literatur in den Sozialwissenschaften = integration of research data and literature in the social sciences} II project at GESIS reviewed all papers one by one and identified all references to datasets (see second row in table~\ref{table:info-testcorpuse}). Afterwards, the assessor attempted to discover at least one correct match in {\dara} for each detected reference, resulting in a lists of correct datasets per paper. These lists were used as a gold standard to compare with the results of our algorithm in order to examine differences and similarities.
 
 %<newpart_37
 \begin{table}[h!]
