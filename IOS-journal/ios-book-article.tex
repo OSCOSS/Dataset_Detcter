@@ -621,7 +621,9 @@ For each candidate dataset, we represent the essential metadata of the dataset i
 This test corpus includes 25 datasets without considering different versions of each dataset (see more information about the test corpus in Table~\ref{table:info-testcorpuse}).
 %newpart_36>
 
-A trained assessor from the InFoliS\footnote{Integration von Forschungsdaten und Literatur in den Sozialwissenschaften = integration of research data and literature in the social sciences} II project at GESIS reviewed all papers one by one and identified all references to datasets (see second row in table~\ref{table:info-testcorpuse}). Afterwards, the assessor attempted to discover at least one correct match in {\dara} for each detected reference, resulting in a lists of correct datasets per paper. These lists were used as a gold standard to compare with the results of our algorithm in order to examine differences and similarities.
+A trained assessor from the InFoliS\footnote{Integration von Forschungsdaten und Literatur in den Sozialwissenschaften = integration of research data and literature in the social sciences} II project at GESIS reviewed all papers one by one and identified all references to datasets (see second row in table~\ref{table:info-testcorpuse}).
+Afterwards, the assessor attempted to discover at least one correct match in {\dara} for each detected reference, resulting in a list of correct datasets per paper.
+These lists were used as a gold standard to compare with the results of our algorithm to examine differences and similarities.
 
 %<newpart_37
 \begin{table}[h!]
@@ -643,27 +645,39 @@ A trained assessor from the InFoliS\footnote{Integration von Forschungsdaten und
 
  
 \subsection{Evaluation Process and Description}
-We decided to divide our evaluation into two steps. The first step focuses on identifying dataset references in papers. Here, accuracy depends on the quality of the generated dictionaries of abbreviations and special phrases 
+We decided to divide our evaluation into two steps.
+The first step focuses on identifying dataset references in papers.
+Here, accuracy depends on the quality of the generated dictionaries of abbreviations and special phrases 
 %<newpart_38
-(the accuracy metrics used in the paper are explained in \ref{sec:precision-recall}).
+(the accuracy metrics used in the paper are explained in Section~\ref{sec:precision-recall}).
 %newpart_38>
  
-Our algorithm searches these characteristic features (as explained in \ref{sec:detecting-ranking}) in the full texts; detection of any of these features may lead to the detection of a dataset reference (see row \enquote{Detection} in table~\ref{table:eval-results}). In this phase, if a characteristic feature is identified both in a paper and in the gold standard, it will be labeled as a true positive. If the feature is in the gold standard but not in our output, it will be labeled as a false negative, or as a false positive in the opposite case.
+Our algorithm searches these characteristic features (as explained in Section~\ref{sec:detecting-ranking}) in the full texts; detection of any of these features may lead to the detection of a dataset reference (see row \enquote{Detection} in Table~\ref{table:eval-results}).
+In this phase, if a characteristic feature is identified both in a paper and in the gold standard, it will be labeled as a true positive.
+If the feature is in the gold standard but not in our output, it will be labeled as a false negative, or as a false positive in the opposite case.
  
-The second step of the evaluation is about the accuracy of matching detected references in papers with datasets titles in the {\dara} registry. This evaluation phase considers only true positives from the previous step. The lists of suggested matches for an item, both from the gold standard and from our output, are compared in this step. 
+The second step of the evaluation is about the accuracy of matching detected references in papers with datasets titles in the {\dara} registry.
+This evaluation phase considers only true positives from the previous step.
+The lists of suggested matches for an item, both from the gold standard and from our output, are compared in this step. 
 %<newpart_39
 Since a dataset may occur on its own or be integrated together with other studies,
 %newpart_39>
-an item can have more than one true match (e.g. Allbus 2010 in ALLBUScompact 1980--2012). In this step, an item will be labeled as a false negative if none of the suggestions for the item in the gold standard appears in the output of our algorithm. The number of false positives and false negatives are equal in this step, since a missing corresponding match means the possession of false positives. True positives, false positives, and false negatives are counted and then used to compute precision and recall.
+an item can have more than one true match (e.g. Allbus 2010 in ALLBUScompact 1980--2012).
+In this step, an item will be labeled as a false negative if none of the suggestions for the item in the gold standard appears in the output of our algorithm.
+The numbers of false positives and false negatives are equal in this step, since a missing corresponding match means the \todo{CL@BG: rather: “existence”?}possession of false positives.
+True positives, false positives, and false negatives are counted and then used to compute precision and recall.
 
 %<newpart_40 
-The third row in table~\ref{table:eval-results} refers to the accuracy of two phases of the algorithm as one unit in order to find how well it works generally, and does not consider one specific section (i.e. identification or matching). In order to satisfy this purpose, we repeated the second phase of evaluation, but this time included all data from the first step and not only the true positives. If an item is identified as false positive in the first section of evaluation, it is labeled as such in the evaluation as well.   
+The third row in Table~\ref{table:eval-results} refers to the accuracy of two phases of the algorithm as one unit in order to find how well it works generally, and does not consider one specific \todo{CL@BG: Instead of “section”, do you mean “phase”?}section (i.e. identification or matching).
+In order to satisfy this purpose, we repeated the second phase of the evaluation, but this time included all data from the first step and not only the true positives.
+If an item is identified as false positive in the first section of evaluation, it is labeled as such in the evaluation as well.   
  
 \subsection{Evaluation Results}
 \label{sec:evre}
-The algorithm gains high precision in both the detection and matching phases, which means it has a much smaller number of wrong predictions. It also covers the majority of relevant data, which leads to high recall.
+The algorithm gains high precision in both the detection and matching phases, which means it has a much \todo{CL@BG: smaller than what?  When using comparatives you always need to say what you are comparing to.}smaller number of wrong predictions.
+It also covers the majority of relevant data, which leads to high recall.
 %newpart_40>
-The results of evaluations that we calculated are shown in table~\ref{table:eval-results}.
+The results of our evaluations are shown in Table~\ref{table:eval-results}.
  
 \begin{table}[h!]
  	\renewcommand{\arraystretch}{2}
@@ -679,15 +693,19 @@ The results of evaluations that we calculated are shown in table~\ref{table:eval
  		Detection+Matching & 0.76 & 0.64 & 0.7
  		\LL
  	\end{tabular}
- 	\caption{Results of the Evaluation }
+ 	\caption{Results of the Evaluations}
  	\label{table:eval-results}
 \end{table}
  
-Our observations in the second evaluation step confirm the choices of set size in the interactive disambiguation workflows. In the per-reference matching workflow (as mentioned in \ref{sec:expos-results-reus}), a ranked list of dataset titles is generated for each of the 45 dataset references (on average in our corpus) in a paper by employing a combination of cosine similarity and tf-idf. 
+Our observations in the second evaluation step confirm the choices of set size in the interactive disambiguation workflows.
+In the per-reference matching workflow (as mentioned in Section~\ref{sec:expos-results-reus}), a ranked list of dataset titles is generated for each of the 45 dataset references (on average in our corpus) in a paper by employing a combination of cosine similarity and tf-idf. 
  
-Our observation shows that the correct match among {\dara} dataset titles for each reference detected is in the top 5 items of the ranked list generated by combining cosine similarity and tf-idf for that reference. Therefore, we adjusted our implementation to only keep the top 5 items of each candidate list for further analysis, such as an expert user's interactive selection of \emph{the} right dataset for a reference.
+Our observation shows that the correct match among {\dara} dataset titles for each reference detected is in the top 5 items of the ranked list generated by combining cosine similarity and tf-idf for that reference.
+Therefore, we adjusted our implementation to only keep the top 5 items of each candidate list for further analysis, such as an expert user's interactive selection of \emph{the} right dataset for a reference.
  
-The per-feature matching workflow (as mentioned in \ref{sec:expos-results-reus}) categorizes references by characteristic features. For example, in a paper that contains exactly three detected characteristic features -- \enquote{ALLBUS}, \enquote{PIAAC}, and \enquote{exit poll} -- each dataset reference relates to one of these three features. If we obtain for each such reference the list of top 5 matches as in the per-reference workflow and group these lists per category, we can count the number of occurrences of each dataset title per category. 
+The per-feature matching workflow (as mentioned in Section~\ref{sec:expos-results-reus}) categorizes references by characteristic features.
+For example, in a paper that contains exactly three detected characteristic features -- \enquote{ALLBUS}, \enquote{PIAAC}, and \enquote{exit poll} -- each dataset reference relates to one of these three features.
+If we obtain for each such reference the list of top 5 matches as in the per-reference workflow and group these lists per category, we can count the number of occurrences of each dataset title per category. 
  
 Looking at the dataset titles per category sorted by ascending number of occurrences, we observed that the correct matches for the datasets' references using a specific characteristic feature were always among the top 6 items. %todo: BG extend this part a bit
  
