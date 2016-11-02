@@ -394,22 +394,20 @@ It derives patterns of phrases that contain dataset references iteratively by us
 \label{sec:data}
 This section describes the three types of data sources that we use. We use full-text articles from the mda journal to evaluate the performance of our dataset linking approach, and metadata of datasets in the {\dara} dataset registry to identify datasets. 
 %<newpart_22
-Finally, we use metadata of the articles registered in the SSOAR repository\footnote{\url{http://www.ssoar.info}} for exporting the dataset links suggested for a article in the JSON exchange format.
+Finally, we use metadata of the articles registered in the SSOAR repository\footnote{\url{http://www.ssoar.info}} for exporting the dataset links suggested for an article in the JSON exchange format.
 %newpart_22>
  
  \subsection{Articles from mda journal}\label{sec:mda}
  
- Methods, data, analyses (mda\footnote{\url{http://www.gesis.org/en/publications/journals/mda/}}) is an open access journal that addresses questions important to quantitative methods, with a special emphasis on survey methodology.
+ Methods, data, analyses (mda\footnote{\url{http://www.gesis.org/en/services/publications/mda/}}) is an open access journal that addresses questions important to quantitative methods, with a special emphasis on survey methodology.
  It has published research on all aspects of science of surveys, be it on data collection, measurement, or data analysis and statistics.
- %All content of mda is freely available and can be distributed without any restrictions, ensuring the free flow of information that is crucial for the scientific progress.
  For our research we used a random sample of full-text articles from mda as our test corpus.
+ 
   \subsection{The {\dara} dataset registry}
   
   \subsubsection{{\dara} overview}
   Our proposed approach aims at social sciences datasets since it uses registered datasets in {\dara} registry\footnote{\url{http://www.da-ra.de}}.
   The registry offers a DOI registration service for datasets in the social sciences and economics. 
-%<newpart_23
-%In addition, the selected articles used as evaluation data were from mda, which focuses mostly on survey methodology in social science research areas. 
   Different institutions have collected research data in the social sciences and made them available.
   Although the accessibility of such datasets for further analyses and other reuse is important, information on where to find and how to access them is often missing in articles.
   
@@ -451,8 +449,7 @@ It covers scholarly contributions related to different social science fields suc
 Today, approx.\ 38,000 full-texts are available.
 This repository provides some metadata such as abstract and keywords for each article in both German and English.
 It is assumed as a secondary publisher which publishes pre-prints, post-prints, and original publishers' versions of scholarly articles but it also lets authors publish their work for the first time.
-
-Furthermore, the metadata of the articles inside the repository can be harvested easily.
+Furthermore, the metadata of the articles inside the repository can be harvested.
 SSOAR assigns a URN (Uniform Resource Name) as a persistent identifier (PID) to each full-text to establish a stable link to the article.
 If the full-text is the pre-print or post-print version of a published work, the repository uses the DOI of the article.
 %newpart_25>  
