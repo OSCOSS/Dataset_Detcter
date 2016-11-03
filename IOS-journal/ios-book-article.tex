@@ -27,7 +27,7 @@
 
 \begin{frontmatter}
 %\title{A Semi-Automatic Approach for Linking Dataset References in Social Sciences Full Texts} 
-\title{A Semi-Automatic Approach for Detecting Dataset References in Social Science Texts} %todo check the title
+\title{A Semi-Automatic Approach for Detecting Dataset References in Social Science Texts}
 
 \author[A,B]{\fnms{Behnam} \snm{Ghavimi}
 \thanks{E-mail: behnam.ghavimi@gesis.org}},
@@ -121,7 +121,7 @@ The evaluation is then presented in section~\ref{sec:eval}.
 Section~\ref{sec:future} concludes with an outlook to future work. 
  
 \subsection{Problem Statement}
-Whereas a lot of effort has been spent on information extraction in general~\citep{Sarawagi2007}, few attempts have focused on the specific use case of dataset reference extraction (see, e.g., \citep{MeiyuLu2012}). \todo{SV@BG:effort on information extraction and dataset extraction is not comparable, one is a research field, the other is a usecase, rephrase it.\\ CL: I made the first step: not yet perfect, but better.}
+Whereas a lot of effort has been spent on information extraction task in general~\citep{Sarawagi2007}, few attempts have focused on the specific use case of dataset reference extraction (see, e.g., \citep{MeiyuLu2012}). %\todo{SV@BG:effort on information extraction and dataset extraction is not comparable, one is a research field, the other is a usecase, rephrase it.\\ CL: I made the first step: not yet perfect, but better. \\BG: As far as I understood, information extraction can also be assumed as the task and afterwards, the comparison should be correct. So add "task" after it to clarify it.}
 When referring to the same dataset, different authors often use different names or keywords.
 Although there are proposed standards for dataset citation in full-texts, researchers still ignore or neglect such standards (see, e.g., \cite{altman2007proposed}).
 %One of the important standards is proposed by~\citeauthor{altman2007proposed} for dataset citation~\citeyearpar{altman2007proposed}.
@@ -354,7 +354,7 @@ Citation mining can usually be handled by three subtasks.
 First, literature references should be extracted from the bibliography section of a document, and afterwards, metadata extraction should be applied on the references extracted in the first phase.
 Finally, each reference should be linked to the cited article by using the metadata extracted in the second step~\cite{Afzal2010}.
 
-Dataset and literature citation mining from documents cannot generally be compared in the detecting phase, since dataset mining needs to be applied to the entire article, but literature mining must only consider the bibliography of the article, \todo{CL@all: I added this new point; please check.}unless the article employs a “full” citation style.
+Dataset and literature citation mining from documents cannot generally be compared in the detecting phase, since dataset mining needs to be applied to the entire article, but literature mining mostly consider only the bibliography of the article. %\todo{CL@all: I added this new point; please check. \\ BG: it is a very tricky point since even citations to papers can occur in other parts (such as footnote) than only bibliography. So I preferred to remove it and edited the sentence.}%unless the article employs a “full” citation style.
 Unlike the detection phase, they can mostly use the same strategy for the matching phase. 
 
 Afzal et al.\ proposed a rule-based citation mining technique~\cite{Afzal2010}.
@@ -510,9 +510,10 @@ The second is a category of phrases that includes \enquote{Survey of} or \enquot
 The last one is phrases that contain two tokens, where one of them is a dictionary item such as \enquote{Poll}, and the second token should not be a stop word such as \enquote{Freedom Poll}. 
 
 %<newpart_29
-A human expert has finally verified the phrase list, and false positives are added to the \todo{CL@BG: not sure what “the related list” is; try to phrase more clearly \\ BG: changed it!}list which contains false positive items.
-In the phrase list, there are few false positives, and most can be detected by human expert\todo{CL@BG: not sure why and how they can be detected “while processing articles”; try to clarify \\BG:human expert should decide about the output of the algorithm each time, So each time s/he faces any false output related to a Fp phrase can easily add the phrase to the Fp list so in this way he improves the algorithm}while our algorithm processes articles.
-This means our approach will improve over time.
+A human expert has finally verified the phrase list, and false positives are added to the %\todo{CL@BG: not sure what “the related list” is; try to phrase more clearly \\ BG: changed it!}
+list which contains false positive items.
+In the phrase list, there are few false positives, and most can be detected by human expert\todo{CL@BG: not sure why and how they can be detected “while processing articles”; try to clarify \\BG: I add some more sentences to clarify.}while our algorithm processes articles.
+Human expert should decide about the output of the algorithm each time. So each time a false output generated by a False phrase occurs, the expert can easily add the phrase to the False positive list. This means our approach will improve over time.
 %newpart_29>
  
 \subsection{Step 2: Detecting dataset references and ranking matching datasets}
@@ -706,7 +707,7 @@ The per-feature matching workflow (as mentioned in Section~\ref{sec:expos-result
 For example, in a article that contains exactly three detected characteristic features -- \enquote{ALLBUS}, \enquote{PIAAC}, and \enquote{exit poll} -- each dataset reference relates to one of these three features.
 If we obtain for each such reference the list of top 5 matches as in the per-reference workflow and group these lists per category, we can count the number of occurrences of each dataset title per category. 
  
-Looking at the dataset titles per category sorted by ascending number of occurrences, we observed that the correct matches for the datasets' references using a specific characteristic feature were always among the top 6 items. %todo: BG extend this part a bit
+Looking at the dataset titles per category sorted by ascending number of occurrences, we observed that the correct matches for the datasets' references using a specific characteristic feature were always among the top 6 items. \todo{@BG extend this part a bit}
  
 \section{Conclusion and future work}
 \label{sec:future}
@@ -714,7 +715,9 @@ We have presented an approach for identifying references to datasets in social s
 It works in real time and does not require any training dataset.
 There are just some manual tasks in the approach such as initially cleaning the dictionary of abbreviations, or making final decisions among multiple candidates suggested for the datasets cited by the given article.
 We have achieved an F-measure of 0.84 for the detection task and an F-measure of 0.83 for finding correct matches for each reference in the gold standard.  
-Although the {\dara} registry is large and it is growing \todo{CL@BG: provide a figure for \emph{how} fast it is growing}fast, there are still many datasets that have not yet been registered there. 
+Although the {\dara} registry is large and it is growing
+\todo{CL@BG: provide a figure for \emph{how} fast it is growing BG: I removed "fast" temporarily to solve the problem. @philip: do you have any information about it?}%fast
+, there are still many datasets that have not yet been registered there. 
 This circumstance will adversely affect the task of detecting references to datasets in articles and matching them to items in {\dara}.
 After the evaluation, our observations reveal that {\dara} could cover only 64 percent of datasets in our test corpus. 
 
