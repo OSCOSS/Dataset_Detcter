@@ -544,13 +544,13 @@ It means that our approach tries to identify the most similar dataset title in t
 \subsection{Step 3: Heuristics to Improve Ranking in Step 2}
 \label{sec:heur-impr-rank}
 
-For each reference detected in the full-text of a article we compute tf-idf over the full-text and the list of dataset titles in {\dara}, which contain a specific characteristic feature (abbreviation or phrase) detected in the reference.
+For each reference detected in the full-text of an article we compute tf-idf over the full-text and the list of dataset titles in {\dara}, which contain a specific characteristic feature (abbreviation or phrase) detected in the reference.
 %<newpart_33
 %\todo{CL@BG: If you actually mean “As we observed that it leads to many false positives”, then phrase it like this (it's clearer this way).}
 As we observed that it leads to many false positives, comparing all datasets' titles with a sentence in a article, and, afterwards, ranking titles based on their score was not useful.
 We solved these problems by involving special features.
 
-Our approach considers only the list of titles that contain the special feature detected in the reference, since they are related titles and the rest of the titles in the registry are irrelevant.
+Our approach considers only the list of titles that contain the special feature detected in the reference, since they are related titles and the rest of the titles in the registry is irrelevant.
 We limit our options in order to improve the accuracy of our approach.
 We decided to use the list of titles and whole sentences of the article, and not only the reference sentence, since this consideration enables us to have a bigger corpus of documents and to obtain a better weight for each word.
 The utilization of titles that contain special features reduces the weight score of the feature and raises the weight scores of other terms in the reference sentence.
@@ -568,11 +568,10 @@ Figure~\ref{fig:similarity-example} illustrates a toy example of this problem.
 	\label{fig:similarity-example}
 \end{figure}
 
-In article~1, \enquote{2014} repeats many times, whereas the word \enquote{study} occurs only once, which means the tf-idf assigns a high weight to \enquote{study} and a low weight to \enquote{2014}. When the query string is \enquote{study allbus 2014}, cosine similarity gives a higher rank to \enquote{Study Allbus 2000} than \enquote{Allbus 2014}.
-
+In paper 1, \enquote{2014} repeats many times, whereas the word \enquote{study} occurs only once, which means the tf-idf assigns a high weight to \enquote{study} and a low weight to \enquote{2014}. When the query string is \enquote{study allbus 2014}, cosine similarity gives a higher rank to \enquote{Study Allbus 2000} than \enquote{Allbus 2014}.
 To address this problem in a better way, our implementation employs some heuristics.
 These include an algorithm that improves dataset rankings based on matching years in the candidate strings in both the article and the datasets' titles.
-In the example, these heuristics improve the ranking of the \enquote{Allbus 2014} dataset when analyzing article 1. 
+In the example, these heuristics improve the ranking of the \enquote{Allbus 2014} dataset when analyzing paper 1. 
 
 %<newpart_34
 Figure~\ref{fig:Overview_of_approach} shows an overview of our approach.
