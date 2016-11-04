@@ -48,8 +48,8 @@ David Nadeau and Satoshi Sekine.
   2007.
 \newblock \doi{10.1075/li.30.1.03nad}.
 
-\bibitem[Pepler and O'Neil(2008)]{peplerpreservation}
-SJ~Pepler and K~O'Neil.
+\bibitem[Sam~Pepler(2008)]{peplerpreservation}
+Kevin~O’Neil Sam~Pepler.
 \newblock Preservation intent and collection identifiers: Claddier project
   report ii, 2008.
 \newblock URL \url{http://purl.org/net/epubs/work/43640}.
@@ -57,8 +57,8 @@ SJ~Pepler and K~O'Neil.
 \bibitem[Renear et~al.(2010)Renear, Sacchi, and Wickett]{renear2010definitions}
 Allen~H Renear, Simone Sacchi, and Karen~M Wickett.
 \newblock Definitions of dataset in the scientific and technical literature.
-\newblock \emph{Proceedings of the American Society for Information Science and
-  Technology}, 47\penalty0 (1):\penalty0 1--4, 2010.
+\newblock In \emph{Proceedings of the American Society for Information Science
+  and Technology}, volume~47, pages 1--4. Wiley Online Library, 2010.
 
 \bibitem[Salton and Buckley(1988)]{SALTON1988}
 Gerard Salton and Christopher Buckley.
@@ -80,10 +80,11 @@ Thorsten Joachims.
   Conference on Machine Learning}, pages 143--151. Morgan Kaufmann, 1997.
 
 \bibitem[Powers(2011)]{Powers2011}
-David M~W Powers.
-\newblock \emph{Evaluation: From Precision, Recall and F-Measure to ROC,
-  Informedness, Markedness and Correlation}, volume~2.
-\newblock Journal of Machine Learning Technologies, 2011.
+David Martin~Ward Powers.
+\newblock Evaluation: From precision, recall and f-measure to roc,
+  informedness, markedness and correlation.
+\newblock \emph{International Journal of Machine Learning Technology},
+  2:\penalty0 37--63, 2011.
 
 \bibitem[Lee and Kim(2008)]{Lee2008}
 Sungjick Lee and Han-joon Kim.
@@ -92,7 +93,7 @@ Sungjick Lee and Han-joon Kim.
   2008 (NCM 08)}, volume~2, pages 554--559. IEEE, 2008.
 
 \bibitem[Turney(2001)]{Turney2001}
-Peter~D. Turney.
+Peter Turney.
 \newblock Mining the web for synonyms: {PMI-IR} versus {LSA} on {TOEFL}.
 \newblock In \emph{Proceedings of the 12th European Conference on Machine
   Learning}, EMCL 01, pages 491--502. Springer-Verlag, 2001.
@@ -115,17 +116,19 @@ Christoph Schaefer, Daniel Hienert, and Thomas Gottron.
 
 \bibitem[Sahami and Heilman(2006)]{Sahami2006}
 Mehran Sahami and Timothy~D. Heilman.
-\newblock \emph{A Web-based Kernel Function for Measuring the Similarity of
-  Short Text Snippets}.
-\newblock WWW 06. ACM, 2006.
+\newblock A web-based kernel function for measuring the similarity of short
+  text snippets.
+\newblock In \emph{Proceedings of the 15th International Conference on World
+  Wide Web}, WWW 06, pages 377--386. ACM, 2006.
 \newblock \doi{10.1145/1135777.1135834}.
 
 \bibitem[Afzal et~al.(2010)Afzal, Maurer, Balke, and
   Kulathuramaiyer]{Afzal2010}
 Muhammad~Tanvir Afzal, Hermann Maurer, Wolf-Tilo Balke, and Narayanan
   Kulathuramaiyer.
-\newblock \emph{Rule Based Autonomous Citation Mining with Tierl}.
-\newblock Journal of Digital Information Management 8(3) 196-204, 2010.
+\newblock Rule based autonomous citation mining with tierl.
+\newblock \emph{Journal of Digital Information Management}, 8\penalty0
+  (3):\penalty0 196--204, 2010.
 
 \bibitem[Zhang et~al.(2006)Zhang, Xu, Tang, and Li]{Zhang2006}
 Kuo Zhang, Hui Xu, Jie Tang, and Juanzi Li.
@@ -135,11 +138,12 @@ Kuo Zhang, Hui Xu, Jie Tang, and Juanzi Li.
   2006.
 \newblock \doi{10.1007/11775300_8}.
 
-\bibitem[Han et~al.(2003)Han, Giles, Manavoglu, Zha, Zhang, and Fox]{Han2003}
-Hui Han, C.~L. Giles, E.~Manavoglu, Hongyuan Zha, Zhenyue Zhang, and E.~A. Fox.
-\newblock \emph{Automatic Document Metadata Extraction Using Support Vector
-  Machines}.
-\newblock ACM/IEEE 2003 Joint Conference on Digital Libraries, 2003.
+\bibitem[Han et~al.(2003)Han, Giles, Manavoglu, Zha, Zhang, and FOX]{Han2003}
+Hui Han, Clyde~Lee Giles, Eren Manavoglu, Hongyuan Zha, Zhenyue Zhang, and
+  EDWARD~A. FOX.
+\newblock Automatic document metadata extraction using support vector machines.
+\newblock In \emph{Digital Libraries, 2003. Proceedings. 2003 Joint Conference
+  on}, pages 37--48. ACM/IEEE 2003 Joint Conference on Digital Libraries, 2003.
 \newblock \doi{10.1109/JCDL.2003.1204842}.
 
 \bibitem[Kaur and Gupta(2010)]{Kaur2010}
@@ -152,7 +156,8 @@ Jasmeen Kaur and Vishal Gupta.
 Chengzhi Zhang, Huilin Wang, Yao Liu, Dan Wu, Yi~Liao, and Bo~Wang.
 \newblock Automatic keyword extraction from documents using conditional random
   fields.
-\newblock \emph{Computational and Information Systems}, 4\penalty0 (3), 2008.
+\newblock \emph{Computational and Information Systems}, 4\penalty0
+  (3):\penalty0 1169--1180, 2008.
 
 \bibitem[Cui and Chen(2010)]{Cui2010}
 Bin-Ge Cui and Xin Chen.
@@ -176,9 +181,9 @@ Simone Marinai.
 \newblock \doi{10.1109/ICDAR.2009.232}.
 
 \bibitem[Kern et~al.(2012)Kern, Jack, Hristakeva, and Granitzer]{Kern2012}
-R.~Kern, K.~Jack, M.~Hristakeva, and M.~Granitzer.
-\newblock \emph{Teambeam-Meta-Data Extraction from Scientific Literature}.
-\newblock D-Lib Magazine 18(7/8), 1, 2012.
+Roman Kern, Kris Jack, Maya Hristakeva, and Michael Granitzer.
+\newblock Teambeam meta-data extraction from scientific literature.
+\newblock 18\penalty0 (7):\penalty0 1, 2012.
 \newblock \doi{10.1045/july2012-kern}.
 
 \bibitem[Boland et~al.(2012)Boland, Ritze, Eckert, and Mathiak]{Boland2012}
@@ -201,9 +206,9 @@ Sahar Vahdati, Farah Karim, Jyun-Yao Huang, and Christoph Lange.
   Lange]{ghavimi2016identifying}
 Behnam Ghavimi, Philipp Mayr, Sahar Vahdati, and Christoph Lange.
 \newblock Identifying and improving dataset references in social sciences
-  full{-–}texts.
-\newblock \emph{International Conference on Electronic Publishing ({ELPUB})},
-  G\"ottingen, Germany, 7-–9 June 2016.
-\newblock URL \url{http://arxiv.org/abs/1603.01774}.
+  full-texts.
+\newblock In \emph{Positioning and Power in Academic Publishing: Players,
+  Agents and Agendas}, pages 105 -- 114. IOS Press, 2016.
+\newblock \doi{10.3233/978-1-61499-649-1-105}.
 
 \end{thebibliography}
