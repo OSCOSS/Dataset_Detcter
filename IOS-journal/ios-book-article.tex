@@ -13,7 +13,8 @@
 \usepackage{mathtools}
 \usepackage[numbers]{natbib}
 %\bibliographystyle{dcu}
-\bibliographystyle{unsrtnat}
+%\bibliographystyle{unsrtnat}
+\bibliographystyle{vancouver}
 \setlength{\marginparwidth}{4cm}
 \usepackage[textsize=tiny]{todonotes}
 \usepackage{url}
@@ -313,7 +314,7 @@ While only a few works address the specific task of extracting dataset reference
 Related work can be divided into three main groups covered by the following subsections.
 \subsection{Methods based on the “bag of words” model}
 One group of methods is based on the “bag of words” model using algorithms such as tf-idf to adjust weights for terms in a representation of texts as vectors (cf.\ the introduction in Section~\ref{sec:tfidf}).
-\citeauthor{Lee2008} proposed an unsupervised keyword extraction method by using a tf-idf model with some heuristics~\citeyearpar{Lee2008}.
+\citeauthor{Lee2008} proposed an unsupervised keyword extraction method by using a tf-idf model with some heuristics~\cite{Lee2008}.
 Our approach uses similarity measures for finding a perfect match for each dataset reference in a article by comparing titles of datasets in a registry to sentences in articles.
 Dice, Jaccard and Cosine can be applied to a vector representation of a text easily (cf.~\citet{ChristopherD1999}).
 The accuracy of algorithms based on such similarity measures can be improved by making them semantics-aware, e.g., representing a set of synonyms as a single vector space dimension.
@@ -321,11 +322,11 @@ The accuracy of algorithms based on such similarity measures can be improved by 
 \subsection{Corpus and Web based methods}
 Corpus and Web based methods often use information about the co-occurrence of two texts in documents, and are used for measuring texts' semantic similarity.
 %<newpart_16
-\citeauthor{Turney2001} introduced a simple unsupervised learning algorithm for detecting synonyms~\citeyearpar{Turney2001}, which searches queries through an online search engine and analyses the results.
+\citeauthor{Turney2001} introduced a simple unsupervised learning algorithm for detecting synonyms~\cite{Turney2001}, which searches queries through an online search engine and analyses the results.
 The quality of the algorithm depends on the number of search results returned.  
 %newpart_16>
 
-\citeauthor{sighal2013} proposed an approach to extract dataset names from articles~\citeyearpar{sighal2013}.
+\citeauthor{sighal2013} proposed an approach to extract dataset names from articles~\cite{sighal2013}.
 They employed the normalized google distance algorithm, which estimates both the probability of two terms existing separately in a document, as well as of their co-occurrence. 
 %<newpart_17
 \begin{align*}
@@ -336,20 +337,22 @@ $F(x)$ means the number of returned pages for $x$ as a query term and $f(x,y)$ r
 %newpart_17>
 They used two academic search engines -- Google Scholar and Microsoft Academic Search -- instead of a local corpus.
 
-\citeauthor{Schaefer2014} proposed the Normalized Relevance Distance (NRD)~\citeyearpar{Schaefer2014}.
+\citeauthor{Schaefer2014} proposed the Normalized Relevance Distance (NRD)~\cite{Schaefer2014}.
 This metric measures the semantic relatedness of terms.
 NRD is based on the co-occurrence of terms in documents, and extends NGD by using relevance weights of terms.
 The quality of these methods depends on the size of the corpus used.
 
 %<newpart_18
-\citeauthor{Sahami2006} suggest a similarity function based on query expansion~\citeyearpar{Sahami2006}.
+\citeauthor{Sahami2006} suggest a similarity function based on query expansion~\cite{Sahami2006}.
 Their algorithm determines the degree of semantic similarity between two phrases.
 Each of these phrases is searched by an online search engine and then expanded by using returned documents.
 Afterwards, the new phrases are used for computing similarity. 
 
 The problem that we aim to solve involves the two subtasks of 1.\ identifying dataset references in a article, and then 2.\ finding at least one correct match for each of these identified references.
 Literature citation mining is the process of determining the number of citations that a specific article receives.
-It constructs a literature citation network, which can be used for detecting the impact of a article~\todo{CL@BG: The combination of some author/year citations and some numeric citations, like here, looks strange to me.  Please switch everything to \emph{one} citation style: the one preferred by the journal.}\cite{Afzal2010}.
+It constructs a literature citation network, which can be used for detecting the impact of a article~
+%\todo{CL@BG: The combination of some author/year citations and some numeric citations, like here, looks strange to me.  Please switch everything to \emph{one} citation style: the one preferred by the journal. BG: improved - we should use vancouver style (which doesn't support citeyear) - I had tried to simulate that with natlab and unsrtnat - But now I have changed all citeyear to cite and used vancouver. }
+\cite{Afzal2010}.
 Citation mining can usually be handled by three subtasks.
 First, literature references should be extracted from the bibliography section of a document, and afterwards, metadata extraction should be applied on the references extracted in the first phase.
 Finally, each reference should be linked to the cited article by using the metadata extracted in the second step~\cite{Afzal2010}.
@@ -365,26 +368,26 @@ Finally, it tries to link the title of each extracted literature reference and t
 
 \subsection{Machine learning methods}
 Many different machine learning approaches have been employed for extracting metadata, and in a few cases also for detecting dataset references.
-For example, \citeauthor{Zhang2006} \citeyearpar{Zhang2006} and \citeauthor{Han2003} \citeyearpar{Han2003} proposed keyword extraction methods based on support vector machines (SVM). 
+For example, \citeauthor{Zhang2006} \cite{Zhang2006} and \citeauthor{Han2003} \cite{Han2003} proposed keyword extraction methods based on support vector machines (SVM). 
 
 %<newpart_19
-\citeauthor{Kaur2010} conducted a survey on several effective keyword extraction techniques, such as selection based on informative features, position weight, and conditional random field (CRF) algorithms~\citeyearpar{Kaur2010}.
+\citeauthor{Kaur2010} conducted a survey on several effective keyword extraction techniques, such as selection based on informative features, position weight, and conditional random field (CRF) algorithms~\cite{Kaur2010}.
 Extracting keywords from a article can be considered as a labeling task.
 CRF classifiers can assign labels to sequences of input, and, for instance, define which parts in a article can be assumed to be keywords~\citep{ZHANG2008}.
 %newpart_19>
 
-\citeauthor{Cui2010} proposed an approach using Hidden Markov Models (HMM) to extract metadata from texts~\citeyearpar{Cui2010}. 
+\citeauthor{Cui2010} proposed an approach using Hidden Markov Models (HMM) to extract metadata from texts~\cite{Cui2010}. 
 %<newpart_20
 HMM is a language-independent and trainable algorithm~\cite{Kubala1998}.
-\citeauthor{Marinai2009} described a method for extracting metadata from documents by using a neural classifier~\citeyearpar{Marinai2009}.
+\citeauthor{Marinai2009} described a method for extracting metadata from documents by using a neural classifier~\cite{Marinai2009}.
 Kern et al.\ proposed an algorithm that uses a maximum entropy classifier for extracting metadata from scientific articles~
-%\todo{CL@BG: For this and possibly other references try to get the metadata as correct and complete as possible.  Journals are picky about this.  Here, find out the authors' full names.  Also note that this one is actually an \textit{@article}; use the fields \textit{journal}, \textit{volume} and \textit{number}. \\ BG: Here full names are mentioned and no need to be corrected- this is a proceeding (\url{http://www.proceedings.com}). But I improved references and corrected false types (e.g. article and proceeding)  }
+%\todo{CL@BG: For this and possibly other references try to get the metadata as correct and complete as possible.  Journals are picky about this.  Here, find out the authors' full names.  Also note that this one is actually an \textit{@article}; use the fields \textit{journal}, \textit{volume} and \textit{number}. \\ BG: I removed my false comment -I improved references and corrected false types (e.g. article and proceeding)}
 \cite{Kern2012}.
 %newpart_20>
-\citeauthor{MeiyuLu2012} used the feature-based Llama classifier for detecting dataset references in documents~\citeyearpar{MeiyuLu2012}.
+\citeauthor{MeiyuLu2012} used the feature-based Llama classifier for detecting dataset references in documents~\cite{MeiyuLu2012}.
 Since there are many different styles for referencing datasets, large training sets are necessary for these approaches.
 
-\citeauthor{Boland2012} proposed a pattern induction method for extracting dataset references from documents in order to overcome the necessity of such a large training set~\citeyearpar{Boland2012}.
+\citeauthor{Boland2012} proposed a pattern induction method for extracting dataset references from documents in order to overcome the necessity of such a large training set~\cite{Boland2012}.
 %<newpart_21
 Their algorithm starts with either the name of a dataset or with an abbreviation of this name, and then drives patterns of all phrases that contain that name or abbreviation in articles.
 The patterns are applied to articles in order to extract more dataset names and abbreviations.
