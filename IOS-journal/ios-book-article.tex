@@ -156,7 +156,7 @@ Table~\ref{table:citation-variety} shows concrete examples of different referenc
 \end{table}
 %newpart_5>
 
-The challenge that our research aims at is to turn each dataset reference detected in a article into an explicit link, for example, using the DOI of the dataset entry in a dataset registry. 
+The challenge that our research aims at is to turn each dataset reference detected in an article into an explicit link, for example, using the DOI of the dataset entry in a dataset registry. 
 %<newpart_6
 Dataset registries usually provide further metadata about datasets, which can facilitate the detection of such links, such as the dataset creator, publication date, description, and temporal coverage.
 %newpart_6>
@@ -297,8 +297,8 @@ In practice, it may furthermore be necessary to define a cut-off threshold in or
 
 \subsection{Precision and recall of a classifier}
 \label{sec:precision-recall}
-We aim at implementing a binary classifier that tells us whether or not a certain dataset has been referenced by a article.
-The algorithm should find references of datasets in a article and then detect a exact match for each detected reference in a text.
+We aim at implementing a binary classifier that tells us whether or not a certain dataset has been referenced by an article.
+The algorithm should find references of datasets in an article and then detect a exact match for each detected reference in a text.
 These matches are to be selected from titles of datasets in a given dataset registry.
 
 Evaluation metrics such as \emph{precision and recall} determine the reliability of binary classifiers.
@@ -324,7 +324,7 @@ Related work can be divided into three main groups covered by the following subs
 \subsection{Methods based on the “bag of words” model}
 One group of methods is based on the “bag of words” model using algorithms such as tf-idf to adjust weights for terms in a representation of texts as vectors (cf.\ the introduction in Section~\ref{sec:tfidf}).
 \citeauthor{Lee2008} proposed an unsupervised keyword extraction method by using a tf-idf model with some heuristics~\cite{Lee2008}.
-Our approach uses similarity measures for finding a perfect match for each dataset reference in a article by comparing titles of datasets in a registry to sentences in articles.
+Our approach uses similarity measures for finding a perfect match for each dataset reference in an article by comparing titles of datasets in a registry to sentences in articles.
 Dice, Jaccard and Cosine can be applied to a vector representation of a text easily (cf.~\citet{ChristopherD1999}).
 The accuracy of algorithms based on such similarity measures can be improved by making them semantics-aware, e.g., representing a set of synonyms as a single vector space dimension.
 
@@ -357,9 +357,9 @@ Their algorithm determines the degree of semantic similarity between two phrases
 Each of these phrases is searched by an online search engine and then expanded by using returned documents.
 Afterwards, the new phrases are used for computing similarity. 
 
-The problem that we aim to solve involves the two subtasks of 1.\ identifying dataset references in a article, and then 2.\ finding at least one correct match for each of these identified references.
+The problem that we aim to solve involves the two subtasks of 1.\ identifying dataset references in an article, and then 2.\ finding at least one correct match for each of these identified references.
 Literature citation mining is the process of determining the number of citations that a specific article receives.
-It constructs a literature citation network, which can be used for detecting the impact of a article~
+It constructs a literature citation network, which can be used for detecting the impact of an article~
 %\todo{CL@BG: The combination of some author/year citations and some numeric citations, like here, looks strange to me.  Please switch everything to \emph{one} citation style: the one preferred by the journal. BG: improved - we should use vancouver style (which doesn't support citeyear) - I had tried to simulate that with natlab and unsrtnat - But now I have changed all citeyear to cite and used vancouver. }
 \cite{Afzal2010}.
 Citation mining can usually be handled by three subtasks.
@@ -372,7 +372,7 @@ Unlike the detection phase, they can mostly use the same strategy for the matchi
 Afzal et al.\ proposed a rule-based citation mining technique~\cite{Afzal2010}.
 Their approach detects literature references from each document and then extracts citation metadata from each of them, such as title, authors, and venue. Based on the venue, it then extracts all related titles from the DBLP computer science bibliography, which contains more than three million articles.
 Finally, it tries to link the title of each extracted literature reference and titles found in DBLP.
-%Our approach tries to match dataset references in a article to the titles of datasets registered in the {\dara} registry. %this last sentence is not neccessary in the related work part
+%Our approach tries to match dataset references in an article to the titles of datasets registered in the {\dara} registry. %this last sentence is not neccessary in the related work part
 %newpart_18>
 
 \subsection{Machine learning methods}
@@ -381,8 +381,8 @@ For example, \citeauthor{Zhang2006} \cite{Zhang2006} and \citeauthor{Han2003} \c
 
 %<newpart_19
 \citeauthor{Kaur2010} conducted a survey on several effective keyword extraction techniques, such as selection based on informative features, position weight, and conditional random field (CRF) algorithms~\cite{Kaur2010}.
-Extracting keywords from a article can be considered as a labeling task.
-CRF classifiers can assign labels to sequences of input, and, for instance, define which parts in a article can be assumed to be keywords~\citep{ZHANG2008}.
+Extracting keywords from an article can be considered as a labeling task.
+CRF classifiers can assign labels to sequences of input, and, for instance, define which parts in an article can be assumed to be keywords~\citep{ZHANG2008}.
 %newpart_19>
 
 \citeauthor{Cui2010} proposed an approach using Hidden Markov Models (HMM) to extract metadata from texts~\cite{Cui2010}. 
@@ -569,7 +569,7 @@ It means that our approach tries to identify the most similar dataset title in t
 For each reference detected in the full-text of an article we compute tf-idf over the full-text and the list of dataset titles in {\dara}, which contain a specific characteristic feature (abbreviation or phrase) detected in the reference.
 %<newpart_33
 %\todo{CL@BG: If you actually mean “As we observed that it leads to many false positives”, then phrase it like this (it's clearer this way).}
-As we observed that it leads to many false positives, comparing all datasets' titles with a sentence in a article, and, afterwards, ranking titles based on their score was not useful.
+As we observed that it leads to many false positives, comparing all datasets' titles with a sentence in an article, and, afterwards, ranking titles based on their score was not useful.
 We solved these problems by involving special features.
 
 Our approach considers only the list of titles that contain the special feature detected in the reference, since they are related titles and the rest of the titles in the registry is irrelevant.
@@ -647,7 +647,7 @@ These lists were used as a gold standard~\footnote{\url{https://github.com/OSCOS
 		\FL
 		 & Max. & Min. & Avg.
 		\ML
-		\# of datasets in a article & 7 & 1 & 4
+		\# of datasets in an article & 7 & 1 & 4
 		\NN
 		\# of references to datasets & 147 & 1 & 12
 		\LL
@@ -745,7 +745,7 @@ The OpenAIRE metadata can be consumed via OAI-PMH, or, in an even more straightf
 
 %\todo{CL@BG: The following looks like future work, so please more it to that section. \\ BG: it is moved to the section and also edited a bit. But I prefer to not have it in the article since it is not very important point.}Another task for future is about reducing harvesting time from repositories. Both abbreviations and phrases dictionaries can be generated on the first harvest of dataset titles from {\dara}, and they can be required to update with every subsequent harvest. The delta update feature is not implemented in the article, but the idea makes our approach even faster.
 
-%\todo{CL@BG: This sentence is not well connected to the rest of the conclusion.  What problem does this solution address?  I guess something like reuse of the data, subsequent processing, etc. BG: I noticed it is an old point and currently, it is implemented in our approach. }For each dataset reference identified in a article, we will model the precise position of that reference, and the algorithm's confidence in each possible matching dataset.
+%\todo{CL@BG: This sentence is not well connected to the rest of the conclusion.  What problem does this solution address?  I guess something like reuse of the data, subsequent processing, etc. BG: I noticed it is an old point and currently, it is implemented in our approach. }For each dataset reference identified in an article, we will model the precise position of that reference, and the algorithm's confidence in each possible matching dataset.
 
 In a mid-term perspective, solutions for identifying dataset references in articles that have been published already could be made redundant by a wider adoption of standards for properly citing datasets while authoring articles, and corresponding tool support for authors.
 
