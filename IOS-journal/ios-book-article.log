@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.7.6)  4 NOV 2016 09:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.7.6)  4 NOV 2016 10:53
 entering extended mode
 **./ios-book-article.tex
 (ios-book-article.tex
@@ -1172,7 +1172,7 @@ File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 File: ToyExamplE.PNG Graphic file (type png)
 
 <use ToyExamplE.PNG>
-Package pdftex.def Info: ToyExamplE.PNG used on input line 568.
+Package pdftex.def Info: ToyExamplE.PNG used on input line 566.
 (pdftex.def)             Requested size: 325.215pt x 156.4236pt.
 
 
@@ -1182,10 +1182,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Overwveiw_System.png Graphic file (type png)
 
 <use Overwveiw_System.png>
-Package pdftex.def Info: Overwveiw_System.png used on input line 587.
+Package pdftex.def Info: Overwveiw_System.png used on input line 584.
 (pdftex.def)             Requested size: 358.03995pt x 216.81pt.
 
-Overfull \hbox (6.03995pt too wide) in paragraph at lines 587--588
+Overfull \hbox (6.03995pt too wide) in paragraph at lines 584--585
  [][] 
  []
 
@@ -1196,10 +1196,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 17086 strings out of 493335
- 317963 string characters out of 3139270
- 389335 words of memory out of 3000000
- 20238 multiletter control sequences out of 15000+200000
+ 17084 strings out of 493335
+ 317907 string characters out of 3139270
+ 384438 words of memory out of 3000000
+ 20236 multiletter control sequences out of 15000+200000
  67390 words of font info for 113 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,21n,92p,821b,711s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1218,7 +1218,7 @@ TeX 2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/urw/symbol/usyr.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ios-book-article.pdf (19 pages, 575891 bytes).
+Output written on ios-book-article.pdf (19 pages, 575211 bytes).
 PDF statistics:
  212 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
