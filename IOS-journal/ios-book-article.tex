@@ -224,7 +224,7 @@ Tf is calculated using the following formula:
 
 The reason for using a logarithm in the formula is that a high number of occurrences of a term does not make the document linearly more relevant.
 The total weight for a document with respect to a query is calculated by summing the weights of all query terms in the document.
-These terms should appear in both the query \textit{q} and the document \textit{d}.
+These terms should appear in both the query $q$ and the document $d$.
 Tf is zero if none of the query terms exists in the document.
 
 \begin{center}
@@ -245,7 +245,7 @@ The following formula defines idf, where $N$ is the number of documents in the c
 %<newpart_10
 
 \begin{center}
-	$\textit{tf-idf}(q,d)=\sum_{t\in q\cap d} \mathit{tf}*\mathit{idf}_{t,d}$
+	$\textit{tf-idf}(q,d)=\sum_{t\in q\cap d} \mathit{tf}\cdot\mathit{idf}_{t,d}$
 \end{center}
 %newpart_10>
 
@@ -366,7 +366,7 @@ Citation mining can usually be handled by three subtasks.
 First, literature references should be extracted from the bibliography section of a document, and afterwards, metadata extraction should be applied on the references extracted in the first phase.
 Finally, each reference should be linked to the cited article by using the metadata extracted in the second step~\cite{Afzal2010}.
 
-Dataset and literature citation mining from documents cannot generally be compared in the detecting phase, since dataset mining needs to be applied to the entire article, but literature mining mostly consider only the bibliography of the article. %\todo{CL@all: I added this new point; please check. \\ BG: it is a very tricky point since even citations to papers can occur in other parts (such as footnote) than only bibliography. So I preferred to remove it and edited the sentence.}%unless the article employs a “full” citation style.
+Dataset and literature citation mining from documents cannot generally be compared in the detecting phase, since dataset mining needs to be applied to the entire article, but literature mining mostly focuses on the bibliography of the article. %\todo{CL@all: I added this new point; please check. \\ BG: it is a very tricky point since even citations to papers can occur in other parts (such as footnote) than only bibliography. So I preferred to remove it and edited the sentence.}%unless the article employs a “full” citation style.
 Unlike the detection phase, they can mostly use the same strategy for the matching phase. 
 
 Afzal et al.\ proposed a rule-based citation mining technique~\cite{Afzal2010}.
@@ -517,7 +517,7 @@ As their identification is hard to automate, we assigned this task to a human ex
 %<newpart_28
 The expert reviews the list and then makes a false positive list -- afterward, the list will be removed from the dictionary automatically.
  %\todo{CL@BG: I suppose the ratio is not always the same.  Say something like “In an experiment with 50 mda articles, the ratio of false positives was …” . \\ BG: Here, our algorithm tried to extract abb. from  whole dataset titles in dara. After creation the list, we checked it and noticed that the ratio of fp items in the list is 1/3 of whole items.}
-In an experiment, we notice the ratio of false positives is one out of three items of the list of abbreviations extracted automatically.
+In an experiment involving all dataset titles of {\dara}, we notice the ratio of false positives is one out of three items of the list of abbreviations extracted automatically.
 This means that approximately two thirds of the abbreviations are derived correctly, and pruning the rest of the titles from the list requires little effort.
 %newpart_28>
 
