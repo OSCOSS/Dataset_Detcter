@@ -745,6 +745,9 @@ The OpenAIRE metadata can be consumed via OAI-PMH, or, in an even more straightf
 
 %\todo{CL@BG: The following looks like future work, so please more it to that section. \\ BG: it is moved to the section and also edited a bit. But I prefer to not have it in the article since it is not very important point.}Another task for future is about reducing harvesting time from repositories. Both abbreviations and phrases dictionaries can be generated on the first harvest of dataset titles from {\dara}, and they can be required to update with every subsequent harvest. The delta update feature is not implemented in the article, but the idea makes our approach even faster.
 
+For reuse in subsequent analytics we are planning to enrich the RDF export.
+Currently, it neither includes the exact positions of dataset references in an article, nor our algorithms' confidence in every possible matching dataset.
+While we are already obtaining in the course of the per-reference matching workflow (cf.\ Section~\ref{sec:expos-results-reus}), we will additionally preserve it in the per-feature workflow, from which the RDF export is generated.
 %\todo{CL@BG: This sentence is not well connected to the rest of the conclusion.  What problem does this solution address?  I guess something like reuse of the data, subsequent processing, etc. BG: I noticed it is an old point and currently, it is implemented in our approach. }For each dataset reference identified in an article, we will model the precise position of that reference, and the algorithm's confidence in each possible matching dataset.
 
 In a mid-term perspective, solutions for identifying dataset references in articles that have been published already could be made redundant by a wider adoption of standards for properly citing datasets while authoring articles, and corresponding tool support for authors.
