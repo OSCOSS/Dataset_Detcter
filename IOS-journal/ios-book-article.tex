@@ -316,6 +316,7 @@ If an algorithm returns few wrong predictions, it will lead to a high precision.
 An algorithm should predict most of the relevant results to achieve a high recall.
 %newpart_14>
 
+
 \section{Related work}
 \label{sec:relWork}
 While only a few works address the specific task of extracting dataset references from scientific publications, a lot of research has been done on its general foundations including metadata extraction and string similarity algorithms. 
@@ -335,7 +336,7 @@ The quality of the algorithm depends on the number of search results returned.
 %newpart_16>
 
 \citeauthor{sighal2013} proposed an approach to extract dataset names from articles~\cite{sighal2013}.
-They employed the normalized google distance algorithm, which estimates both the probability of two terms existing separately in a document, as well as of their co-occurrence. 
+They employed the normalized Google distance algorithm, which estimates both the probability of two terms existing separately in a document, as well as of their co-occurrence. 
 %<newpart_17
 \begin{align*}
 	\mathit{NGD}(x,y)=\frac{\max(\log f(x),f(y))-\log f(x,y)}{\log M -\min(\log f(x),\log f(y))}
@@ -403,27 +404,28 @@ This process repeats with new abbreviations and names until no more datasets can
 It derives patterns of phrases that contain dataset references iteratively by using a bootstrapping approach.
 %newpart_21>
 
+
 \section{Data sources}
 \label{sec:data}
-This section describes the three types of data sources that we use. We use full-text articles from the mda journal to evaluate the performance of our dataset linking approach, and metadata of datasets in the {\dara} dataset registry to identify datasets. 
+This section describes the three types of data sources that we use. 
+We use full-text articles from the \emph{mda journal} to evaluate the performance of our dataset linking approach, and metadata of datasets in the {\dara} dataset registry to identify datasets. 
 %<newpart_22
-Finally, we use metadata of the articles registered in the SSOAR repository\footnote{\url{http://www.ssoar.info}} for exporting the dataset links suggested for an article in the JSON exchange format.
+Finally, we use metadata of the articles registered in the \emph{SSOAR repository}\footnote{\url{http://www.ssoar.info}} for exporting the dataset links suggested for an article in the JSON exchange format.
 %newpart_22>
  
- \subsection{Articles from mda journal}\label{sec:mda}
+\subsection{Articles from mda journal}\label{sec:mda}
  
- Methods, data, analyses (mda\footnote{\url{http://www.gesis.org/en/services/publications/mda/}}) is an open access journal that addresses questions important to quantitative methods, with a special emphasis on survey methodology.
- It has published research on all aspects of science of surveys, be it on data collection, measurement, or data analysis and statistics.
- For our research we used a random sample of full-text articles from mda as our test corpus.
+Methods, data, analyses (mda\footnote{\url{http://www.gesis.org/en/services/publications/mda/}}) is an open access journal that focuses on research questions related to quantitative methods, with a special emphasis on survey methodology.
+It has published research on all aspects of science of surveys, be it on data collection, measurement, or data analysis and statistics.
+For our research we used a random sample of full-text articles from mda as test corpus.
  
-  \subsection{The {\dara} dataset registry}
+\subsection{The {\dara} dataset registry}
   
-  \subsubsection{{\dara} overview}
-  Our proposed approach aims at social sciences datasets since it uses registered datasets in {\dara} registry\footnote{\url{http://www.da-ra.de}}.
-  The registry offers a DOI registration service for datasets in the social sciences and economics. 
-  Different institutions have collected research data in the social sciences and made them available.
-  Although the accessibility of such datasets for further analyses and other reuse is important, information on where to find and how to access them is often missing in articles.
-  
+\subsubsection{Overview}
+Our approach focuses on social sciences datasets since it uses registered datasets in {\dara} registry\footnote{\url{http://www.da-ra.de}}.
+The registry offers a DOI registration service for datasets in the social sciences and economics. 
+Different institutions have collected research data in the social sciences and made them available.
+Although the accessibility of such datasets for further analyses and other reuse is important, information on where to find and how to access them is often missing in articles.
 %newpart_23>
 {\dara} makes 
 %social science research 
@@ -435,25 +437,26 @@ by assigning a DOI to each dataset.
 %{\dara} therefore does a job similar to that of publishers assigning DOIs to articles when they are published electronically.
 %newpart_24>
 %\todo{CL@BG: Add a footnote with the date on which these figures were valid. \\ BG: done}
-At the present time \footnote{Nov. 2016}, {\dara} holds 486,233 records such as datasets, texts, collections, videos, and interactive resources, more than 35,000 of which are datasets. 
+In November 2016, {\dara} holds 486,233 records such as datasets, texts, collections, videos, and interactive resources, more than 35,000 of which are datasets. 
 For each dataset, {\dara} provides metadata including title, author, language, and publisher.
 This metadata is exposed to harvesters employing a freely accessible API using OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting\footnote{\url{http://da-ra.de/oaip/}}). 
   
-  \subsubsection{Analysis of dataset titles in {\dara}}
-  We analyzed the titles of all datasets in {\dara} after harvesting them by using the {\dara} API.
-  The analysis shows that about one third of the titles follow a special pattern, which makes them easier to be detected in the text of a article.
-  We have identified three such special patterns.
-  First, there are titles that contain \emph{abbreviations}, which are often used to refer to the datasets. 
-  Consider, for example, the full title \enquote{Programme for the International Assessment of Adult Competencies (PIAAC), Cyprus}, which contains the abbreviation \enquote{PIAAC}.
-  Secondly, there are \emph{filenames}, as in the example \enquote{Southern Education and Racial Discrimination, 1880--1910: Virginia: VIRGPT2.DAT}, where \enquote{VIRGPT2.DAT} is the name of the dataset file.
-  Finally, there are \emph{phrases} that explicitly denote the existence of 
-  dataset references in a text, such as \enquote{Exit Poll} or \enquote{Probation Survey}.
-  \enquote{Czech Exit Poll 1996} is an example of such a dataset title. 
+\subsubsection{Analysis of dataset titles in {\dara}}
+We analyzed the titles of all datasets in {\dara} after harvesting using the {\dara} API.
+The analysis shows that about one third of the titles follow a special pattern, which makes them easier to be detected in the text of an article.
+We have identified three such special patterns:
+\begin{enumerate}
+	\item \emph{Abbreviations} contained in titles, which are typically used to refer to the datasets. 
+		Consider, for example, the full title \enquote{Programme for the International Assessment of Adult Competencies (PIAAC), Cyprus}, which contains the abbreviation \enquote{PIAAC}.
+	\item \emph{Filenames} as in \enquote{Southern Education and Racial Discrimination, 1880--1910: Virginia: VIRGPT2.DAT}, where \enquote{VIRGPT2.DAT} is the name of the dataset file.
+	\item \emph{Phrases} that explicitly denote the existence of dataset references in a text, such as \enquote{Exit Poll} or \enquote{Probation Survey}.
+\enquote{Czech Exit Poll 1996} is an example of such a dataset title. 
+\end{enumerate}
 
-  We assume these three categories as special characteristics in the titles.
-  Abbreviations and special phrases can be found in about 17 and 19 percent of the {\dara} dataset titles respectively.
-  The intersection of these two groups only accounts for 1.49 percent.
-  Filenames occur in less than one percent of the titles. 
+%We assume these three categories as special characteristics in the titles.
+Abbreviations and special phrases can be found in about 17\% and 19\% of the {\dara} dataset titles respectively.
+The intersection of these two groups only accounts for 1.49\%.
+Filenames occur in less than one percent of the titles. 
 %<newpart_25
 The proposed approach in this article uses only the first and the last category, since the filename category only covers a small amount of titles.
 
@@ -467,6 +470,7 @@ Furthermore, the metadata of the articles inside the repository can be harvested
 SSOAR assigns a URN (Uniform Resource Name) as a persistent identifier (PID) to each full-text to establish a stable link to the article.
 If the full-text is the pre-print or post-print version of a published work, the repository uses the DOI of the article.
 %newpart_25>  
+
 
 \section{A semi-automatic approach for finding dataset references}
 \label{sec:approach}
