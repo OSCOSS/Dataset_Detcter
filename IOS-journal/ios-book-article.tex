@@ -179,21 +179,23 @@ Search queries are used for retrieving text fragments in an article that refer t
 
 %<newpart_7
 \subsection{Dataset (Terminology)} 
-\emph{Dataset} is an ambiguous term; different authors have suggested a great variety of meanings for it~\cite{peplerpreservation}.
-Therefore, \citeauthor{renear2010definitions} introduced a general notion of the term based on the definitions in the technical and scientific literature.
-They define a dataset in terms of its four basic characteristics \emph{grouping}, \emph{content}, \emph{relatedness}, and \emph{purpose}.
-In their definition, a dataset is considered as a \emph{group} of data.  \emph{Set}, \emph{collection}, \emph{aggregation}, and \emph{atomic unit} are some cases of this feature type.
-For instance, a dataset may have \emph{set} semantics (e.g. “Set of RDF triples”)~\cite{renear2010definitions}, i.e.\ following the mathematical definition of a set, or it may have \emph{collection} semantics, which means that deletion and addition of data does not have any effect on the dataset's identity.
-The \emph{content} feature describes the data in a dataset.
-For example, \emph{observation} describes propositional content, while \emph{value} refers to measurable content.
-
-A dataset is a group of data, which are \emph{related} to each other.
-The \emph{relatedness} feature thus clarifies the inter-relation of data in a dataset.
-\emph{Syntactic} and \emph{semantic} are some examples of this feature.   
+\emph{Dataset} is an ambiguous term; different authors have suggested a great variety of definitions~\cite{peplerpreservation}.
+\citeauthor{renear2010definitions} introduced a general notion of the term based on the definitions in the technical and scientific literature.
+They define a dataset in terms of its four basic characteristics \emph{grouping}, \emph{content}, \emph{relatedness}, and \emph{purpose}:
+\begin{itemize}
+	\item \emph{Grouping.} A dataset is considered a \emph{group} of data.
+		\emph{Set}, \emph{collection}, \emph{aggregation}, and \emph{atomic unit} are some cases of this feature type.
+		For instance, a dataset may have \emph{set} semantics (e.g. “Set of RDF triples”)~\cite{renear2010definitions}, i.e.\ following the mathematical definition of a set, or it may have \emph{collection} semantics, which means that deletion and addition of data does not have any effect on the dataset's identity.
+	\item \emph{Content.} The \emph{content} feature describes the data in a dataset.
+		For example, \emph{observation} describes propositional content, while \emph{value} refers to measurable content.
+	\item \emph{Relatedness.} A dataset is a group of \emph{related} data.
+		The \emph{relatedness} feature thus clarifies the inter-relation of data in a dataset.
+		\emph{Syntactic} and \emph{semantic} are some examples of this feature.   
 %A group of data about a specific subject can be assumed to have a \emph{semantic} relation.
 %\todo{CL@BG: This doesn't seem to be intended as mutually exclusive with “semantic”.  Reading this definition I can well imagine a group of entities that are 1. all about the same subject and 2. all follow a specific structure, i.e.\ a dataset that's both syntactic and semantic.  Why not – but is this what you, or the literature, intend to say? \\BG: I think I transferred it from the reference correctly. As far as I understood, these are different types of relatedness feature (for their definition) and they can even occur simultaneously. refrence: \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.476.8466&rep=rep1&type=pdf} , Page:3 , Relatedness section but I can remove the part to avoid misunderstanding}
 %If all entities of a dataset have the same syntactic structure, their relation is \emph{syntactic}.
-Finally, the \emph{purpose} feature refers to the idea of the scientific activity which the dataset is created for.
+	\item \emph{Purpose.} The \emph{purpose} feature refers to the idea of the scientific activity which the dataset is created for.
+\end{itemize}
 %newpart_7>
 
 \subsection{Weighting terms in documents using tf-idf}
