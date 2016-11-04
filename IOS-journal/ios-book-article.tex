@@ -202,17 +202,19 @@ They define a dataset in terms of its four basic characteristics \emph{grouping}
 \label{sec:tfidf}
 %<newpart_8
 The \emph{bag of words} model represents a text as a set of terms without considering their order.
-Based on this model, documents and the query can be displayed in different ways, such as binary vectors, count vectors, and weight vectors.
+Based on this model, documents and queries can be represented in different ways, such as binary vectors, count vectors, and weight vectors.
 %Each bit in a binary vector indicates the absence or presence of a term in the related document of %the vector.
 
 %In a count matrix, each row represents a term and each column represents the vector of a document %or query. Each cell in the matrix shows the number of occurrences of a term in a related document %or query. 
 
-In a weight matrix, each row represents a term and each column represents the vector of a document or query. Each cell in a weight matrix represents the weight of a term in a document. Tf-idf is one way of computing the weights.
+In a weight matrix, each row represents a term and each column represents the vector of a document or query. 
+Each cell in a weight matrix represents the weight of a term in a document. 
+\emph{Tf-idf} (term frequency - inverse document frequency) is one way of computing the weights.
 %newpart_8>
 
-Term frequency (tf) measures the number of occurrences of a given term (t) in a given document (d) or query text~\citep{SALTON1988}. 
+Term frequency (tf) measures the number of occurrences of a given term (t) in a given document (d) or query~\citep{SALTON1988}. 
 %<newpart_9
-Tf is calculated by the following formula. 
+Tf is calculated using the following formula:
 \begin{center} 
 	$w_{t,d}$=
 	$\begin{cases}
@@ -222,16 +224,16 @@ Tf is calculated by the following formula.
 \end{center}
 
 The reason for using a logarithm in the formula is that a high number of occurrences of a term does not make the document linearly more relevant.
-The total weight for a document is calculated by summing the weights of all terms in the document.
-These terms should appear in both \textit{q} and \textit{d}.
-It is zero if none of the query terms exist in the document.
+The total weight for a document with respect to a query is calculated by summing the weights of all query terms in the document.
+These terms should appear in both the query \textit{q} and the document \textit{d}.
+Tf is zero if none of the query terms exists in the document.
 
 \begin{center}
 	$\mathit{tf\_score}=\sum_{t\in q\cap d} w_{t,d}$
 \end{center}
 
-$\mathit{df}_t$ is the number of documents in the corpus that contain t, so the more a term is repeated in the corpus, the term less informative it becomes.
-This reason leads to a new measure, which is idf \emph{(inverse document frequency)}.
+$\mathit{df}_t$ is the number of documents in the corpus that contain $t$, so the more a term is repeated in the corpus, the less informative it becomes.
+This leads to the \emph{idf} (inverse document frequency) measure.
 Idf is effective for queries that have more than one term.
 The following formula defines idf, where $N$ is the number of documents in the corpus.
 
@@ -244,12 +246,12 @@ The following formula defines idf, where $N$ is the number of documents in the c
 %<newpart_10
 
 \begin{center}
-	$\textit{tf-idf}(q,d)=\sum_{t\in q\cap d} \mathit{tf}.\mathit{idf}_{t,d}$
+	$\textit{tf-idf}(q,d)=\sum_{t\in q\cap d} \mathit{tf}*\mathit{idf}_{t,d}$
 \end{center}
 %newpart_10>
 
 When ranking documents that contain a term being searched, tf-idf returns high scores for documents for which the given term is \emph{characteristic}, i.e.\ documents that have many occurrences of the term, while the term has a low occurrence rate in \emph{all} documents of the corpus.
-In other words, tf-idf assigns a weight to each word in a document, giving high weights to keywords and low weights to frequent words such as stop words.
+In other words, tf-idf assigns a weight to each word in a document, giving high weights to keywords and low weights to generally very frequent words.
 
 \subsection{The cosine similarity metric}
 \label{sec:cosine}
