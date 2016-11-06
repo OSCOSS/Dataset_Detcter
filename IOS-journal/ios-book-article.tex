@@ -46,21 +46,15 @@ and
 \address[C]{Fraunhofer Institute for Intelligent Analysis and Information Systems IAIS}
 \begin{abstract}
 Today, full-texts of scientific articles are often stored in different locations than the used datasets.
-%<newpart_0
 Dataset registries aim at a closer integration by making datasets citable 
-%newpart_0>
-%However, \todo[inline]{CL@BG: This statement actually creates the obligation for us to say something about the possible integration of our implementation into authoring tools in “future work”.  At least 2–3 sentences.  Think of open, pluggable systems, think of Fidus Writer. \\ BG: I decided to delete this part since it is not a key point in our article and even The deletion helps us to shrink abstract a bit more. }as they are not integrated with authoring tools, explicit links to datasets are generally missing in articles and 
 but authors typically refer to datasets using inconsistent abbreviations and heterogeneous metadata (e.g. title, publication year).
 It is thus hard to reproduce research results, to access datasets for further analysis, and to determine the impact of a dataset.
 Manually detecting references to datasets in scientific articles is time-consuming and requires expert knowledge in the underlying research domain. 
 We propose and evaluate a semi-automatic three-step approach for finding explicit references to datasets in social sciences articles.
-%<newpart_1
 We first extract pre-defined special features from dataset titles in the {\dara} registry, then detect references to datasets using the extracted features, and finally match the references found with corresponding dataset titles.
-%newpart_1> 
 The approach does not require a corpus of articles (avoiding the cold start problem) and performs well on a test corpus. 
 We achieved an F-measure of 0.84 for detecting references in full-texts and an F-measure of 0.83 for finding correct matches of detected references in the {\dara} dataset registry.
 
-%Now, Abstarct contains 183 words. It should be 200 words Max.
 \end{abstract}
 
 \begin{keyword}
@@ -68,9 +62,7 @@ Information extraction\sep Link discovery\sep Data linking\sep Research data\sep
 \end{keyword}
 \end{frontmatter}
 \section{Introduction}
-%Digital libraries have been constantly growing in recent years, especially the ratio of the full-texts has increased. 
-%\todo{SV@BG:try to have sentences that carry some value, this is not good to start the intro with such sentence, align it with abstract, even use the same sentence and expand each sentence of the abstract as one paragraph in intro. \\ BG: I made this part commented since it is not well-linked to other parts.}
-% We are specifically interested in scientific full-text articles in digital libraries.\todo[inline, size=\tiny]{SV@BG:saying we are interested on sth is not scientific at all, rephrase it and include the reason.\\ CL: This sentence is not necessary to introduce our point, so I've commented it out.}
+
 By its very nature science is based on evidence and facts.
 In many scenarios, these emerge from data obtained from measurements, surveys, experiments or simulations.
 As a result, scientific articles -- the key artifact of scholarly communication -- must refer to the ground truth the findings are based on, i.e. data.
@@ -96,26 +88,16 @@ combinations of title, abbreviation and year of publication (see, e.g., \citet{M
 
 Manually detecting references to datasets in articles is time consuming and requires expert knowledge of the article's domain. 
 Detecting dataset references automatically is challenging 
-%since 
-%in most %cases, approaches need a huge corpus of articles as training set. 
-%<newpart_2
-%It is a difficult task to create such a training set manually 
 due to the wide variety of styles of dataset citations in full-texts even within one research community, and the variety
-%multitude 
 of places in which datasets can be referenced in articles  
-%in which such citations can occur
 (illustrated in Figure~\ref{fig:places-example}).  
-%newpart_2>
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=3.5in]{DistPlaces4.png}
 	\caption{The distribution of more than 500 dataset references in 15 random articles from the mda journal (see Section~\ref{sec:mda})}
 	\label{fig:places-example}
 \end{figure}
-%<newpart_3
 So it is a difficult task to create a training set manually for solving this issue and this variance even makes rule-based approaches difficult, as it is hard to cover all cases.
-%\todo{CL@BG: I tried to phrase the following a bit more precisely, but still a concrete reference would be good. BG: I removed it for now but if I find a concrete reference for the claim, I'll return it.}%Approaches that learn from a corpus of articles require large amounts of disk space and processing time.
-%newpart_3>
 We therefore introduce a semi-automatic approach that parses full-texts and finds exact matches with high precision and without requiring a training set. 
 
 The remainder of this section states the problem addressed by our research more precisely.
@@ -126,10 +108,9 @@ The evaluation is then presented in section~\ref{sec:eval}.
 Section~\ref{sec:future} concludes with an outlook to future work. 
  
 \subsection{Problem Statement}
-Whereas a lot of effort has been spent on information extraction task in general~\citep{Sarawagi2007}, few attempts have focused on the specific use case of dataset reference extraction (see, e.g., \citep{MeiyuLu2012}). %\todo{SV@BG:effort on information extraction and dataset extraction is not comparable, one is a research field, the other is a usecase, rephrase it.\\ CL: I made the first step: not yet perfect, but better. \\BG: As far as I understood, information extraction can also be assumed as the task and afterwards, the comparison should be correct. So add "task" after it to clarify it.}
+Whereas a lot of effort has been spent on information extraction task in general~\citep{Sarawagi2007}, few attempts have focused on the specific use case of dataset reference extraction (see, e.g., \citep{MeiyuLu2012}). 
 When referring to the same dataset, different authors often use different names or keywords.
 Although there are proposed standards for dataset citation in full-texts, researchers still ignore or neglect such standards (see, e.g., \cite{altman2007proposed}).
-%One of the important standards is proposed by~\citeauthor{altman2007proposed} for dataset citation~\citeyearpar{altman2007proposed}.
 Since the structure of scientific documents does not always follow a standard, and since datasets are rarely being linked to in a consistent way,
 simple keyword or name extraction approaches do not solve the problem \citep{Nadeau2007}. 
 Table~\ref{table:citation-variety} shows concrete examples of different referencing styles in five articles from the mda journal (see Section~\ref{sec:mda}) that have cited different versions of a study (ALLBUS/GGSS = Allgemeine Bev\"olkerungsumfrage der Sozialwissenschaften/German General Social Survey).
@@ -154,12 +135,9 @@ Table~\ref{table:citation-variety} shows concrete examples of different referenc
 	\caption{Citation styles for a study in five different articles.}
 	\label{table:citation-variety}
 \end{table}
-%newpart_5>
 
 The challenge that our research aims at is to turn each dataset reference detected in an article into an explicit link, for example, using the DOI of the dataset entry in a dataset registry. 
-%<newpart_6
 Dataset registries usually provide further metadata about datasets, which can facilitate the detection of such links, such as the dataset creator, publication date, description, and temporal coverage.
-%newpart_6>
 In our case, references to datasets should be linked to items in the {\dara} registry, which covers datasets from the social sciences and economics.
 
 \subsection{Contribution}
@@ -174,9 +152,8 @@ This article makes the following contributions:
 \section{Preliminaries}
 \label{sec:preliminaries}
 In this section we introduce key terminology and concepts as well standard metrics for ranking the results of a search query.
-Search queries are used for retrieving text fragments in an article that refer to a dataset.% over a corpus of documents (here: titles of datasets), and for evaluating the accuracy of information retrieval algorithms.
+Search queries are used for retrieving text fragments in an article that refer to a dataset.
 
-%<newpart_7
 \subsection{Dataset (Terminology)} 
 \emph{Dataset} is an ambiguous term; different authors have suggested a great variety of definitions~\cite{peplerpreservation}.
 \citeauthor{renear2010definitions} introduced a general notion of the term based on the definitions in the technical and scientific literature.
@@ -190,29 +167,19 @@ They define a dataset in terms of its four basic characteristics \emph{grouping}
 	\item \emph{Relatedness.} A dataset is a group of \emph{related} data.
 		The \emph{relatedness} feature thus clarifies the inter-relation of data in a dataset.
 		\emph{Syntactic} and \emph{semantic} are some examples of this feature.   
-%A group of data about a specific subject can be assumed to have a \emph{semantic} relation.
-%\todo{CL@BG: This doesn't seem to be intended as mutually exclusive with “semantic”.  Reading this definition I can well imagine a group of entities that are 1. all about the same subject and 2. all follow a specific structure, i.e.\ a dataset that's both syntactic and semantic.  Why not – but is this what you, or the literature, intend to say? \\BG: I think I transferred it from the reference correctly. As far as I understood, these are different types of relatedness feature (for their definition) and they can even occur simultaneously. refrence: \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.476.8466&rep=rep1&type=pdf} , Page:3 , Relatedness section but I can remove the part to avoid misunderstanding}
-%If all entities of a dataset have the same syntactic structure, their relation is \emph{syntactic}.
 	\item \emph{Purpose.} The \emph{purpose} feature refers to the idea of the scientific activity which the dataset is created for.
 \end{itemize}
-%newpart_7>
 
 \subsection{Weighting terms in documents using tf-idf}
 \label{sec:tfidf}
-%<newpart_8
 The \emph{bag of words} model represents a text as a set of terms without considering their order.
-Based on this model, documents and queries can be represented in different ways, such as binary vectors, count vectors, and weight vectors.
-%Each bit in a binary vector indicates the absence or presence of a term in the related document of %the vector.
-
-%In a count matrix, each row represents a term and each column represents the vector of a document %or query. Each cell in the matrix shows the number of occurrences of a term in a related document %or query. 
+Based on this model, documents and queries can be represented in different ways, such as binary vectors, count vectors, and weight vectors. 
 
 In a weight matrix, each row represents a term and each column represents the vector of a document or query. 
 Each cell in a weight matrix represents the weight of a term in a document. 
 \emph{Tf-idf} (term frequency - inverse document frequency) is one way of computing the weights.
-%newpart_8>
 
 Term frequency (tf) measures the number of occurrences of a given term (t) in a given document (d) or query~\citep{SALTON1988}. 
-%<newpart_9
 Tf is calculated using the following formula:
 \begin{center} 
 	$w_{t,d}$=
@@ -239,22 +206,18 @@ The following formula defines idf, where $N$ is the number of documents in the c
 \begin{center} 
 	$\mathit{idf}=\log_{10} (N/\mathit{df}_t)$
 \end{center}
-%newpart_9>
 
 \emph{Tf-idf} is defined as the product of \emph{tf} and \emph{idf}. 
-%<newpart_10
 
 \begin{center}
 	$\textit{tf-idf}(q,d)=\sum_{t\in q\cap d} \mathit{tf}\cdot\mathit{idf}_{t,d}$
 \end{center}
-%newpart_10>
 
 When ranking documents that contain a term being searched, tf-idf returns high scores for documents for which the given term is \emph{characteristic}, i.e.\ documents that have many occurrences of the term, while the term has a low occurrence rate in \emph{all} documents of the corpus.
 In other words, tf-idf assigns a weight to each word in a document, giving high weights to keywords and low weights to generally very frequent words.
 
 \subsection{The cosine similarity metric}
 \label{sec:cosine}
-%<newpart_11
 A Boolean search enables users to find patterns: if a document matches the pattern, the result is “true”; otherwise the result is “false”.
 In other words, documents either do or do not satisfy a query expression.
 A \emph{ranked} retrieval model is more sophisticated, in that it returns a ranked list of documents in a corpus by considering a query. 
@@ -273,25 +236,18 @@ Dice Coefficient, Overlap Coefficient, and Jaccard try to normalize the Matching
 \end{itemize}
 Each of them has specific shortcomings;
 for example, Jaccard neither applies optimal normalization on the length of documents nor considers term frequency in a document and the corpus of documents.
-%newpart_11>
-%<newpart_12
 A document can be converted into a weight vector (see Section~\ref{sec:tfidf}), which looks like $d=(w_1,\dots,w_n)$, and tf-idf is one way of computing the weight $w_i$ of terms.
-%newpart_12>
 
 Search results for a multi-word query in a corpus of documents can be ranked by the similarity of each document with the query.
 Given a query vector $q$ and a document vector $d$, their \emph{cosine similarity} is defined as the cosine of the angle $\theta$ between the two vectors \citep{SALTON1988,ChristopherD1999}, i.e.\
 \begin{align*}
   \cos(\vec{q},\vec{d})=\cos \theta=\frac{\vec{q}\cdot \vec{d}}{\|\vec{q}\|\,\|\vec{d}\|}=
-  %% CL: I commented the following step, as it is not helpful for understanding the formula.
-  % \frac{\overrightarrow{q}}{\|\overrightarrow{q}\|}\cdot \frac{\overrightarrow{d}}{\|\overrightarrow{d}\|}=
   \frac{\sum_{i=1}^{|V|} q_id_i}{\sqrt{\sum_{i=1}^{|V|} q_i^2}\sqrt{\sum_{i=1}^{|V|} d_i^2}}
 \end{align*}
 
-%<newpart_13
 It normalizes vectors by converting them to their unit vector, thus making documents of different lengths comparable.
 Since Euclidean distance is not effective for vectors of different lengths, it ranks documents by angle instead of distance.
 Between 0 and 180 degrees, the cosine function decreases monotonically, and therefore larger angles mean less similarity.
-%newpart_13> 
 Combining tf-idf and cosine similarity yields a ranked list of documents.
 In practice, it may furthermore be necessary to define a cut-off threshold in order to distinguish documents that are considered to match the query from those that do not~\citep{Joachims1997}.
 
@@ -303,9 +259,7 @@ These matches are to be selected from titles of datasets in a given dataset regi
 
 Evaluation metrics such as \emph{precision and recall} determine the reliability of binary classifiers.
 For computing a unidimensional ranking of these two dimensions, one typically uses the F-measure, which is defined as the harmonic mean of precision and recall. 
-%<newpart_14
 These three metrics are defined as follows~\cite{Powers2011}. 
-%\todo{BG:Can we remove these formulas regarding to page limit? PM: Yes!}
 \begin{itemize}
 	\item $\mathit{Precision}=\frac{\#\text{True\ positives}}{\#\text{True positives}+\#\text{False positives}}$
 	\item $\mathit{Recall}=\frac{\#\text{True positives}}{\#\text{True positives}+\#\text{False negatives}}$
@@ -314,7 +268,6 @@ These three metrics are defined as follows~\cite{Powers2011}.
 
 If an algorithm returns few wrong predictions, it will lead to a high precision.
 An algorithm should predict most of the relevant results to achieve a high recall.
-%newpart_14>
 
 
 \section{Related work}
@@ -330,20 +283,16 @@ The accuracy of algorithms based on such similarity measures can be improved by 
 
 \subsection{Corpus and Web based methods}
 Corpus and Web based methods often use information about the co-occurrence of two texts in documents, and are used for measuring texts' semantic similarity.
-%<newpart_16
 \citeauthor{Turney2001} introduced a simple unsupervised learning algorithm for detecting synonyms~\cite{Turney2001}, which searches queries through an online search engine and analyses the results.
 The quality of the algorithm depends on the number of search results returned.  
-%newpart_16>
 
 \citeauthor{sighal2013} proposed an approach to extract dataset names from articles~\cite{sighal2013}.
 They employed the normalized Google distance algorithm (NGD), which estimates both the probability of two terms existing separately in a document, as well as of their co-occurrence. 
-%<newpart_17
 \begin{align*}
 	\mathit{NGD}(x,y)=\frac{\max(\log f(x),f(y))-\log f(x,y)}{\log M -\min(\log f(x),\log f(y))}
 \end{align*}
 In this formula, $M$ is the number of all web pages searched.
 $F(x)$ means the number of returned pages for $x$ as a query term and $f(x,y)$ represents the number of pages for the intersection of $x$ and $y$. 
-%newpart_17>
 They used two academic search engines -- Google Scholar and Microsoft Academic Search -- instead of a local corpus.
 
 \citeauthor{Schaefer2014} proposed the Normalized Relevance Distance (NRD)~\cite{Schaefer2014}.
@@ -351,7 +300,6 @@ This metric measures the semantic relatedness of terms.
 NRD is based on the co-occurrence of terms in documents, and extends NGD by using relevance weights of terms.
 The quality of these methods depends on the size of the corpus used.
 
-%<newpart_18
 \citeauthor{Sahami2006} suggest a similarity function based on query expansion~\cite{Sahami2006}.
 Their algorithm determines the degree of semantic similarity between two phrases.
 Each of these phrases is searched by an online search engine and then expanded by using returned documents.
@@ -360,58 +308,46 @@ Afterwards, the new phrases are used for computing similarity.
 The problem that we aim to solve involves the two subtasks of 1.\ identifying dataset references in an article, and then 2.\ finding at least one correct match for each of these identified references.
 Literature citation mining is the process of determining the number of citations that a specific article receives.
 It constructs a literature citation network, which can be used for detecting the impact of an article~
-%\todo{CL@BG: The combination of some author/year citations and some numeric citations, like here, looks strange to me.  Please switch everything to \emph{one} citation style: the one preferred by the journal. BG: improved - we should use vancouver style (which doesn't support citeyear) - I had tried to simulate that with natlab and unsrtnat - But now I have changed all citeyear to cite and used vancouver. }
 \cite{Afzal2010}.
 Citation mining can usually be handled by three subtasks.
 First, literature references should be extracted from the bibliography section of a document, and afterwards, metadata extraction should be applied on the references extracted in the first phase.
 Finally, each reference should be linked to the cited article by using the metadata extracted in the second step~\cite{Afzal2010}.
 
-Dataset and literature citation mining from documents cannot generally be compared in the detecting phase, since dataset mining needs to be applied to the entire article, but literature mining mostly focuses on the bibliography of the article. %\todo{CL@all: I added this new point; please check. \\ BG: it is a very tricky point since even citations to papers can occur in other parts (such as footnote) than only bibliography. So I preferred to remove it and edited the sentence.}%unless the article employs a “full” citation style.
+Dataset and literature citation mining from documents cannot generally be compared in the detecting phase, since dataset mining needs to be applied to the entire article, but literature mining mostly focuses on the bibliography of the article. 
 Unlike the detection phase, they can mostly use the same strategy for the matching phase. 
 
 Afzal et al.\ proposed a rule-based citation mining technique~\cite{Afzal2010}.
 Their approach detects literature references from each document and then extracts citation metadata from each of them, such as title, authors, and venue. Based on the venue, it then extracts all related titles from the DBLP computer science bibliography, which contains more than three million articles.
 Finally, it tries to link the title of each extracted literature reference and titles found in DBLP.
-%Our approach tries to match dataset references in an article to the titles of datasets registered in the {\dara} registry. %this last sentence is not neccessary in the related work part
-%newpart_18>
 
 \subsection{Machine learning methods}
 Many different machine learning approaches have been employed for extracting metadata, and in a few cases also for detecting dataset references.
 For example, \citeauthor{Zhang2006} \cite{Zhang2006} and \citeauthor{Han2003} \cite{Han2003} proposed keyword extraction methods based on support vector machines (SVM). 
 
-%<newpart_19
 \citeauthor{Kaur2010} conducted a survey on several effective keyword extraction techniques, such as selection based on informative features, position weight, and conditional random field (CRF) algorithms~\cite{Kaur2010}.
 Extracting keywords from an article can be considered as a labeling task.
 CRF classifiers can assign labels to sequences of input, and, for instance, define which parts in an article can be assumed to be keywords~\citep{ZHANG2008}.
-%newpart_19>
 
 \citeauthor{Cui2010} proposed an approach using Hidden Markov Models (HMM) to extract metadata from texts~\cite{Cui2010}. 
-%<newpart_20
 HMM is a language-independent and trainable algorithm~\cite{Kubala1998}.
 \citeauthor{Marinai2009} described a method for extracting metadata from documents by using a neural classifier~\cite{Marinai2009}.
 Kern et al.\ proposed an algorithm that uses a maximum entropy classifier for extracting metadata from scientific articles~
-%\todo{CL@BG: For this and possibly other references try to get the metadata as correct and complete as possible.  Journals are picky about this.  Here, find out the authors' full names.  Also note that this one is actually an \textit{@article}; use the fields \textit{journal}, \textit{volume} and \textit{number}. \\ BG: I removed my false comment -I improved references and corrected false types (e.g. article and proceeding)}
 \cite{Kern2012}.
-%newpart_20>
 \citeauthor{MeiyuLu2012} used the feature-based Llama classifier for detecting dataset references in documents~\cite{MeiyuLu2012}.
 Since there are many different styles for referencing datasets, large training sets are necessary for these approaches.
 
 \citeauthor{Boland2012} proposed a pattern induction method for extracting dataset references from documents in order to overcome the necessity of such a large training set~\cite{Boland2012}.
-%<newpart_21
 Their algorithm starts with either the name of a dataset or with an abbreviation of this name, and then drives patterns of all phrases that contain that name or abbreviation in articles.
 The patterns are applied to articles in order to extract more dataset names and abbreviations.
 This process repeats with new abbreviations and names until no more datasets can be detected in articles.
 It derives patterns of phrases that contain dataset references iteratively by using a bootstrapping approach.
-%newpart_21>
 
 
 \section{Data sources}
 \label{sec:data}
 This section describes the three types of data sources that we use. 
 We use full-text articles from the \emph{mda journal} to evaluate the performance of our dataset linking approach, and metadata of datasets in the {\dara} dataset registry to identify datasets. 
-%<newpart_22
 Finally, we use metadata of the articles registered in the \emph{SSOAR repository}\footnote{\url{http://www.ssoar.info}} for exporting the dataset links suggested for an article in the JSON exchange format.
-%newpart_22>
  
 \subsection{Articles from mda journal}\label{sec:mda}
  
@@ -426,17 +362,9 @@ Our approach focuses on social sciences datasets since it uses registered datase
 The registry offers a DOI registration service for datasets in the social sciences and economics. 
 Different institutions have collected research data in the social sciences and made them available.
 Although the accessibility of such datasets for further analyses and other reuse is important, information on where to find and how to access them is often missing in articles.
-%newpart_23>
 {\dara} makes 
-%social science research 
 data referable 
-%and thus improves its availability. 
-%<newpart_24
-%This is achieved 
 by assigning a DOI to each dataset.
-%{\dara} therefore does a job similar to that of publishers assigning DOIs to articles when they are published electronically.
-%newpart_24>
-%\todo{CL@BG: Add a footnote with the date on which these figures were valid. \\ BG: done}
 In November 2016, {\dara} holds 486,233 records such as datasets, texts, collections, videos, and interactive resources, more than 35,000 of which are datasets. 
 For each dataset, {\dara} provides metadata including title, author, language, and publisher.
 This metadata is exposed to harvesters employing a freely accessible API using OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting\footnote{\url{http://da-ra.de/oaip/}}). 
@@ -453,11 +381,9 @@ We have identified three such special patterns:
 \enquote{Czech Exit Poll 1996} is an example of such a dataset title. 
 \end{enumerate}
 
-%We assume these three categories as special characteristics in the titles.
 Abbreviations and special phrases can be found in about 17\% and 19\% of the {\dara} dataset titles respectively.
 The intersection of these two groups only accounts for 1.49\%.
 Filenames occur in less than one percent of the titles. 
-%<newpart_25
 The proposed approach in this article uses only the first and the last category, since the filename category only covers a small amount of titles.
 
 \subsection{The Social Science Open Access Repository (SSOAR)}
@@ -468,29 +394,24 @@ This repository provides some metadata such as abstract and keywords for each ar
 It is assumed as a secondary publisher which publishes pre-prints, post-prints, and original publishers' versions of scholarly articles but it also lets authors publish their work for the first time.
 Furthermore, the metadata of the articles inside the repository can be harvested.
 SSOAR assigns a URN (Uniform Resource Name) as a persistent identifier (PID) to each full-text to establish a stable link to the article.
-If the full-text is the pre-print or post-print version of a published work, the repository uses the DOI of the article.
-%newpart_25>  
+If the full-text is the pre-print or post-print version of a published work, the repository uses the DOI of the article.  
 
 
 \section{A semi-automatic approach for finding dataset references}
 \label{sec:approach}
 We have realized a semi-automatic approach for finding references to datasets registered in {\dara} in a given full-text. 
-%<newpart_26
 Our approach is divided into four main steps.
 The first step is related to generating special features dictionaries from datasets' titles.
 The second step deals with identifying and matching references to datasets in an article, and the third step focuses on improving the results of the second step.
 In the final step a user can export the results.
 
 It took a semi-automatic approach since 
-%newpart_26>
 the first and last steps of our algorithm require human interaction to improve the accuracy of the result. 
-%<newpart_27
 In the first step, the user should review two generated lists of abbreviations and special phrases.
 In the final step, the user should make the final decision regarding the references suggested by our approach.
 
 The main differences between our approach and related ones are that ours neither requires a huge corpus of articles nor a large training set.
 Our approach is straightforward and able to prepare results for a given article in a few minutes or even seconds depending on the number of datasets' references in the article that we want to analyze.
-%newpart_27>
 
 \subsection{Step 1: Preparing the dictionary}
 \label{sec:preparing-dictionary}
@@ -514,12 +435,9 @@ Afterwards, their tokens without definition are added to the list.
 These algorithms and rules correctly detect, for example, \enquote{DAWN} in \enquote{Drug Abuse Warning Network (DAWN), 2008}.
 However, it sometimes detects abbreviations that are not references to datasets, such as \enquote{NYPD} in \enquote{New York Police Department (NYPD) Stop, Question, and Frisk Database, 2006}.
 As their identification is hard to automate, we assigned this task to a human expert. 
-%<newpart_28
 The expert reviews the list and then makes a false positive list -- afterward, the list will be removed from the dictionary automatically.
- %\todo{CL@BG: I suppose the ratio is not always the same.  Say something like “In an experiment with 50 mda articles, the ratio of false positives was …” . \\ BG: Here, our algorithm tried to extract abb. from  whole dataset titles in dara. After creation the list, we checked it and noticed that the ratio of fp items in the list is 1/3 of whole items.}
 In an experiment involving all dataset titles of {\dara}, we notice the ratio of false positives is one out of three items of the list of abbreviations extracted automatically.
 This means that approximately two thirds of the abbreviations are derived correctly, and pruning the rest of the titles from the list requires little effort.
-%newpart_28>
 
 The preparation of the dictionary of special phrases also needs human interaction.
 A list of terms that refer to datasets such as \enquote{Study} or \enquote{Survey} has been generated manually; this list contains about 30 items.
@@ -528,47 +446,37 @@ Three types of phrases are considered here, the first of which are tokens that i
 The second is a category of phrases that includes \enquote{Survey of} or \enquote{Study of} as a sub phrase as well as one more token that is not a stop word, such as \enquote{Survey of Hunting}.
 The last one is phrases that contain two tokens, where one of them is a dictionary item such as \enquote{Poll}, and the second token should not be a stop word such as \enquote{Freedom Poll}. 
 
-%<newpart_29
 A human expert has finally verified the phrase list, and false positives are added to the list which contains false positive items.
-In the phrase list, there are few false positives, and most can be detected by a human expert
-%\todo{CL@BG: not sure why and how they can be detected “while processing articles”; try to clarify \\BG: I added some more sentences to clarify.} 
+In the phrase list, there are few false positives, and most can be detected by a human expert 
 while our algorithm processes articles.
 Users should decide about the output so each time a false result generated by a false phrase occurs, the users can easily add the phrase to the false positive list. This means our approach will improve over time.
-%newpart_29>
  
 \subsection{Step 2: Detecting dataset references and ranking matching datasets}
 \label{sec:detecting-ranking}
 Next, the characteristic features (abbreviations or phrases) of dataset titles are detected in the full-text of a given article.
 The text is split into sentences, and each of these features is searched for in each sentence. 
-%<newpart_30
 Any detection of the special features in a text means a dataset reference in the text exists.
-%newpart_30>
-A sentence is split into smaller pieces if a feature repeats inside the sentence more than once, since such a sentence may contain references to %\todo{CL@BG: Could such a repetition also mean that a sentence refers to different \emph{datasets}?  If so, say it! \\BG:here is not the case but thank you for mentioning it.}
+A sentence is split into smaller pieces if a feature repeats inside the sentence more than once, since such a sentence may contain references to
 different versions of a dataset.
 Any phrase identified in this step might correspond to more than one dataset title.
 
 For example, \enquote{ALLBUS} is an abbreviation for a famous social science dataset, of which more than 150 versions are registered in {\dara}.
 These versions have different titles and, for instance, the titles differ from year of study such as \enquote{German General
 Social Survey -- ALLBUS 1998}, 
-%<newpart_31
 \enquote{German General Social Survey -- ALLBUS 2010}, and \enquote{German General Social Survey (ALLBUS) -- Cumulation 1980--2012}.
 In another example, two titles that both contain the \enquote{PIAAC} abbreviation are \enquote{Programme for the International Assessment of Adult Competencies (PIAAC), Cyprus} and \enquote{Programme for the International Assessment of Adult Competencies (PIAAC), Germany}, i.e., two datasets that differ in their geographic coverage.
 The last example is given by two versions of the \enquote{EVS} dataset, 
-%newpart_31>
 \enquote{EVS -- European Values Study 1999 -- Italy} and \enquote{European Values Study 2008: Azerbaijan (EVS 2008) }, which differ in both their year of study and geographic coverage.
 
 We solve the problem of identifying the most likely datasets referenced in the article by ranking their titles with a combination of tf-idf and cosine similarity.
 In this ranking algorithm, we apply the definitions of Section~\ref{sec:preliminaries}, where the query is a candidate dataset reference found in the article and the documents are the titles of all datasets in {\dara}. 
-%<newpart_32
 It means that our approach tries to identify the most similar dataset title in the {\dara} repository with a sentence that contains any of the special features where the sentence belongs to the analyzed article.
-%newpart_32>
 
 \subsection{Step 3: Heuristics to Improve Ranking in Step 2}
 \label{sec:heur-impr-rank}
 
 For each reference detected in the full-text of an article we compute tf-idf over the full-text and the list of dataset titles in {\dara}, which contain a specific characteristic feature (abbreviation or phrase) detected in the reference.
-%<newpart_33
-%\todo{CL@BG: If you actually mean “As we observed that it leads to many false positives”, then phrase it like this (it's clearer this way).}
+
 As we observed that it leads to many false positives, comparing all datasets' titles with a sentence in an article, and, afterwards, ranking titles based on their score was not useful.
 We solved these problems by involving special features.
 
@@ -577,7 +485,6 @@ We limit our options in order to improve the accuracy of our approach.
 We decided to use the list of titles and whole sentences of the article, and not only the reference sentence, since this consideration enables us to have a bigger corpus of documents and to obtain a better weight for each word.
 The utilization of titles that contain special features reduces the weight score of the feature and raises the weight scores of other terms in the reference sentence.
 It therefore has a positive impact on accuracy.
-%newpart_33>
 
 While a corpus of articles is typically huge, the size of all {\dara} dataset titles and the size of the full-text of an average article are less than 4 MB each.
 Given this limited corpus size, our algorithm may detect some false keywords in a query, thus adversely affecting the result.
@@ -595,11 +502,9 @@ To address this problem in a better way, our implementation employs some heurist
 These include an algorithm that improves dataset rankings based on matching years in the candidate strings in both the article and the datasets' titles.
 In the example, these heuristics improve the ranking of the \enquote{Allbus 2014} dataset when analyzing paper~1. 
 
-%<newpart_34
 Figure~\ref{fig:Overview_of_approach} shows an overview of our approach.
 The two steps labeled with \enquote{M} require human interaction.
 \enquote{M1} is about the preparation of lists of special features and \enquote{M2} is about making final decisions between candidates suggested by our approach.
-%newpart_34>
 
 \begin{figure}[h]
 	\centering
@@ -619,27 +524,21 @@ Each article in our corpus contains 45 dataset references on average, but these 
 The second alternative workflow takes advantage of this observation.
 It works per characteristic feature and suggests 6 titles of candidate datasets to the user for each feature (which may be common to multiple individual references in the article). 
 
-%<newpart_35
 Finally, an RDF graph containing information about links identified between articles and datasets is exported as an output.
 To enable even further analysis of the links identified between articles and datasets, we export an RDF graph containing all candidate datasets identified in the latter workflow for each article.
 For each candidate dataset, we represent the essential metadata of the dataset in RDF: DOI and title.
-
-%newpart_35>
 
 \section{Evaluation}
 \label{sec:eval}
  \label{sec:eval}
  The computation of evaluation metrics such as precision, recall, and F-measure require a ground truth.
  We therefore selected a test corpus of 15 random articles\footnote{\url{https://github.com/OSCOSS/testdata_mda}} from the 2013 and 2014 issues of the mda journal (see Section~\ref{sec:mda}) -- 6 in English and 9 in German. 
-%<newpart_36
 This test corpus includes 25 datasets without considering different versions of each dataset (see more information about the test corpus in Table~\ref{table:info-testcorpuse}).
-%newpart_36>
 
 A trained assessor from the InFoliS\footnote{Integration von Forschungsdaten und Literatur in den Sozialwissenschaften = integration of research data and literature in the social sciences} II project at GESIS reviewed all articles one by one and identified all references to datasets (see second row in table~\ref{table:info-testcorpuse}).
 Afterwards, the assessor attempted to discover at least one correct match in {\dara} for each detected reference, resulting in a list of correct datasets per article.
 These lists were used as a gold standard\footnote{\url{https://github.com/OSCOSS/testdata_mda/blob/master/ELPub_Corpus_evaluation.csv}} to compare with the results of our algorithm to examine differences and similarities.
 
-%<newpart_37
 \begin{table}[h!]
 	\renewcommand{\arraystretch}{2}
 	\centering
@@ -655,16 +554,12 @@ These lists were used as a gold standard\footnote{\url{https://github.com/OSCOSS
 	\caption{Test corpus}
 	\label{table:info-testcorpuse}
 \end{table}
-%newpart_37>
 
- 
 \subsection{Evaluation Process and Description}
 We decided to divide our evaluation into two steps.
 The first step focuses on identifying dataset references in articles.
 Here, accuracy depends on the quality of the generated dictionaries of abbreviations and special phrases 
-%<newpart_38
 (the accuracy metrics used in the article are explained in Section~\ref{sec:precision-recall}).
-%newpart_38>
  
 Our algorithm searches these characteristic features (as explained in Section~\ref{sec:detecting-ranking}) in the full-texts; detection of any of these features may lead to the detection of a dataset reference (see row \enquote{Detection} in Table~\ref{table:eval-results}).
 In this phase, if a characteristic feature is identified both in an article and in the gold standard, it will be labeled as a true positive.
@@ -673,15 +568,12 @@ If the feature is in the gold standard but not in our output, it will be labeled
 The second step of the evaluation is about the accuracy of matching detected references in articles with datasets titles in the {\dara} registry.
 This evaluation phase considers only true positives from the previous step.
 The lists of suggested matches for an item, both from the gold standard and from our output, are compared in this step. 
-%<newpart_39
 Since a dataset may occur on its own or be integrated together with other studies,
-%newpart_39>
 an item can have more than one true match (e.g. Allbus 2010 in ALLBUScompact 1980--2012).
 In this step, an item will be labeled as a false negative if none of the suggestions for the item in the gold standard appears in the output of our algorithm.
 The numbers of false positives and false negatives are equal in this step, since a missing corresponding match means the existence of false positives.
 True positives, false positives, and false negatives are counted and then used to compute precision and recall.
 
-%<newpart_40 
 The third row in Table~\ref{table:eval-results} refers to the accuracy of two phases of the algorithm as one unit in order to find how well it works generally, and does not consider one specific phase (i.e. identification or matching).
 In order to satisfy this purpose, we repeated the second phase of the evaluation, but this time included all data from the first step and not only the true positives.
 If an item is identified as false positive in the first section of evaluation, it is labeled as such in the evaluation as well.   
@@ -690,7 +582,6 @@ If an item is identified as false positive in the first section of evaluation, i
 \label{sec:evre}
 The algorithm gains high precision in both the detection and matching phases, which means it has a small number of wrong predictions.
 It also covers the majority of relevant datasets, which leads to high recall.
-%newpart_40>
 The results of our evaluations are shown in Table~\ref{table:eval-results}.
  
 \begin{table}[h!]
@@ -721,7 +612,7 @@ The per-feature matching workflow (as mentioned in Section~\ref{sec:expos-result
 For example, in an article that contains exactly three detected characteristic features -- \enquote{ALLBUS}, \enquote{PIAAC}, and \enquote{exit poll} -- each dataset reference relates to one of these three features.
 If we obtain for each such reference the list of top 5 matches as in the per-reference workflow and group these lists per category, we can count the number of occurrences of each dataset title per category. 
  
-Looking at the dataset titles per category sorted by ascending number of occurrences, we observed that the correct matches for the datasets' references using a specific characteristic feature were always among the top 6 items. %BG extend this part a bit
+Looking at the dataset titles per category sorted by ascending number of occurrences, we observed that the correct matches for the datasets' references using a specific characteristic feature were always among the top 6 items.
  
 \section{Conclusion and future work}
 \label{sec:future}
@@ -735,20 +626,14 @@ After the evaluation, our observations reveal that {\dara} could cover only 64\%
 
 Future work will focus on improving the accuracy of detecting references to the datasets supported so far, and on extending the coverage to all datasets.
 Accuracy can be improved by better similarity metrics, e.g., taking into account synonyms and further metadata of datasets in addition to the title.
-%Other algorithms such as identifying the central dataset(s) on which an article is based on can improve the ranking of the list generated by similarity metrics.
-%\todo{CL@BG: I have difficulties understanding the following sentence. BG: I added more sentences to make it more clear. BG: prefered to remove this part}The identification of central dataset(s) is possible after pairing a share of references of datasets in a given article with titles in {\dara}, and then this identification affects the ranking of the rest of the references. %still unclear, improve wording
-%A central dataset in a paper is referred to a dataset which the paper is written based that and usually, they mention in the paper many times. %still unclear, improve wording
 
 Coverage can be improved by taking into account further datasets, which are not registered in {\dara}.
 One promising further source of datasets is OpenAIRE, the Open Access Infrastructure for Research in Europe, which so far covers more than 16,000 datasets from all domains inluding social science but is rapidly growing thanks to the increasing attention paid to open access publishing in the EU.
 The OpenAIRE metadata can be consumed via OAI-PMH, or, in an even more straightforward way, as linked data (cf.\ our previous work, \citet{VahdatiEtAl:MappingResearchMetadata15}).
 
-%\todo{CL@BG: The following looks like future work, so please more it to that section. \\ BG: it is moved to the section and also edited a bit. But I prefer to not have it in the article since it is not very important point.}Another task for future is about reducing harvesting time from repositories. Both abbreviations and phrases dictionaries can be generated on the first harvest of dataset titles from {\dara}, and they can be required to update with every subsequent harvest. The delta update feature is not implemented in the article, but the idea makes our approach even faster.
-
 For reuse in subsequent analytics we are planning to enrich the RDF export.
 Currently, it neither includes the exact positions of dataset references in an article, nor our algorithms' confidence in every possible matching dataset.
 While we are already obtaining in the course of the per-reference matching workflow (cf.\ Section~\ref{sec:expos-results-reus}), we will additionally preserve it in the per-feature workflow, from which the RDF export is generated.
-%\todo{CL@BG: This sentence is not well connected to the rest of the conclusion.  What problem does this solution address?  I guess something like reuse of the data, subsequent processing, etc. BG: I noticed it is an old point and currently, it is implemented in our approach. }For each dataset reference identified in an article, we will model the precise position of that reference, and the algorithm's confidence in each possible matching dataset.
 
 In a mid-term perspective, solutions for identifying dataset references in articles that have been published already could be made redundant by a wider adoption of standards for properly citing datasets while authoring articles, and corresponding tool support for authors.
 
