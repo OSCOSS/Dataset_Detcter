@@ -30,7 +30,7 @@
 %\title{A Semi-Automatic Approach for Linking Dataset References in Social Sciences Full Texts} 
 \title{A Semi-Automatic Approach for Detecting Dataset References in Social Science Texts}
 \author[A,B]{\fnms{Behnam} \snm{Ghavimi}
-\thanks{Corresponding Author: E-mail: behnam.ghavimi@gesis.org}}
+\thanks{Corresponding Author: E-mail: behnam.ghavimi@gesis.org}},
 \author[A]{\fnms{Philipp} \snm{Mayr}
 \thanks{E-mail: philipp.mayr@gesis.org}},
 \author[B,C]{\fnms{Christoph} \snm{Lange} 
@@ -217,8 +217,8 @@ Tf is calculated using the following formula:
 \begin{center} 
 	$w_{t,d}$=
 	$\begin{cases}
-	1+\log_{10} \mathit{tf}_{t,d}, & \text{if $\mathit{tf}_{t,d}>0$} \\
-	0, & \text{if $\mathit{tf}_{t,d}=0$}\\
+	1+\log_{10} \mathit{tf}_{t,d} & \text{if $\mathit{tf}_{t,d}>0$} \\
+	0 & \text{if $\mathit{tf}_{t,d}=0$}\\
 	\end{cases}$
 \end{center}
 
@@ -228,7 +228,7 @@ These terms should appear in both the query $q$ and the document $d$.
 Tf is zero if none of the query terms exists in the document.
 
 \begin{center}
-	$\mathit{tf\_score}=\sum_{t\in q\cap d} w_{t,d}$
+	$\mathit{tf\_score}=\sum_{t\in q\cap d} W_{t,d}$
 \end{center}
 
 $\mathit{df}_t$ is the number of documents in the corpus that contain $t$, so the more a term is repeated in the corpus, the less informative it becomes.
@@ -281,7 +281,7 @@ A document can be converted into a weight vector (see Section~\ref{sec:tfidf}), 
 Search results for a multi-word query in a corpus of documents can be ranked by the similarity of each document with the query.
 Given a query vector $q$ and a document vector $d$, their \emph{cosine similarity} is defined as the cosine of the angle $\theta$ between the two vectors \citep{SALTON1988,ChristopherD1999}, i.e.\
 \begin{align*}
-  \cos(\overrightarrow{q},\overrightarrow{d})=\cos \theta=\frac{\overrightarrow{q}\cdot \overrightarrow{d}}{\|\overrightarrow{q}\|\,\|\overrightarrow{d}\|}=
+  \cos(\vec{q},\vec{d})=\cos \theta=\frac{\vec{q}\cdot \vec{d}}{\|\vec{q}\|\,\|\vec{d}\|}=
   %% CL: I commented the following step, as it is not helpful for understanding the formula.
   % \frac{\overrightarrow{q}}{\|\overrightarrow{q}\|}\cdot \frac{\overrightarrow{d}}{\|\overrightarrow{d}\|}=
   \frac{\sum_{i=1}^{|V|} q_id_i}{\sqrt{\sum_{i=1}^{|V|} q_i^2}\sqrt{\sum_{i=1}^{|V|} d_i^2}}
@@ -336,7 +336,7 @@ The quality of the algorithm depends on the number of search results returned.
 %newpart_16>
 
 \citeauthor{sighal2013} proposed an approach to extract dataset names from articles~\cite{sighal2013}.
-They employed the normalized Google distance algorithm, which estimates both the probability of two terms existing separately in a document, as well as of their co-occurrence. 
+They employed the normalized Google distance algorithm (NGD), which estimates both the probability of two terms existing separately in a document, as well as of their co-occurrence. 
 %<newpart_17
 \begin{align*}
 	\mathit{NGD}(x,y)=\frac{\max(\log f(x),f(y))-\log f(x,y)}{\log M -\min(\log f(x),\log f(y))}
