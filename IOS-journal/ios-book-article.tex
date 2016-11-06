@@ -75,7 +75,7 @@ By its very nature science is based on evidence and facts.
 In many scenarios, these emerge from data obtained from measurements, surveys, experiments or simulations.
 As a result, scientific articles -- the key artifact of scholarly communication -- must refer to the ground truth the findings are based on, i.e. data.
 Making these data references explicit, machine-readable and semantics-aware is one of the major challenges in digitizing scholarly communication effectively.
-Especially in the quantitative social sciences and but also most other fields of science many articles reference research datasets which they are based on.
+Especially in the quantitative social sciences and also most other fields of science many articles reference research datasets which they are based on.
 For example, an article might present the results of a statistical analysis performed on a dataset comprising employment data in the European Union.
 Today, digital libraries aim at providing resources with high-quality metadata, easy subject access, and further support and guidance for retrieving information~\citep{Hienert2015}. 
 However, dataset references are usually not explicitly exposed in digital libraries.
@@ -614,7 +614,7 @@ The application of our approach supports two workflows through which an expert u
 
 One workflow works per reference: for each reference, five titles of candidate datasets are suggested to the user.
 While this workflow best supports the user in getting every reference right, it can be time consuming.
-Each article in our corpus contains 45 dataset references on average, but these \emph{references} only belong to an average number of 3 distinct \emph{datasets}.
+Each article in our corpus contains 45 dataset references on average, but these \emph{references} only belong to an average number of 4 distinct \emph{datasets}.
 
 The second alternative workflow takes advantage of this observation.
 It works per characteristic feature and suggests 6 titles of candidate datasets to the user for each feature (which may be common to multiple individual references in the article). 
@@ -649,7 +649,7 @@ These lists were used as a gold standard\footnote{\url{https://github.com/OSCOSS
 		\ML
 		\# of datasets in an article & 7 & 1 & 4
 		\NN
-		\# of references to datasets & 147 & 1 & 12
+		\# of references to datasets & 147 & 1 & 45
 		\LL
 	\end{tabular}
 	\caption{Test corpus}
@@ -731,7 +731,7 @@ There are just some manual tasks such as initially cleaning the dictionary of ab
 In our evaluation we have achieved an F-measure of 0.84 for the detection task and an F-measure of 0.83 for finding correct matches for each reference in our gold standard.  
 Although the {\dara} registry is large and it is growing, there are still many datasets that have not yet been registered there. 
 This circumstance will adversely affect the task of detecting references to datasets in articles and matching them to items in {\dara}.
-After the evaluation, our observations reveal that {\dara} could cover only 64 percent of datasets in our test corpus. 
+After the evaluation, our observations reveal that {\dara} could cover only 64\% of datasets in our test corpus. 
 
 Future work will focus on improving the accuracy of detecting references to the datasets supported so far, and on extending the coverage to all datasets.
 Accuracy can be improved by better similarity metrics, e.g., taking into account synonyms and further metadata of datasets in addition to the title.
