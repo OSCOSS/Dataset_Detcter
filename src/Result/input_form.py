@@ -70,7 +70,7 @@ def listdatacreator(lsoftitile):
             if idx==0:
                 temp["headline"]=item1
             else:
-                templist.append("http://dx.doi.org/"+item1)
+                templist.append("https://doi.org/"+item1)
         temp["sameAs"]=templist
         flist.append(temp)
     return flist
