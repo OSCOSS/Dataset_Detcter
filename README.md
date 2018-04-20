@@ -16,7 +16,7 @@ dataset registry.
 https://youtu.be/gAbXYG-IP-w
 
 ## Activity Diagram
-![picture alt](https://s32.postimg.org/adxvzot2d/Activitydiagram.png "Activity Diagram")
+![picture alt](https://raw.githubusercontent.com/behnam2014/picrepo/master/Datasetdetect/Activitydiagram.png "Activity Diagram")
 
 ## List of requirements
          1. Python 3.4
@@ -41,4 +41,4 @@ https://youtu.be/gAbXYG-IP-w
            * Json
 
 ## An overview of our approach
-![picture alt](https://s32.postimg.org/unv7etu79/Overwveiw_System.png "An overview of our approach")
+![picture alt](https://github.com/behnam2014/picrepo/blob/master/Datasetdetect/Overwveiw_System.png "An overview of our approach")
